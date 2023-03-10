@@ -11,7 +11,8 @@ Please go under edit and edit this file as needed for your project
 ### Member 7 - IT21197246 - Abeykoon A.M.Y.V.B ()
 ### Member 8 - IT21158568 - Sindujan.P ()
 
-#### Brief Description of Project - S.A.P Super is a supermarket located in Bihalpola Kurunegala. This organization was established
+#### Brief Description of Project - 
+S.A.P Super is a supermarket located in Bihalpola Kurunegala. This organization was established
 in 2018 and has since then strived to provide customers with products that fit their expectations.
 Since 2018, the supermarket has tried its best to expand the business and provide a wider variety
 of items and quality of life improvements to its customers, which is why, our client has come up
@@ -40,7 +41,8 @@ Moreover, the system can hold and will give a user to view previous customer and
 complaints that were received by category and date, which will allow the owner and other parties
 to keep track of customer and staff requirements. The system is hence a tool designed to improve
 the running and profitability of the supermarket to its owners and staff.
-#### Technologies used - The following are the technologies that will be used to implement the Retail management
+#### Technologies used - 
+The following are the technologies that will be used to implement the Retail management
 system. In which they fall into, software model, Requirement gathering and analyzing, system’s
 design, system’s implementations, as well as testing. Agile approach also allowed the team to
 obtain constant customer feedback, which aided in implementing the best possible solution.
