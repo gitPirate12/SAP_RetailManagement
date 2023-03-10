@@ -48,15 +48,25 @@ design, system’s implementations, as well as testing. Agile approach also allo
 obtain constant customer feedback, which aided in implementing the best possible solution.
 Usage of agile technique and tools as the methodology enabled the team to work in a timely
 manner as well.
+
 We plan to implement MERN Stack technology.
+
 Front-end languages: Html, CSS, JavaScript
+
 Front-end frameworks: React App and Bootstrap
+
 Back-end languages: Express.js and NodeJS
+
 Database tool: MongoDB
+
 Backend testing tools: Postman API
+
 Project management tool: GitHub IDE: Visual studio code
+
 Communication Tool: Microsoft Teams
+
 Documentation Tools: Microsoft Word, Microsoft PowerPoint
+
 Design Tools: Draw.Io
 
 Note - The student's github account should be given in brackets e.g. (asiriRepos), this ideally should be your student id 
