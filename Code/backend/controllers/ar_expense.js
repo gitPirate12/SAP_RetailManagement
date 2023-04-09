@@ -35,7 +35,7 @@ exports.addExpense = async (req, res) => {
 exports.getExpenses = async (req, res) => {
     try {
         //finding all incomes, showing the last income entered first
-        const expenses = await IncomeSchema.find().sort({createdAt: -1})
+        const expenses = await ExpenseSchema.find().sort({createdAt: -1})
         res.status(200).json(expenses)
     } catch (error) {
         res.status(500).json({message:'Server Error'})
