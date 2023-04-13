@@ -1,44 +1,56 @@
 const mongoose = require('mongoose');
 
-const IncomeSchema = new mongoose.Schema({
-        title: {
+const SupplyOrderSchema = new mongoose.Schema({
+        orderID: {
             type: String,
             required: true,
             trim: true,
             maxLength: 50
         },
-        amount: {
-            type: Number,
-            required: true,
-            trim: true,
-            maxLength: 50
-        },
-        category: {
+        SID: {
             type: String,
             required: true,
             trim: true,
             maxLength: 50
         },
-        description: {
+        supplierName: {
+            type: String,
+            required: true,
+            trim: true,
+            maxLength: 50
+        },
+        item: {
             type: String,
             required: true,
             trim: true,
             maxLength: 50,
         },
-        type: {
+        amount: {
+            type: Number,
+            required: true,
+            trim: true,
+            maxLength: 50,
+        },
+        price: {
             type: String,
             required: true,
             trim: true,
-            maxLength: 10,
-            default:"cash"
+            maxLength: 50,
         },
-        date: {
+        discount: {
+            type: String,
+            required: true,
+            trim: true,
+            maxLength: 50,
+        },
+        deliverydate: {
             type: Date,
             required: true,
             trim: true
         }
         
 
-},{timestamps: true})
-
-module.exports = mongoose.model('Income', IncomeSchema)
+},
+{timestamps: true}
+)
+module.exports = mongoose.model('SupplyOrder', SupplyOrderSchema)
