@@ -1,6 +1,5 @@
 const { addItem, getItems,getItem,deleteItem,updateItem} = require('../controllers/itemController');
 
-//need to add some thing like this
 
 const router = require('express').Router();
 

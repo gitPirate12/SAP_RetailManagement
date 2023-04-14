@@ -4,12 +4,12 @@ const mongoose = require('mongoose')
 
 const ItemSchema = require("../models/itemModel")
 
-//
+
 exports.addItem = async (req, res) => {
     //destructuring request body into its components
     const {name, category, price, quantity, description, date} = req.body
 
-    //storing all of these values from the request body into the income variable
+    //storing all of these values from the request body into the item variable
     const item = ItemSchema({
         name,
         category,
@@ -24,9 +24,7 @@ exports.addItem = async (req, res) => {
         if(!name || !category || !price || !quantity|| !description || !date){
             return res.status(400).json({message: 'All fields are required!'})
         }
-        // if(price <= 0 || !price === 'number'){
-        //     return res,status(400).json({message: 'Valid price requried'})
-        // }
+        
         if(price <= 0 || typeof price !== 'number'){
             return res.status(400).json({message: 'Valid price required'})
         }
@@ -50,24 +48,9 @@ exports.getItems = async (req, res) => {
 
 }
 
-// exports.deleteItem = async (req, res) => {
-//     //storing object id from the req parameters
-//     const {id} = req.params;
-//     console.log(req.params);
-//     //finding and deleting said item from database
-//     ItemSchema.findByIdAndDelete(id).then((items) => {
-//         res.status(200).json({message: 'Item has been deleted'})
-//     })
-//     .catch((err) => {
-//         res.status(500).json({message: 'Server Error'})
-//     })
-
-// }
-
 exports.deleteItem = async (req, res) => {
     //storing object id from the req parameters
     const {id} = req.params;
-    //console.log(req.params);
 
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error: 'no such item'})
@@ -86,7 +69,6 @@ exports.deleteItem = async (req, res) => {
 exports.getItem = async (req, res) => {
     //storing object id from the req parameters
     const {id} = req.params;
-    //console.log(req.params);
     //finding and deleting said item from database
     const item= await ItemSchema.findById(id)
 
@@ -104,7 +86,6 @@ exports.getItem = async (req, res) => {
 exports.updateItem = async (req, res) => {
     //storing object id from the req parameters
     const {id} = req.params;
-    //console.log(req.params);
 
     if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error: 'no such item'})
