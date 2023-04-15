@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     :root{
-        --primary-color: #19376D;
+        --primary-color: #0B2447;
         --primary-color2: 'color: rgba(34, 34, 96, .6)';
         --primary-color3: 'color: rgba(34, 34, 96, .4)';
         --color-cyan: #A5D7E8;
@@ -21,7 +21,7 @@ export const GlobalStyle = createGlobalStyle`
     body{
         font-family: 'Nunito', sans-serif;
         font-size: clamp(1rem, 1.5vw, 1.2rem);
-        overflow: hidden;
+        overflow: flex;
         color: rgba(34, 34, 96, .6);
     }
 `;

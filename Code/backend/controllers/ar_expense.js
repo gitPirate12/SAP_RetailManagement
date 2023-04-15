@@ -43,10 +43,37 @@ exports.getExpenses = async (req, res) => {
 
 }
 
+exports.getExpense = async(req, res) => {
+    try {
+        //finding a single expense
+        const {id} = req.params;
+        const expense = await ExpenseSchema.findById(id);
+        res.status(200).json(expense);
+
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+}
+
+exports.updateExpense = async (req, res) => {
+    try {
+        const {id} = req.params;
+        const expense = await ExpenseSchema.findByIdAndUpdate(id, req.body);
+        //if income cannot be found
+        if(!expense){
+            return res.status(404).json({message: `Expense with ID ${id} cannot be found`})
+        }
+        const updatedExpense = await ExpenseSchema.findById(id);
+        res.status(200).json(updatedExpense);
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+}
+
 exports.deleteExpense = async (req, res) => {
     //storing object id from the req parameters
     const {id} = req.params;
-    console.log(req.params);
+    
     //finding and deleting said item from database
     ExpenseSchema.findByIdAndDelete(id).then((expense) => {
         res.status(200).json({message: 'Expense has been deleted'})
