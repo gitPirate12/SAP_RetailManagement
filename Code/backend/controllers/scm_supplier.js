@@ -1,4 +1,5 @@
 const supplierSchema = require("../models/scm_supplierModule")
+const mongoose = require('mongoose')
 
 
 exports.addsupplier = async (req, res) => {
@@ -31,7 +32,7 @@ exports.addsupplier = async (req, res) => {
 exports.getsuppliers = async (req, res) => {
     try {
         //finding all suppliers
-        const suppliers = await supplierSchema.find().
+        const suppliers = await supplierSchema.find().sort({createdAt: -1})
         res.status(200).json(suppliers)
     } catch (error) {
         res.status(500).json({message:'Server Error'})
@@ -42,29 +43,41 @@ exports.getsuppliers = async (req, res) => {
 
 
 //update database
-exports.updateSupplier = async(req, res) => {
-    try {
-        const updatedSupplier = await Supplier.findByIdAndUpdate(
-            req.params.id,
-            { $set: req.body },
-            { new: true }
-            );
-            res.json(updatedSupplier);
-        }
-        catch (err) {
-            res.json({ message: err });
-        }
+
+exports.updateSupplier = async (req, res) => {
+    //storing object id from the req parameters
+    const {id} = req.params;
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({error: 'no such supplier'})
+    }
+    
+    const Supplier = await supplierSchema.findOneAndUpdate({_id:id},{
+        ...req.body
+    })
+
+    if(!Supplier){
+        return res.status(400).json({error: 'No such supplier'})
+    }
+
+    res.status(200).json(Supplier)
+    
 }
 
 exports.deletesupplier = async (req, res) => {
     //storing object id from the req parameters
     const {id} = req.params;
-    console.log(req.params);
-    //finding and deleting said item from database
-    supplierSchema.findByIdAndDelete(id)
-    .then((supplier) => {
-        res.status(200).json({message: 'supplier has been deleted'})
-    })
-    .catch (error) 
-    res.status(500).json({message:'Server Error'})
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({error: 'no such supplier'})
     }
+    
+    const supplier = await supplierSchema.findByIdAndDelete(id)
+
+    if(!supplier){
+        return res.status(400).json({error: 'No such supplier'})
+    }
+
+    res.status(200).json(supplier)
+    
+}

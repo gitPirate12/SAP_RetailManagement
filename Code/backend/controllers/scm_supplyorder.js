@@ -1,5 +1,5 @@
 const supplyOrderSchema = require("../models/scm_supplyOrderModule")
-
+const mongoose = require('mongoose')
 
 exports.addsupplyOrder = async (req, res) => {
     //destructuring request body into components
@@ -34,7 +34,7 @@ exports.addsupplyOrder = async (req, res) => {
 exports.getsupplyOrders = async (req, res) => {
     try {
         //finding all supplyOrders
-        const supplyOrders = await supplyOrderSchema.find().
+        const supplyOrders = await supplyOrderSchema.find().sort({createdAt: -1})
         res.status(200).json(supplyOrders)
     } catch (error) {
         res.status(500).json({message:'Server Error'})
@@ -44,30 +44,40 @@ exports.getsupplyOrders = async (req, res) => {
 
 
 
-//update database
-exports.updatesupplyOrder = async(req, res) => {
-    try {//sorting id from parameters and updating
-        const updatedOrder = await Order.findByIdAndUpdate(
-            req.params.id,
-            { $set: req.body },
-            { new: true }
-            );
-            res.json(updatedOrder);
-        }
-        catch (err) {
-            res.json({ message: 'error' });
-        }
-}
-
-exports.deletesupplyOrder = async (req, res) => {
+exports.updatesupplyorder = async (req, res) => {
     //storing object id from the req parameters
     const {id} = req.params;
-    console.log(req.params);
-    //finding and deleting from database
-    supplyOrderSchema.findByIdAndDelete(id)
-    .then((supplierOrder) => {
-        res.status(200).json({message: 'supplyorder has been deleted'})
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({error: 'no such order'})
+    }
+    
+    const supplyorder = await supplyOrderSchema.findOneAndUpdate({_id:id},{
+        ...req.body
     })
-    .catch (error) 
-    res.status(500).json({message:'Server Error'})
+
+    if(!supplyorder){
+        return res.status(400).json({error: 'No such order'})
+    }
+
+    res.status(200).json(supplyorder)
+    
+}
+
+exports.deletesupplyorder = async (req, res) => {
+    //storing object id from the req parameters
+    const {id} = req.params;
+
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({error: 'no such order'})
+    }
+    
+    const supplyorder = await supplyOrderSchema.findByIdAndDelete(id)
+
+    if(!supplyorder){
+        return res.status(400).json({error: 'No such order'})
+    }
+
+    res.status(200).json(supplyorder)
+    
 }
