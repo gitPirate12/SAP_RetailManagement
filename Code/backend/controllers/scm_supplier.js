@@ -42,31 +42,19 @@ exports.getsuppliers = async (req, res) => {
 
 
 //update database
-exports.updatesupplyorder = async(req, res) => {
-
-    //sorting by id
-    const {id} = req.params;
-        
-    const supplier = await supplierSchema.findOneAndUpdate({id},{
-                
-        SID : req.body.SID,
-        supplierName : req.body.supplierName,
-        phone : req.body.phone,
-        itemType : req.body.itemType,
-        paymentDetails : req.body.paymentDetails
-    })
-
-    if(!supplier){
-    return res.status(400).json({error: 'Supplier not found'})
-    } 
-    res.status(200).json(supplier)        
-        
-    .catch (error) 
-    res.status(500).json({message:'Server Error'})
-    }
-
-
-
+exports.updateSupplier = async(req, res) => {
+    try {
+        const updatedSupplier = await Supplier.findByIdAndUpdate(
+            req.params.id,
+            { $set: req.body },
+            { new: true }
+            );
+            res.json(updatedSupplier);
+        }
+        catch (err) {
+            res.json({ message: err });
+        }
+}
 
 exports.deletesupplier = async (req, res) => {
     //storing object id from the req parameters

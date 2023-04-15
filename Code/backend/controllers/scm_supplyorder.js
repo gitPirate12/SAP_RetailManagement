@@ -46,55 +46,28 @@ exports.getsupplyOrders = async (req, res) => {
 
 //update database
 exports.updatesupplyOrder = async(req, res) => {
-
-    //sorting by id
-    const {id} = req.params;
-        
-    const supplyOrder = await supplyOrderSchema.findOneAndUpdate({id},{
-                
-        orderID : req.body.orderID,
-        SID : req.body.SID,
-        supplierName : req.body.supplierName,
-        item : req.body.item,
-        amount : req.body.amount,
-        price :req.body.price ,
-        discount:req.body.discount,
-        deliverydate:req.bodyeliverydate
-    })
-
-    if(!supplyOrder){
-    return res.status(400).json({error: 'supplyOrder not found'})
-    } 
-    res.status(200).json(supplyOrder)        
-        
-    .catch (error) 
-    res.status(500).json({message:'Server Error'})
-    }
+    try {//sorting id from parameters and updating
+        const updatedOrder = await Order.findByIdAndUpdate(
+            req.params.id,
+            { $set: req.body },
+            { new: true }
+            );
+            res.json(updatedOrder);
+        }
+        catch (err) {
+            res.json({ message: 'error' });
+        }
+}
 
 exports.deletesupplyOrder = async (req, res) => {
     //storing object id from the req parameters
     const {id} = req.params;
-        console.log(req.params);
-        //finding and deleting said item from database
-        supplyOrderSchema.findByIdAndDelete(id).then((supplyOrder) => {
-            res.status(200).json({message: 'supplier has been deleted'})
-        })
-        .catch((err) => {
-            res.status(500).json({message: 'Server Error'})
-        })
-    
-    }
-
-    exports.deletesupplyOrder = async (req, res) => {
-        //storing object id from the req parameters
-        const {id} = req.params;
-        console.log(req.params);
-        //finding and deleting from database
-        supplyOrderSchema.findByIdAndDelete(id)
-        .then((supplierOrder) => {
-            res.status(200).json({message: 'supplyorder has been deleted'})
-        })
-        .catch (error) 
-        res.status(500).json({message:'Server Error'})
-        }
-    
+    console.log(req.params);
+    //finding and deleting from database
+    supplyOrderSchema.findByIdAndDelete(id)
+    .then((supplierOrder) => {
+        res.status(200).json({message: 'supplyorder has been deleted'})
+    })
+    .catch (error) 
+    res.status(500).json({message:'Server Error'})
+}
