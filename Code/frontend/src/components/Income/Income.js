@@ -5,20 +5,49 @@ import IncomeForm from './IncomeForm'
 import styled from 'styled-components'
 import IncomeItem from './IncomeItem'
 import Popup from './Popup'
+import { plus, cross } from '../../utils/Icons'
+import Button from '../Button/Button'
+import axios from 'axios'
 
 function Income() {
     const {addIncome, incomes, getIncomes, deleteIncome, totalIncome} = useGlobalContext()
 
     const [addIncomePopup, setAddIncomePopUp] = useState(false);
 
-    useEffect(() =>{
-        getIncomes()
-    }, [])
+    const[incomeData,setIncomeData] = useState([]);
+    const [search, setSearch] = useState([]);
+
+    useEffect(() => {
+        const fetchIncomes = async () => {
+            const res = await axios.get("http://localhost:5000/api/v1/get-incomes");
+            setIncomeData(res.data);
+        };
+        fetchIncomes()
+        
+    }, [incomeData]);
+
+    const handleSeachArea = (e) => {
+       setSearch(e)
+       console.log(search)
+    }
+
+    //useEffect(() =>{
+      //  getIncomes()
+    //}, [])
   return (
     <IncomeStyled>
+        <input className='form-control' type='search' placeholder='Search' name='searchQuery' onChange={(e) => handleSeachArea(e.target.value)} />
         <div className="layer1">
             <h1>Incomes</h1>
-                <button onClick={() => setAddIncomePopUp(true)}>Add Income</button>
+                <Button 
+                        icon={plus}
+                        name={"Add Income"}
+                        bPad={'.8rem 1.6rem'}
+                        bRad={'30px'}
+                        bg={'var(--primary-color'}
+                        color={'#fff'}
+                        iColor={'#fff'}                        
+                        onClick={() => setAddIncomePopUp(true)}/>                        
                     <Popup trigger={addIncomePopup} setTrigger={setAddIncomePopUp}>
                         <IncomeForm></IncomeForm>
                     </Popup>   
@@ -30,7 +59,13 @@ function Income() {
             <div className='income-content'>
                             
                 <div className='incomes'>
-                {incomes.map((income) => {
+                {incomeData.filter((val)=> {
+                    if(search ==""){
+                        return val
+                    }else if(val.title.toLowerCase().includes(search.toLowerCase())){
+                        return val
+                    }
+                }).map((income) => {
                         const {_id, title, amount, date, category, type, description} = income;
                         return <IncomeItem
                         key={_id}
@@ -45,7 +80,7 @@ function Income() {
                     })}
                 </div>
                 <div className='incomes'>
-                {incomes.map((income) => {
+                {incomeData.map((income) => {
                         const {_id, title, amount, date, category, type, description} = income;
                         return <IncomeItem
                         key={_id}

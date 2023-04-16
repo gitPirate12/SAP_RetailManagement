@@ -24,7 +24,16 @@ function IncomeForm() {
 
     const handleSubmit = e => {
         e.preventDefault()
-        addIncome(inputState)
+        if(!title || !amount === 'number' || !type || !description || !category ||!date){
+            alert("All fields required!!!")
+        }
+        else if( !amount || amount<=0 ){
+            alert("Invalid Amount!!!")
+        }
+        else{
+            addIncome(inputState)        
+        alert("Income Added")
+        }        
         setInputState({
             title: '',
             amount: '',
@@ -39,7 +48,7 @@ function IncomeForm() {
     return(
         <FormStyled onSubmit={handleSubmit}>
              
-            {error && <p className='error'>{error}</p>}
+            {error && <p className='error'>Enter Details to be added</p>}
             <div className="input-control">
                 <input
                     type="text"

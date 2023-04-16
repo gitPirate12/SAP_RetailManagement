@@ -4,7 +4,7 @@ const IncomeSchema = require("../models/ar_incomeModel")
 exports.addIncome = async (req, res) => {
     //destructuring request body into its components
     const {title, amount, category, description, type, date} = req.body
-
+   
     //storing all of these values from the request body into the income variable
     const income = IncomeSchema({
         title,
@@ -15,8 +15,10 @@ exports.addIncome = async (req, res) => {
         date
     })
 
+    
     //validations 
     try {
+        
         if(!title || !category || !description || !type || !date){
             return res.status(400).json({message: 'All fields are required!'})
         }
@@ -75,7 +77,7 @@ exports.updateIncome = async (req, res) => {
 exports.deleteIncome = async (req, res) => {
     //storing object id from the req parameters
     const {id} = req.params;
-    console.log(req.params);
+    
     //finding and deleting said item from database
     IncomeSchema.findByIdAndDelete(id).then((income) => {
         res.status(200).json({message: 'Income has been deleted'})

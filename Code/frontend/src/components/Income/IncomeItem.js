@@ -1,8 +1,11 @@
 import React from 'react'
+import { useState } from 'react';
 import styled from 'styled-components';
 import { dateFormat } from '../../utils/dateFormat';
 import Button from '../Button/Button';
+import Popup from './Popup';
 import { bitcoin, book, calender, card, circle, clothing, comment, dollar, food, freelance, medical, money, piggy, stocks, takeaway, trash, tv, users, yt } from '../../utils/Icons';
+import EditIncome from './EditIncome';
 function IncomeItem({
     id,
     title,
@@ -12,8 +15,14 @@ function IncomeItem({
     description,
     deleteItem,    
     type}) {
+
+       
+    const [editIncomePopup, setEditIncomePopUp] = useState(false);
+
   return (
+    
     <IncomeItemStyled>
+       
         <div className='content'>
             <h5>{title}</h5>
                 <div className='inner-content'>
@@ -36,7 +45,8 @@ function IncomeItem({
                         color={'#fff'}
                         iColor={'#fff'}
                         hColor={'var(--color-green)'}
-                        onClick={() => deleteItem(id)}/>
+                        onClick={() => setEditIncomePopUp(true)}
+                        />
                     </div>
                     <div className='"btn-con'>
                         <Button 
@@ -48,10 +58,11 @@ function IncomeItem({
                         iColor={'#fff'}
                         hColor={'var(--color-green)'}
                         onClick={() => deleteItem(id)}/>
-                    </div>
-                    
-                </div>
+                    </div>                                    
+                </div> 
+                              
         </div>
+       
     </IncomeItemStyled>
   )
 }
