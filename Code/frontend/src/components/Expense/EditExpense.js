@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker'
 import Button from '../Button/Button'
 import { plus } from '../../utils/Icons'
 import { useGlobalContext } from "../../context/globalContext"
-function EditIncome({
+function EditExpense({
     id,
     title,
     amount,
@@ -14,7 +14,7 @@ function EditIncome({
     type
 }) {
 
-    const{addIncome, getIncomes, error, setError, updateIncome} = useGlobalContext() 
+    const{addIncome, getIncomes, error, setError, updateExpense} = useGlobalContext() 
 
     const [eTitle, setETitle] = useState(title)
     const [eAmount, setEAmount] = useState(amount)
@@ -30,7 +30,7 @@ function EditIncome({
     
     const handleSubmit = e =>{
         e.preventDefault()
-        EditIncome(id, data)
+        updateExpense(id, data)
     }
     
     const data = {
@@ -46,7 +46,7 @@ function EditIncome({
                     type="text"
                     value={eTitle}
                     name={eTitle}
-                    placeholder="Income Title"
+                    placeholder="Expense Title"
                     onChange={(e)=> setETitle(e.target.value)}
                 />                   
             </div>
@@ -55,7 +55,7 @@ function EditIncome({
                     type="text"
                     value={eAmount}
                     name={eAmount}
-                    placeholder={"Income Amount"}
+                    placeholder={"Expense Amount"}
                     onChange={(e)=>setEAmount(e.target.value)}
                 />                    
             </div>
@@ -64,10 +64,10 @@ function EditIncome({
             <div className="selects input-control">
                 <select required value={eCategory} name={eCategory} id='category' onChange={(e)=>setECategory(e.target.value)}>
                     <option value="" disabled>Select Category</option>
-                    <option value="receivables">Receivable</option>
-                    <option value="refunds">Refund</option>
-                    <option value="capital">Capital Injection</option>
-                    <option value="loan">Loan</option>
+                    <option value="payables">Payable</option>
+                    <option value="transport">Transport</option>
+                    <option value="capital">Capital Withdrawal</option>
+                    <option value="interest">Interest Payment</option>
                     <option value="other">Other</option>
                 </select>
             </div>
@@ -84,7 +84,7 @@ function EditIncome({
             <div className="submit-btn">
                 <Button 
                 icon={plus}
-                name={'Edit Income'}
+                name={'Edit Expense'}
                 bPad={'.8rem 1.6rem'}
                 bRad={'30px'}
                 color={'#0B2447'}
@@ -94,5 +94,5 @@ function EditIncome({
   )
 }
 
-export default EditIncome
+export default EditExpense
 

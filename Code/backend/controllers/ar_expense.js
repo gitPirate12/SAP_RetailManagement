@@ -59,7 +59,7 @@ exports.updateExpense = async (req, res) => {
     try {
         const {id} = req.params;
         const expense = await ExpenseSchema.findByIdAndUpdate(id, req.body);
-        //if income cannot be found
+        //if expense cannot be found
         if(!expense){
             return res.status(404).json({message: `Expense with ID ${id} cannot be found`})
         }

@@ -37,7 +37,9 @@ export const GlobalProvider = ({children}) => {
     const updateIncome = async(id, update) => {
         const response = await axios.put(`${BASE_URL}update-income/${id}`, update)
         setIncomes(response.data)
+        console.log(response)
         getIncomes()
+        
     }
 
     //calculating total income
@@ -71,6 +73,15 @@ export const GlobalProvider = ({children}) => {
         const res  = await axios.delete(`${BASE_URL}delete-expense/${id}`)
         getExpenses()
     }
+    //updating expense
+    const updateExpense = async(id, update) => {
+        const response = await axios.put(`${BASE_URL}update-expense/${id}`, update)
+        setExpenses(response.data)
+        console.log(response)
+        getExpenses()
+        
+    }
+
     //calculating total expenses
     const totalExpenses = () => {
         let totalExpense = 0;
@@ -95,8 +106,8 @@ export const GlobalProvider = ({children}) => {
             getExpenses,
             deleteExpense,
             totalExpenses,
-            updateIncome
-            
+            updateIncome,
+            updateExpense         
 
         }}>
         {children}

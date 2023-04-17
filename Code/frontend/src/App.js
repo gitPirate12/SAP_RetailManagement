@@ -4,6 +4,7 @@ import Income from './components/Income/Income';
 import { useGlobalContext } from './context/globalContext';
 import styled from 'styled-components';
 import Expense from './components/Expense/Expense';
+import EditIncome from './components/Income/EditIncome';
 
 function App() {
 
@@ -15,9 +16,10 @@ function App() {
         <header className="App-header">
         </header>
           <Routes>
-            <Route path="/" element= {<Income/>}/>
+            <Route path="/" element= {<Expense/>}/>
             <Route path="/expense" element={<Expense/>}/>
-         </Routes>      
+            <Route path="/edit-income" element={<EditIncome/>}/>
+          </Routes>      
       </BrowserRouter>
     </div>
   );

@@ -16,7 +16,7 @@ function IncomeItem({
     deleteItem,    
     type}) {
 
-       
+     
     const [editIncomePopup, setEditIncomePopUp] = useState(false);
 
   return (
@@ -60,7 +60,16 @@ function IncomeItem({
                         onClick={() => deleteItem(id)}/>
                     </div>                                    
                 </div> 
-                              
+                <Popup trigger={editIncomePopup} setTrigger={setEditIncomePopUp}>
+                        <EditIncome key={id}
+                        id={id} 
+                        title={title} 
+                        description={description} 
+                        amount={amount} 
+                        date={date} 
+                        type={type}
+                        category={category}/>
+                    </Popup>              
         </div>
        
     </IncomeItemStyled>
