@@ -7,7 +7,7 @@ Please go under edit and edit this file as needed for your project
 ### Member 3 - IT21193804 - Weerasekara D.D.R.R (DulanWeerasekara)
 ### Member 4 - IT21177682 - Shehan H.A ()
 ### Member 5 - IT21177514 - Ransika M.R.T ()
-### Member 6 - IT20655648 - Bandara J.M.O.N ()
+### Member 6 - IT20655648 - Bandara J.M.O.N (OvindaNamal)
 ### Member 7 - IT21197246 - Abeykoon A.M.Y.V.B (Veynitha)
 ### Member 8 - IT21158568 - Sindujan.P ()
 
