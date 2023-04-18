@@ -23,6 +23,11 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Nunito', sans-serif;
         font-size: clamp(1rem, 1.5vw, 1.2rem);
         overflow: flex;
-        color: rgba(34, 34, 96, .6);
+        color: white;
     }
+    .sidebar{
+    height: 100%;
+    width: 250px;
+    background-color: #0B2447;
+}
 `;

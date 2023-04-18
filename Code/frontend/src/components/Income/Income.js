@@ -8,6 +8,7 @@ import Popup from './Popup'
 import { plus, cross } from '../../utils/Icons'
 import Button from '../Button/Button'
 import axios from 'axios'
+import ArSideNav from '../../SideBars/ArSideNav'
 
 function Income() {
     const {addIncome, incomes, getIncomes, deleteIncome, totalIncome} = useGlobalContext()
@@ -61,43 +62,52 @@ function Income() {
         </div>
             <h2>Total Income: <span>${totalIncome()}</span></h2>
             <div className='income-content'>
-                            
-                <div className='incomes'>
-                {incomeData.filter((val)=> {
-                    if(search ==""){
-                        return val
-                    }else if(val.title.toLowerCase().includes(search.toLowerCase())){
-                        return val
-                    }
-                }).map((income) => {
-                        const {_id, title, amount, date, category, type, description} = income;
-                        return <IncomeItem
-                        key={_id}
-                        id={_id} 
-                        title={title} 
-                        description={description} 
-                        amount={amount} 
-                        date={date} 
-                        type={type}
-                        category={category} 
-                        deleteItem={deleteIncome} />                        
-                    })}
-                </div>
-                <div className='incomes'>
-                {incomeData.map((income) => {
-                        const {_id, title, amount, date, category, type, description} = income;
-                        return <IncomeItem
-                        key={_id}
-                        id={_id} 
-                        title={title} 
-                        description={description} 
-                        amount={amount} 
-                        date={date} 
-                        type={type}
-                        category={category} 
-                        deleteItem={deleteIncome} />                        
-                    })}
-                </div>
+
+                <div>
+                    <ArSideNav></ArSideNav>
+                </div>            
+                    <div className='incomes'>
+                    {incomeData.filter((val)=> {
+                        if(search ==""){
+                            return val
+                        }else if(val.title.toLowerCase().includes(search.toLowerCase())){
+                            return val
+                        }
+                    }).map((income) => {
+                            const {_id, title, amount, date, category, type, description} = income;
+                            return <IncomeItem
+                            key={_id}
+                            id={_id} 
+                            title={title} 
+                            description={description} 
+                            amount={amount} 
+                            date={date} 
+                            type={type}
+                            category={category} 
+                            deleteItem={deleteIncome} />                        
+                        })}
+                    </div>
+                    <div className='incomes'>
+                    {incomeData.filter((val)=> {
+                        if(search ==""){
+                            return val
+                        }else if(val.title.toLowerCase().includes(search.toLowerCase())){
+                            return val
+                        }
+                    }).map((income) => {
+                            const {_id, title, amount, date, category, type, description} = income;
+                            return <IncomeItem
+                            key={_id}
+                            id={_id} 
+                            title={title} 
+                            description={description} 
+                            amount={amount} 
+                            date={date} 
+                            type={type}
+                            category={category} 
+                            deleteItem={deleteIncome} />                        
+                        })}
+                    </div>
                 
             </div>
       

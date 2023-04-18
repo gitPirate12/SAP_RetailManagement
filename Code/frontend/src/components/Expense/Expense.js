@@ -8,6 +8,8 @@ import Popup from '../Income/Popup'
 import { plus, cross } from '../../utils/Icons'
 import Button from '../Button/Button'
 import axios from 'axios'
+import ArSideNav from '../../SideBars/ArSideNav'
+
 
 
 function Expense() {
@@ -36,8 +38,7 @@ function Expense() {
       getExpenses()
     }, [])
   return (
-    <ExpenseStyled>
-        
+    <ExpenseStyled>             
         <div className="layer1">
             <h1>Expenses</h1>
                 <Button 
@@ -62,7 +63,11 @@ function Expense() {
         </div>
             <h2>Total Expense: <span>${totalExpenses()}</span></h2>
             <div className='income-content'>
-                            
+            
+            <div>
+                <ArSideNav></ArSideNav>
+            </div>
+            
                 <div className='incomes'>
                 {expenseData.filter((val)=> {
                     if(search ==""){
@@ -85,7 +90,13 @@ function Expense() {
                     })}
                 </div>
                 <div className='incomes'>
-                {expenseData.map((expense) => {
+                {expenseData.filter((val)=> {
+                    if(search ==""){
+                        return val
+                    }else if(val.title.toLowerCase().includes(search.toLowerCase())){
+                        return val
+                    }
+                }).map((expense) => {
                         const {_id, title, amount, date, category, type, description} = expense;
                         return <ExpenseItem
                         key={_id}
@@ -96,8 +107,8 @@ function Expense() {
                         date={date} 
                         type={type}
                         category={category} 
-                        deleteItem={deleteExpense} />                        
-                    })}
+                        deleteItem={deleteExpense} />
+                })}
                 </div>
                 
             </div>
@@ -114,6 +125,7 @@ const ExpenseStyled = styled.div`
     flex-direction: column;    
     position: relative;
     background-color: #576CBC ;
+    
     .wrapper {
     position: relative;
     display: flex;
