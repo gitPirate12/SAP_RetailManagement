@@ -16,6 +16,7 @@ function EditExpense({
 
     const{addIncome, getIncomes, error, setError, updateExpense} = useGlobalContext() 
 
+    const [eId, setId] = useState(id)
     const [eTitle, setETitle] = useState(title)
     const [eAmount, setEAmount] = useState(amount)
     const [eDescription, setEDescription] = useState(description)
@@ -34,9 +35,14 @@ function EditExpense({
     }
     
     const data = {
-        eTitle, eAmount, eCategory, eDescription, eType, eDate
-    }
-
+        _id : eId, 
+        title : eTitle, 
+        amount : eAmount, 
+        category : eCategory, 
+        description : eDescription,
+        type : eType, 
+        date : eDate
+      }
     
 
    return (

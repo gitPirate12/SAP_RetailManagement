@@ -16,6 +16,7 @@ function EditIncome({
 
     const{addIncome, getIncomes, error, setError, updateIncome} = useGlobalContext() 
 
+    const [eId, setId] = useState(id)
     const [eTitle, setETitle] = useState(title)
     const [eAmount, setEAmount] = useState(amount)
     const [eDescription, setEDescription] = useState(description)
@@ -30,14 +31,19 @@ function EditIncome({
     
     const handleSubmit = e =>{
         e.preventDefault()
-        EditIncome(id, data)
+        updateIncome(id, data)
     }
     
     const data = {
-        eTitle, eAmount, eCategory, eDescription, eType, eDate
-    }
-
-    
+        _id : eId, 
+        title : eTitle, 
+        amount : eAmount, 
+        category : eCategory, 
+        description : eDescription,
+        type : eType, 
+        date : eDate
+      }
+       
 
    return (
     <form onSubmit={handleSubmit}>
@@ -58,9 +64,7 @@ function EditIncome({
                     placeholder={"Income Amount"}
                     onChange={(e)=>setEAmount(e.target.value)}
                 />                    
-            </div>
-
-            
+            </div>            
             <div className="selects input-control">
                 <select required value={eCategory} name={eCategory} id='category' onChange={(e)=>setECategory(e.target.value)}>
                     <option value="" disabled>Select Category</option>

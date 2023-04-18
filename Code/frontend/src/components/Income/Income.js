@@ -33,11 +33,11 @@ function Income() {
     }
 
     useEffect(() =>{
-      getIncomes()
+      getIncomes() 
+      
     }, [])
   return (
-    <IncomeStyled>
-        
+    <IncomeStyled>        
         <div className="layer1">
             <h1>Incomes</h1>
                 <Button 
@@ -62,7 +62,6 @@ function Income() {
         </div>
             <h2>Total Income: <span>${totalIncome()}</span></h2>
             <div className='income-content'>
-
                 <div>
                     <ArSideNav></ArSideNav>
                 </div>            
@@ -107,11 +106,8 @@ function Income() {
                             category={category} 
                             deleteItem={deleteIncome} />                        
                         })}
-                    </div>
-                
-            </div>
-      
-    
+                    </div>                
+            </div>          
         </Ar_InnerLayout>
     </IncomeStyled>
   )
@@ -139,8 +135,7 @@ const IncomeStyled = styled.div`
         display: flex;
         gap: 2rem;
         .incomes{
-           flex:1;
-           
+           flex:1;         
             
         }
     }
