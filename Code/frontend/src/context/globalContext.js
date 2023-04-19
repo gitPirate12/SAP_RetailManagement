@@ -10,6 +10,8 @@ export const GlobalProvider = ({children}) => {
 
     const [incomes, setIncomes] = useState([])
     const [expenses, setExpenses] = useState([])
+    const [purchases, setPurchases] = useState([])
+    const [items, setItems] = useState([])
     const [error, setError] = useState(null)
 
     //method to add an income to the database
@@ -89,6 +91,53 @@ export const GlobalProvider = ({children}) => {
         return totalExpense;
     }
 
+    //calculating total purchases(supply)
+
+    const getPurchases = async () => {
+        const response = await axios.get(`${BASE_URL}getsupplyorders`)
+        setPurchases(response.data)
+        console.log(response.data)
+    }
+
+    const totalPurchase = () => {
+        let totalPurchase = 0;
+        purchases.forEach((purchase) =>{
+            totalPurchase = totalPurchase + (purchase.amount*purchase.price)
+        })
+        return totalPurchase;
+    }
+
+    const totalPurchaseDiscounts = () => {
+        let totalPurchaseDiscounts = 0;
+        purchases.forEach((purchase) =>{
+          totalPurchaseDiscounts = totalPurchaseDiscounts + (purchase.discount*purchase.amount)
+      })
+      return totalPurchaseDiscounts;
+    }
+
+    //calculating item related computations
+
+    const getItems = async () => {
+        const response = await axios.get(`${BASE_URL}get-items`)
+        setItems(response.data)
+        console.log(response.data)
+    }
+
+    const totalStockValue = () => {
+        let totalStockValue = 0;
+        items.forEach((items) =>{
+            totalStockValue = totalStockValue + (items.price*items.quantity)
+        })
+        return totalStockValue;
+    }
+
+    //calculating Gross Profit
+    const grossProfit = () => {
+        let grossProfit = 0;
+        grossProfit = totalPurchase() - totalStockValue();
+        return grossProfit;
+    }
+
     return(
         <GlobalContext.Provider value={{
             addIncome,
@@ -103,8 +152,17 @@ export const GlobalProvider = ({children}) => {
             getExpenses,
             deleteExpense,
             totalExpenses,
+            expenses,
             updateIncome,
-            updateExpense         
+            updateExpense,
+            getPurchases,
+            totalPurchase,
+            getItems,
+            totalStockValue,
+            purchases,
+            totalPurchaseDiscounts,
+            grossProfit
+                    
 
         }}>
         {children}

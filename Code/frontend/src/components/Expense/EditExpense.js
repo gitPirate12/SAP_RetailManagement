@@ -24,14 +24,19 @@ function EditExpense({
     const [eCategory, setECategory] = useState(category)
     const [eType, setEType] = useState(type)
     
-    const handleInputChange = (e) =>{
-        console.log(e.target.value)
-        setETitle(e.target.value)
-    }
-    
+        
     const handleSubmit = e =>{
         e.preventDefault()
+        if(!eTitle || !eAmount === 'number' || !eType || !eDescription || !eCategory ){
+            alert("All fields required!!!")
+        }
+        else if( !eAmount || eAmount<=0 ){
+            alert("Invalid Amount!!!")
+        }
+        else{
         updateExpense(id, data)
+        alert("Expense Updated!")
+        }
     }
     
     const data = {

@@ -31,7 +31,16 @@ function EditIncome({
     
     const handleSubmit = e =>{
         e.preventDefault()
-        updateIncome(id, data)
+        if(!eTitle || !eAmount === 'number' || !eType || !eDescription || !eCategory ){
+            alert("All fields required!!!")
+        }
+        else if( !eAmount || eAmount<=0 ){
+            alert("Invalid Amount!!!")
+        }
+        else{        
+            updateIncome(id, data)
+            alert("Income Updated!")
+        }
     }
     
     const data = {

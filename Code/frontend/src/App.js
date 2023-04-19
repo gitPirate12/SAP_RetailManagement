@@ -2,8 +2,9 @@ import { BrowserRouter, Route, Routes} from 'react-router-dom'
 import './App.css';
 import Income from './components/Income/Income';
 import { useGlobalContext } from './context/globalContext';
-import HomePage from './components/Dashboard/HomePage';
 import Expense from './components/Expense/Expense';
+import HomePage from './components/Dashboard/ArDashPage';
+import ArSideNav from './SideBars/ArSideNav';
 
 
 
@@ -16,12 +17,13 @@ function App() {
       
      <BrowserRouter>
         <header className="App-header">
-          
+         
         </header>          
           <Routes>
-            <Route path="/" element= {<Expense/>}/>
+            <Route path="/" element= {<HomePage/>}/>
             <Route path="/expense" element={<Expense/>}/>
             <Route path="/income" element={<Income/>}/>
+            <Route path='/home' element={<HomePage/>} />
           </Routes>  
               
       </BrowserRouter>

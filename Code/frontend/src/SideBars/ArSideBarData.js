@@ -20,7 +20,7 @@ export const ArSideBarData = [
     {
         title: "Dashboard",
         icon: dashboard,
-        link: "/"
+        link: "/home"
     },{
         title: "Dashboard",
         icon: dashboard,
