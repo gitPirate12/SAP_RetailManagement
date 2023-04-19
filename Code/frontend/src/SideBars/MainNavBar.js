@@ -1,19 +1,17 @@
 import React from 'react'
-
+import "../"
 function MainNavBar() {
   return (
     <div>
-      
+        <div className='Navbar'>
+
+            <div className='leftSide'></div>
+            <div className='rightSide'></div>
+
+        </div>
+
     </div>
   )
 }
-
-const NavBarStyled = styled.div`
-    background-color: #0B2447;
-    width: 100%;
-    height: 80px;
-    font-family: Arial, Helvetica, sans-serif;
-    
-`
 
 export default MainNavBar

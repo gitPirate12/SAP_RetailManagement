@@ -5,7 +5,8 @@ import { useGlobalContext } from './context/globalContext';
 import Expense from './components/Expense/Expense';
 import HomePage from './components/Dashboard/ArDashPage';
 import ArSideNav from './SideBars/ArSideNav';
-
+import MainNavBar from './SideBars/MainNavBar';
+import styled from 'styled-components';
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
       
      <BrowserRouter>
         <header className="App-header">
-         
+          <MainNavBar></MainNavBar>
         </header>          
           <Routes>
             <Route path="/" element= {<HomePage/>}/>
