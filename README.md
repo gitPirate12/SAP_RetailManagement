@@ -5,7 +5,7 @@ Please go under edit and edit this file as needed for your project
 ### Group Leader - IT20012892 - Ahamed M.S.A (gitPirate12)
 ### Member 2 - IT21360114 - Mohamed Z.M.N (NaveedMohamed)
 ### Member 3 - IT21193804 - Weerasekara D.D.R.R (DulanWeerasekara)
-### Member 4 - IT21177682 - Shehan H.A ()
+### Member 4 - IT21177682 - Shehan H.A (Avishka)
 ### Member 5 - IT21177514 - Ransika M.R.T (MRTharinRansika)
 ### Member 6 - IT20655648 - Bandara J.M.O.N (OvindaNamal)
 ### Member 7 - IT21197246 - Abeykoon A.M.Y.V.B (Veynitha)
