@@ -1,0 +1,17 @@
+export const dashboard = <i class="fa-solid fa-table-columns"></i>;
+export const supplier = <i class="fa-sharp fa-solid fa-user"></i>;
+export const supplyorder = <i class="fa-solid fa-cart-shopping"></i>;
+export const deletebutton = <i class="fa-sharp fa-solid fa-trash"></i>;
+export const plus = <i className="fa-solid fa-plus"></i>;
+export const percent = <i class="fa-solid fa-percent"></i>;
+export const truck = <i class="fa-solid fa-truck-field"></i>;
+export const item = <i class="fa-solid fa-sitemap"></i>;
+export const amount = <i class="fa-solid fa-calculator"></i>;
+export const orderID = <i class="fa-solid fa-cart-shopping"></i>;
+export const SID = <i class="fa-sharp fa-solid fa-user-secret"></i>;
+export const price = <i class="fa-solid fa-dollar-sign"></i>;
+export const date = <i class="fa-solid fa-calendar-days"></i>;
+export const edit = <i class="fa-solid fa-pen-to-square"></i>;
+export const phone = <i class="fa-solid fa-phone"></i>;
+export const card = <i class="fa-solid fa-address-card"></i>;
+export const user = <i class="fa-sharp fa-solid fa-user"></i>;

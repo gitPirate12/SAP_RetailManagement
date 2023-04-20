@@ -1,15 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-import Income from './components/Income/Income';
-
+import "./App.css";
+import SupplyOrderMain from "./components/SupplyOrder/SupplyOrderMain";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import SupplierMain from "./components/Supplier/SupplierMain";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Income/>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <BrowserRouter>
+                <header className="App-header"></header>
+                <Routes>
+                    <Route path="/" element={<SupplierMain />} />
+                    <Route path="/supplier" element={<SupplierMain />} />
+                    <Route path="/supplyorder" element={<SupplyOrderMain />} />
+                </Routes>
+            </BrowserRouter>
+        </div>
+    );
 }
 
 export default App;
