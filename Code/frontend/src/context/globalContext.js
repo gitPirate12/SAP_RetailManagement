@@ -87,7 +87,7 @@ export const GlobalProvider = ({children}) => {
         expenses.forEach((expense) =>{
             totalExpense = totalExpense + expense.amount
         })
-
+        
         return totalExpense;
     }
 
@@ -104,6 +104,7 @@ export const GlobalProvider = ({children}) => {
         purchases.forEach((purchase) =>{
             totalPurchase = totalPurchase + (purchase.amount*purchase.price)
         })
+        totalPurchase = totalPurchase - totalPurchaseDiscounts()
         return totalPurchase;
     }
 

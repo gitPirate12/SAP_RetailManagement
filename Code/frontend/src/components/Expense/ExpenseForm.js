@@ -130,7 +130,7 @@ const FormStyled = styled.form`
         box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
         color: rgba(34, 34, 96, 0.9);
         &::placeholder{
-            color: rgba(34, 34, 96, 0.4);
+            color: rgb(0, 34, 96);
         }
         
     }

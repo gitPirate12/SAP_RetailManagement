@@ -18,11 +18,11 @@ export const ArSideBarData = [
         link: "/expense"
     },
     {
-        title: "Dashboard",
+        title: "Purchase Requests",
         icon: dashboard,
         link: "/home"
     },{
-        title: "Dashboard",
+        title: "Signout",
         icon: dashboard,
         link: "/"
     },

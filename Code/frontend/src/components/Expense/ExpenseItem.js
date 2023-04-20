@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { dateFormat } from '../../utils/dateFormat';
 import Button from '../Button/Button';
 import Popup from '../Income/Popup';
-import { bitcoin, book, calender, card, circle, clothing, comment, dollar, food, freelance, medical, money, piggy, stocks, takeaway, trash, tv, users, yt } from '../../utils/Icons';
+import { bitcoin, book, edit, calender, card, circle, clothing, comment, dollar, food, freelance, medical, money, piggy, stocks, takeaway, trash, tv, users, yt } from '../../utils/Icons';
 import EditExpense from './EditExpense';
 
 function ExpenseItem({
@@ -39,7 +39,7 @@ function ExpenseItem({
                     </div>
                     <div>
                         <Button 
-                        icon={stocks}
+                        icon={edit}
                         bPad={'1rem'}
                         bRad={'50%'}
                         bg={'var(--primary-color'}
@@ -146,6 +146,9 @@ const ExpenseItemStyled = styled.div`
                     min-width: 50px;
                     word-wrap: break-word;
                 }
+                .btn-con {
+                margin-left: -10px;
+                } 
             }
         }
     }

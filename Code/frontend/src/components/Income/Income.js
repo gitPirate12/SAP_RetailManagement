@@ -5,13 +5,13 @@ import IncomeForm from './IncomeForm'
 import styled from 'styled-components'
 import IncomeItem from './IncomeItem'
 import Popup from './Popup'
-import { plus, cross } from '../../utils/Icons'
+import { plus, cross} from '../../utils/Icons'
 import Button from '../Button/Button'
 import axios from 'axios'
 import ArSideNav from '../../SideBars/ArSideNav'
 
 function Income() {
-    const {addIncome, incomes, getIncomes, deleteIncome, totalIncome} = useGlobalContext()
+    const {addIncome, incomes, getIncomes, deleteIncome, totalIncome, totalCashInFlow} = useGlobalContext()
 
     const [addIncomePopup, setAddIncomePopUp] = useState(false);
 
@@ -61,7 +61,9 @@ function Income() {
             <input className='search' type='search'  placeholder='Search' name='searchQuery' onChange={(e) => handleSeachArea(e.target.value)} />
         </div>
             <div className='totstats'>
-            <h2>Total Income: <span>${totalIncome()}</span></h2>
+                <h2>Total Sales:<span>$</span></h2>
+                <h2>Other Incomes:<span>${totalIncome()}</span></h2>
+                <h2>Total Cash Flowing In:<span>${totalCashInFlow()}</span></h2>
             </div>            
                 <div className='income-content'>
                     <div>

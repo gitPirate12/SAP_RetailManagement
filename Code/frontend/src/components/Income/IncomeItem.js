@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { dateFormat } from '../../utils/dateFormat';
 import Button from '../Button/Button';
 import Popup from './Popup';
-import { bitcoin, book, calender, card, circle, clothing, comment, dollar, food, freelance, medical, money, piggy, stocks, takeaway, trash, tv, users, yt } from '../../utils/Icons';
+import { bitcoin, book, calender, edit, card, circle, clothing, comment, dollar, food, freelance, medical, money, piggy, stocks, takeaway, trash, tv, users, yt } from '../../utils/Icons';
 import EditIncome from './EditIncome';
 function IncomeItem({
     id,
@@ -38,7 +38,7 @@ function IncomeItem({
                     </div>
                     <div>
                         <Button 
-                        icon={stocks}
+                        icon={edit}
                         bPad={'1rem'}
                         bRad={'50%'}
                         bg={'var(--primary-color'}
@@ -145,6 +145,9 @@ const IncomeItemStyled = styled.div`
                     min-width: 50px;
                     word-wrap: break-word;
                 }
+                .btn-con {
+                     margin-left: -5px;
+                    }
             }
         }
     }

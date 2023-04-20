@@ -6,7 +6,7 @@ import ArChart from '../Charts/ArChart'
 import ArInVsOut from '../Charts/ArInVsOut'
 
 function HomePage() {
-
+//Before Edit
   
 const {getPurchases, totalPurchase, totalPurchaseDiscounts, getItems, totalStockValue, getIncomes, getExpenses, totalExpenses, totalIncome, grossProfit, totalCashOutFlow, totalCashInFlow} = useGlobalContext()
 
@@ -20,45 +20,69 @@ useEffect(()=> {
 
   return (
     <DashboardStyled>
-        <h1 align="center">All Transactions</h1>        
-          <div className='stats'>          
-          <ArSideNav></ArSideNav>
-            <div className='stats-data-container'>             
-              <div className='stats-item'>
-                  <h2 className='stats-text'>Total Sales: <span className='stats-data'>${}</span></h2>
-              </div>
-              <div className='stats-item'>
-                <h2 className='stats-text'>Total Incomes: <span className='stats-data'>${totalIncome()}</span></h2>
-              </div> 
-              <div className='stats-item'>
-                <h2 className='stats-text'>Total Expenses: <span className='stats-data'>${totalExpenses()}</span></h2>
-              </div> 
-              <div className='stats-item'>
-                <h2 className='stats-text'>Closing Stock Value: <span className='stats-data'>${totalStockValue()}</span></h2>
-              </div> 
-              <div className='stats-item'>
-                <h2 className='stats-text'>Discounts Received: <span className='stats-data'>${totalPurchaseDiscounts()}</span></h2>
-              </div> 
-              <div className='stats-item'>
-                <h2 className='stats-text'>Total Outflow: <span className='stats-data'>${totalCashOutFlow()}</span></h2>
-              </div> 
-              <div className='stats-item'>
-                <h2 className='stats-text'>Total Inflow: <span className='stats-data'>${totalCashInFlow()}</span></h2>
-              </div> 
-              <div className='stats-item'>
-              <h2 className='stats-text'>Gross Profit: <span className='stats-data'>${grossProfit()}</span></h2>
-              </div>   
-                 </div>
-            <div className='chart1'>
-              <ArChart/>
-            </div>
-            <div className='chart2'>
-              <ArInVsOut/>
-            </div>
-            
+    <h1 align="center">All Transactions</h1>
+    <div className="wrapper">
+      <ArSideNav></ArSideNav>
+      <div className="stats">
+        <div className="stats-data-container">
+          <div className="stats-item">
+            <h2 className="stats-text">
+              Total Sales: <span className="stats-data">${}</span>
+            </h2>
+          </div>
+          <div className="stats-item">
+            <h2 className="stats-text">
+              Total Purchases: <span className="stats-data">${totalPurchase()}</span>
+            </h2>
+          </div>
+          <div className="stats-item">
+            <h2 className="stats-text">
+              Total Incomes: <span className="stats-data">${totalIncome()}</span>
+            </h2>
+          </div>
+          <div className="stats-item">
+            <h2 className="stats-text">
+              Total Expenses: <span className="stats-data">${totalExpenses()}</span>
+            </h2>
+          </div>
+          <div className="stats-item">
+            <h2 className="stats-text">
+              Closing Stock Value: <span className="stats-data">${totalStockValue()}</span>
+            </h2>
+          </div>
+          <div className="stats-item">
+            <h2 className="stats-text">
+              Discounts Received: <span className="stats-data">${totalPurchaseDiscounts()}</span>
+            </h2>
+          </div>
+          <div className="stats-item">
+            <h2 className="stats-text">
+              Total Outflow: <span className="stats-data">${totalCashOutFlow()}</span>
+            </h2>
+          </div>
+          <div className="stats-item">
+            <h2 className="stats-text">
+              Total Inflow: <span className="stats-data">${totalCashInFlow()}</span>
+            </h2>
+          </div>
+          <div className="stats-item">
+            <h2 className="stats-text">
+              Gross Profit: <span className="stats-data">${grossProfit()}</span>
+            </h2>
+          </div>
         </div>
-        
-    </DashboardStyled>
+      </div>
+      <div className='chart-container'>
+      <div className="chart1">
+        <ArChart />
+      </div>
+      <div className="chart2">
+        <ArInVsOut />
+      </div>
+      </div>
+      
+    </div>
+  </DashboardStyled>
   )
 }
 
@@ -71,7 +95,15 @@ const DashboardStyled = styled.div`
     min-height: 88%;
     .chart1{
       height: 300px;
-      width: 600px;
+      width: 400px;
+    }
+    .chart2{
+      height: 300px;
+      width: 400px;
+    }
+    .chart-container{
+      display: flex;
+      flex-direction: column;
     }
     .stats-data-container {
     display: flex;
