@@ -1,14 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
-import Income from './components/Income/Income';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+
+import Admin from './components/marketing/admin';
+import MarketingAdd from './components/marketing/Marketing.Add';
+import MarketingDashboard from './components/marketing/MarketingDashboard';
+import MarketingEdit from './components/marketing/Marketing.Edit';
 
 function App() {
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <Income/>
-      </header>
-    </div>
+  
+
+      <Router>
+        <Routes>
+          <Route path='/' exact element={<Admin/>} />
+          <Route path='/addMarketing' exact element={<MarketingAdd />} />
+          <Route path='/editMarketing' exact element={<MarketingEdit/>} />
+          <Route path='/DashMarketing' exact element={<MarketingDashboard />} />
+         
+        </Routes>
+      </Router>
+      
+      
+     
+
+    
   );
 }
 
