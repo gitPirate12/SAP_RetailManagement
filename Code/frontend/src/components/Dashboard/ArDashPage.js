@@ -3,11 +3,12 @@ import styled from 'styled-components'
 import ArSideNav from '../../SideBars/ArSideNav'
 import { useGlobalContext } from '../../context/globalContext'
 import ArChart from '../Charts/ArChart'
+import ArInVsOut from '../Charts/ArInVsOut'
 
 function HomePage() {
 
   
-const {getPurchases, totalPurchase, totalPurchaseDiscounts, getItems, totalStockValue, getIncomes, getExpenses, totalExpenses, totalIncome, grossProfit} = useGlobalContext()
+const {getPurchases, totalPurchase, totalPurchaseDiscounts, getItems, totalStockValue, getIncomes, getExpenses, totalExpenses, totalIncome, grossProfit, totalCashOutFlow, totalCashInFlow} = useGlobalContext()
 
 useEffect(()=> {
   getPurchases()
@@ -15,36 +16,46 @@ useEffect(()=> {
   getIncomes()
   getItems()
 
-}, [])
-
-const totalCashFlowOut = () => {
-  let totalCashFlowOut = 0
-  totalCashFlowOut = totalCashFlowOut + totalPurchase() + totalExpenses()
-  return totalCashFlowOut
-} 
+}, []) 
 
   return (
     <DashboardStyled>
-        <h1 align="center">Home Page</h1>
-        <div className='stats'>
+        <h1 align="center">All Transactions</h1>        
+          <div className='stats'>          
           <ArSideNav></ArSideNav>
-            <div>
-              <table>
-              <tr>
-                <h2>Total Purchases: <span className='stats-data'>${totalPurchase()}</span></h2>
-              </tr>
-              
-              
-              <h2>Total Expenses: <span className='stats-data'>${totalExpenses()}</span></h2>
-              <h2>Closing Stock Value: <span className='stats-data'>${totalStockValue()}</span></h2>
-              <h2>Discounts Received: <span className='stats-data'>${totalPurchaseDiscounts()}</span></h2>
-              <h2>Total Outflow: <span className='stats-data'>${totalCashFlowOut()}</span></h2>
-              <h2>Gross Profit: <span className='stats-data'>${grossProfit()}</span></h2>
-              </table>
-            </div>
+            <div className='stats-data-container'>             
+              <div className='stats-item'>
+                  <h2 className='stats-text'>Total Sales: <span className='stats-data'>${}</span></h2>
+              </div>
+              <div className='stats-item'>
+                <h2 className='stats-text'>Total Incomes: <span className='stats-data'>${totalIncome()}</span></h2>
+              </div> 
+              <div className='stats-item'>
+                <h2 className='stats-text'>Total Expenses: <span className='stats-data'>${totalExpenses()}</span></h2>
+              </div> 
+              <div className='stats-item'>
+                <h2 className='stats-text'>Closing Stock Value: <span className='stats-data'>${totalStockValue()}</span></h2>
+              </div> 
+              <div className='stats-item'>
+                <h2 className='stats-text'>Discounts Received: <span className='stats-data'>${totalPurchaseDiscounts()}</span></h2>
+              </div> 
+              <div className='stats-item'>
+                <h2 className='stats-text'>Total Outflow: <span className='stats-data'>${totalCashOutFlow()}</span></h2>
+              </div> 
+              <div className='stats-item'>
+                <h2 className='stats-text'>Total Inflow: <span className='stats-data'>${totalCashInFlow()}</span></h2>
+              </div> 
+              <div className='stats-item'>
+              <h2 className='stats-text'>Gross Profit: <span className='stats-data'>${grossProfit()}</span></h2>
+              </div>   
+                 </div>
             <div className='chart1'>
               <ArChart/>
             </div>
+            <div className='chart2'>
+              <ArInVsOut/>
+            </div>
+            
         </div>
         
     </DashboardStyled>
@@ -62,12 +73,27 @@ const DashboardStyled = styled.div`
       height: 300px;
       width: 600px;
     }
+    .stats-data-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  gap: 2rem;
+}
+    .stats-text{
+      display: flex; 
+      flex-direction: row; 
+      align-items: center;
+    }
+
     .stats{
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
     }
     .stats-data{
       color: #0B2447;
+      display: flex;
+      flex-direction: column;
     }
     .wrapper {
     position: relative;

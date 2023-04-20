@@ -131,12 +131,29 @@ export const GlobalProvider = ({children}) => {
         return totalStockValue;
     }
 
+    //total cash outflow
+    const totalCashOutFlow = () => {
+        let totalCashOutFlow = 0
+        totalCashOutFlow = totalCashOutFlow + totalPurchase() + totalExpenses()
+        return totalCashOutFlow
+      }
+    
+      //total cash outflow
+    const totalCashInFlow = () => {
+        let totalCashInFlow = 0
+        totalCashInFlow = totalCashInFlow + totalIncome()
+        return totalCashInFlow
+      }
+    
+
     //calculating Gross Profit
     const grossProfit = () => {
         let grossProfit = 0;
         grossProfit = totalPurchase() - totalStockValue();
         return grossProfit;
     }
+
+    
 
     return(
         <GlobalContext.Provider value={{
@@ -161,7 +178,9 @@ export const GlobalProvider = ({children}) => {
             totalStockValue,
             purchases,
             totalPurchaseDiscounts,
-            grossProfit
+            grossProfit,
+            totalCashOutFlow,
+            totalCashInFlow
                     
 
         }}>

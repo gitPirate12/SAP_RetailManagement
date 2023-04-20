@@ -29,5 +29,12 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
     width: 250px;
     background-color: #0B2447;
+    .Navbar{    
+    background-color: #0B2447;    
+    width: 100%;
+    height: 80px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+}
 }
 `;
