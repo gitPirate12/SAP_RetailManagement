@@ -16,34 +16,29 @@ export default function Suppliers() {
         <SuppplierlistStyled>
             <div className="content">
                 <div className="inner-content">
-                    <div>
-                        {store.supplierData &&
-                            store.supplierData.map((Suppliers) => {
-                                return (
-                                    <div key={Suppliers._id}>
-                                        <div className="text">
-                                            {" "}
-                                            <p>
-                                                {SID}
-                                                {Suppliers.SID}
-                                            </p>
-                                            <p>
-                                                {user}
-                                                {Suppliers.supplierName}
-                                            </p>
-                                            <p>
-                                                {phone}
-                                                {Suppliers.phone}{" "}
-                                            </p>
-                                            <p>
-                                                {item}
-                                                {Suppliers.itemType}
-                                            </p>
-                                            <p>
-                                                {card}
-                                                {Suppliers.paymentDetails}
-                                            </p>
-                                            <p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>{SID} SID</th>
+                                <th>{user} Name</th>
+                                <th>{phone} Phone</th>
+                                <th>{item} Item</th>
+                                <th>{card} Payment</th>
+                                <th>{edit} Edit</th>
+                                <th>{deletebutton} Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {store.supplierData &&
+                                store.supplierData.map((Suppliers) => {
+                                    return (
+                                        <tr key={Suppliers._id}>
+                                            <td>{Suppliers.SID}</td>
+                                            <td>{Suppliers.supplierName}</td>
+                                            <td>{Suppliers.phone}</td>
+                                            <td>{Suppliers.itemType}</td>
+                                            <td>{Suppliers.paymentDetails}</td>
+                                            <td>
                                                 <button
                                                     className="update"
                                                     onClick={() =>
@@ -54,8 +49,8 @@ export default function Suppliers() {
                                                 >
                                                     {edit}
                                                 </button>
-                                            </p>
-                                            <p>
+                                            </td>
+                                            <td>
                                                 <button
                                                     className="delete"
                                                     onClick={() =>
@@ -66,90 +61,90 @@ export default function Suppliers() {
                                                 >
                                                     {deletebutton}
                                                 </button>
-                                            </p>{" "}
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                    </div>
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </SuppplierlistStyled>
     );
 }
 const SuppplierlistStyled = styled.div`
-    background: #fcf6f9;
-    border: 2px solid #ffffff;
-    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
-    border-radius: 20px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    width: 100%;
-    color: #222260;
-    .icon {
-        width: 80px;
-        height: 80px;
-        border-radius: 20px;
-        background: #f5f5f5;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 2px solid #ffffff;
-        i {
-            font-size: 2.6rem;
-        }
-    }
-    .delete {
-        background: red;
-    }
-    .update {
-        background: green;
-    }
     .content {
-        flex: 1;
         display: flex;
         flex-direction: column;
-        gap: 0.2rem;
-        h5 {
-            font-size: 1rem;
-            padding-left: 2rem;
-            position: relative;
-            &::before {
-                content: "";
-                position: absolute;
-                left: 0;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 0.8rem;
-                height: 0.8rem;
-                border-radius: 50%;
-            }
-        }
-        .inner-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            .text {
-                display: flex;
-                align-items: center;
-                gap: 1.5rem;
-                font-size: 1rem;
-                width: fit-content;
+        align-items: center;
+        justify-content: center;
+        margin: 50px auto;
+        max-width: 800px;
+        padding-left: 50px;
+        margin-left: 90px;
+    }
+    .table {
+        border-collapse: collapse;
+    }
 
-                p {
-                    text-align: left;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                    color: var(--primary-color);
-                    opacity: 0.8;
-                    min-width: 50px;
-                    word-wrap: break-word;
-                }
-            }
-        }
+    th,
+    td {
+        border: 1px solid black;
+        padding: 8px;
+    }
+
+    .inner-content {
+        display: flex;
+        flex-direction: column;
+        width: 1000px;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        margin-left: 20px;
+    }
+
+    .text {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+    }
+
+    p {
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-size: 14px;
+        color: #333;
+    }
+
+    button {
+        background-color: #008cba;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.2s ease-in-out;
+    }
+
+    button:hover {
+        background-color: #005f79;
+    }
+
+    .update {
+        margin-right: 10px;
+    }
+
+    ${SID}, ${user}, ${phone}, ${item}, ${card}, ${edit}, ${deletebutton} {
+        margin-right: 5px;
+        font-size: 16px;
+        color: #008cba;
     }
 `;

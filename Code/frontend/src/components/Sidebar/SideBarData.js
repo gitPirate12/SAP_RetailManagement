@@ -7,12 +7,12 @@ export const SideBarData = [
         link: "/",
     },
     {
-        title: "supplier",
+        title: "Suppliers",
         icon: supplier,
         link: "/supplier",
     },
     {
-        title: "SupplyOrder",
+        title: "Supply Orders",
         icon: supplyorder,
         link: "/supplyorder",
     },

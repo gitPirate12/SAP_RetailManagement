@@ -18,106 +18,107 @@ function Supplier() {
 
     return (
         <SupplierStyle>
-            <>
-                <section className="header"></section>
-                <section>
-                    <div className="supplierList">
-                        <div className="income-content">
-                            <SideBar></SideBar>
+            <div className="supplierList">
+                <div className="income-content">
+                    <SideBar></SideBar>
 
-                            <div>
-                                {ButtonStatus && <SupplierForm />}
-                                <div className="submit-btn">
-                                    {!ButtonStatus &&
-                                        !store.updateSupplierForm._id && (
-                                            <button
-                                                className="layer1"
-                                                onClick={setButtonStatus}
-                                            >
-                                                {plus} Create Supplier
-                                            </button>
-                                        )}
-                                </div>
-                                <SupplierUpdateForm />
-                                {!ButtonStatus && <Suppliers />}
-                                <div className="cancle">
-                                    {" "}
-                                    {ButtonStatus && (
-                                        <button
-                                            onClick={() =>
-                                                setButtonStatus(false)
-                                            }
-                                        >
-                                            Cancle
-                                        </button>
-                                    )}
-                                </div>
-                            </div>
+                    <div>
+                        {ButtonStatus && <SupplierForm />}
+                        <div className="submit-btn">
+                            {!ButtonStatus && !store.updateSupplierForm._id && (
+                                <button
+                                    className="layer1"
+                                    onClick={setButtonStatus}
+                                >
+                                    {plus} Create Supplier
+                                </button>
+                            )}
+                        </div>
+                        <SupplierUpdateForm />
+                        {!ButtonStatus && <Suppliers />}
+                        <div className="cancle">
+                            {" "}
+                            {ButtonStatus && (
+                                <button onClick={() => setButtonStatus(false)}>
+                                    Cancle
+                                </button>
+                            )}
                         </div>
                     </div>
-                </section>
-            </>
+                </div>
+            </div>
         </SupplierStyle>
     );
 }
 const SupplierStyle = styled.div`
-display: flex;
-flex-direction: column;    
-position: relative;
-background-color: #f8bbd0 ;
-height: fit-content;
+    .supplierList {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        margin: 50px auto;
+        max-width: 1200px;
+        padding: 0 20px;
 
-header{
-    width:100%;
-    background-color: red
-    height:50px
-
-}
-   
-}
-.income-content{
-    display: flex;
-    gap: 2rem;
-    .incomes{
-       flex:1;
-       
-        
-    }
-}
-.layer1{
-    width:50%;
-    align-self: center;
-    
-}
-.submit-btn {
-
-    padding-top:20px;
-    padding-left:auto;
-    padding-left:auto;padding-bottom :40px;
-    button {
-        height:50px;
-        border-radius: 10px;
-        font-size:1.8rem;
-        font-style:bold;
-        background-color:blue;
-        font-size:1.8rem;
-        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
-        &:hover {
-            background: green; !important;
+        @media (max-width: 768px) {
+            flex-direction: column;
+            align-items: center;
         }
     }
-}
-.cancle{
-    padding-top:5px;
-    padding-left:50px;
-    button{
-        width:120px;
-        height:60px;
-        border-radius: 10px;
-        &:hover {
-            background: red; !important;
+
+    .income-content {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin-right: 30px;
+
+        @media (max-width: 768px) {
+            margin-right: 0;
+            margin-bottom: 30px;
+        }
     }
-}
+
+    .submit-btn {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+    }
+
+    .cancle {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-top: 20px;
+        background-color: #008cba;
+    }
+
+    button {
+        background-color: #008cba;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            background-color: #005f79;
+        }
+
+        &.layer1 {
+            background-color: #fff;
+            color: #008cba;
+            border: 1px solid #008cba;
+
+            &:hover {
+                background-color: #008cba;
+                color: #fff;
+            }
+        }
+    }
 `;
 
 export default Supplier;

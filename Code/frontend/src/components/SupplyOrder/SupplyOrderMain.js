@@ -22,32 +22,28 @@ function SupplyOrder() {
             <SupplyOrderStyle>
                 <div className="income-content">
                     <SideBar></SideBar>
+                    <div className="submit-btn">
+                        {!ButtonStatus && !store.updateSupplyOrderForm._id && (
+                            <button
+                                className="layer1"
+                                onClick={setButtonStatus}
+                            >
+                                {plus} Create Supplier
+                            </button>
+                        )}
+                    </div>
 
-                    <div>
-                        {ButtonStatus && <SupplyOrderForm />}
-                        <div className="submit-btn">
-                            {!ButtonStatus &&
-                                !store.updateSupplyOrderForm._id && (
-                                    <button
-                                        className="layer1"
-                                        onClick={setButtonStatus}
-                                    >
-                                        {plus}Create Supply Order
-                                    </button>
-                                )}
-                        </div>
-                        <SupplyOrderUpdateForm />
+                    <SupplyOrderUpdateForm />
 
-                        {!ButtonStatus && <SupplyOrders />}
+                    {!ButtonStatus && <SupplyOrders />}
 
-                        <div className="cancle">
-                            {" "}
-                            {ButtonStatus && (
-                                <button onClick={() => setButtonStatus(false)}>
-                                    Cancle
-                                </button>
-                            )}
-                        </div>
+                    <div className="cancle">
+                        {" "}
+                        {ButtonStatus && (
+                            <button onClick={() => setButtonStatus(false)}>
+                                Cancle
+                            </button>
+                        )}
                     </div>
                 </div>
             </SupplyOrderStyle>
@@ -56,49 +52,51 @@ function SupplyOrder() {
 }
 const SupplyOrderStyle = styled.div`
     display: flex;
-    flex-direction: column;
-    position: relative;
-    background-color: #f8bbd0 ;
-    width: 100%;
-    height: fit-content;
+    flex-direction: row;
 
-
-    .income-content {
-        display: flex;
-        gap: 2rem;
-        .incomes {
-            flex: 1;
+    .main-content {
+        margin-left: 250px;
+        margin-top: 30px;
+        width: calc(100% - 250px);
+        .submit-btn {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-bottom: 20px;
         }
-    }
-    .layer1 {
-        width: 50%;
-        align-self: center;
-    }
-    .submit-btn {
-        padding-top:20px;
-        padding-left:auto;
-        padding-left:auto;padding-bottom :40px;
-        button {
-            border-radius: 10px;
-            font-size:1.8rem;
-            font-style:bold;
-            background-color:blue;
-            font-size:1.8rem;
-            box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
-            &:hover {
-                background: green; !important;
+        .submit-btn {
+            margin-left: 250px;
+        }
+
+        .create-btn {
+            margin-bottom: 20px;
+            margin-bottom: 500px button {
+                background-color: #2ecc71;
+                color: white;
+                font-size: 16px;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+
+                svg {
+                    margin-right: 10px;
+                }
             }
         }
-    }
-    .cancle{
-        padding-top:5px;
-        padding-left:50px;
-        button{
-            width:120px;
-            height:60px;
-            border-radius: 10px;
-            &:hover {
-                background: red; !important;
+
+        .cancel-btn {
+            margin-top: 20px;
+
+            button {
+                background-color: #e74c3c;
+                color: white;
+                font-size: 16px;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
         }
     }
 `;

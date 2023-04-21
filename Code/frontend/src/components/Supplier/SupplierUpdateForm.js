@@ -71,57 +71,65 @@ export default function SupplierUpdateForm() {
     );
 }
 const FormStyled = styled.form`
-display: flex;
-flex-direction: column;
-gap: 2rem;
-.form{
-    height:fit-content;
-    width:500px;
-    background-color:#ba68c8;
-    padding-left:20px;
-    border: 3px solid #ffffff;
-    border-radius: 20px;
-    margin-bottom:30px;
-}
-h3{
-    font-size: 1.4rem;
-    color:white;
-}
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
 
+    .form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-input,
-textarea {
-    font-family: inherit;
-    font-size: inherit;
-    outline: none;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    border: 2px solid #000;
-    background:  #fff;
-    resize: horizontal;
-    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
-    color: rgba(34, 34, 96, 0.9);
-    &::placeholder {
-        color: rgba(34, 34, 96, 0.4);
-    }
-}
-.input-control {
-    input {
-        width: 90%;
-    }
-}
-}
-.submit-btn {
-    padding-top:20px;
-    padding-left:auto;
-    padding-left:auto;padding-bottom :40px;
-    button {
-        font-size:1.8rem;
-        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
-        &:hover {
-            background: green; !important;
+        h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        form {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input-control {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 20px;
+
+            h3 {
+                font-size: 16px;
+                margin-bottom: 5px;
+            }
+
+            input {
+                width: 100%;
+                padding: 10px;
+                border-radius: 5px;
+                border: none;
+                font-size: 16px;
+            }
+        }
+
+        .submit-btn {
+            margin-top: 30px;
+
+            button {
+                padding: 10px 20px;
+                background-color: #008cba;
+                border: none;
+                color: #fff;
+                font-size: 18px;
+                border-radius: 5px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #006f8b;
+                }
+            }
         }
     }
-}
 `;

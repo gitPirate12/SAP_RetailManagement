@@ -47,8 +47,7 @@ export default function SupplyOrders() {
                                             {SupplyOrder.amount}
                                         </p>
                                         <p>
-                                            {price}
-                                            {SupplyOrder.price}
+                                            {price} {SupplyOrder.price}
                                         </p>
                                         <p>
                                             {percent}
@@ -95,77 +94,62 @@ export default function SupplyOrders() {
     );
 }
 const SuppplierOrderlistStyled = styled.div`
-    background: #fcf6f9;
-    border: 2px solid #ffffff;
-    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
-    border-radius: 20px;
-    padding-top: 20px;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-
-    width: 100%;
-    color: #222260;
-    .icon {
-        width: 80px;
-        height: 80px;
-        border-radius: 20px;
-        background: #f5f5f5;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 2px solid #ffffff;
-        i {
-            font-size: 2.6rem;
-        }
-    }
-    .delete {
-        background: red;
-    }
-    .update {
-        background: green;
-    }
     .content {
-        flex: 1;
         display: flex;
-        flex-direction: column;
-        gap: 0.2rem;
-        h5 {
-            font-size: 1rem;
-            padding-left: 2rem;
-            position: relative;
-            &::before {
-                content: "";
-                position: absolute;
-                left: 0;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 0.8rem;
-                height: 0.8rem;
-                border-radius: 50%;
-            }
-        }
-        .inner-content {
-            display: flex;
-            justify-content: space-between;
+        justify-content: center;
+        height: 100%;
+        margin-left: 250px;
+    }
+
+    .inner-content {
+        width: 90%;
+        margin: 0 auto;
+        max-width: 1200px;
+
+        .text {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-gap: 1rem;
+            margin-bottom: 1rem;
             align-items: center;
-            .text {
+            background-color: #f5f5f5;
+            padding: 1rem;
+            border-radius: 20px;
+
+            p {
                 display: flex;
                 align-items: center;
-                gap: 1.5rem;
-                font-size: 1rem;
-                width: fit-content;
+                margin: 0;
 
-                p {
-                    text-align: left;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                    color: var(--primary-color);
-                    opacity: 0.8;
-                    min-width: 50px;
-                    word-wrap: break-word;
+                svg {
+                    margin-right: 0.5rem;
+                }
+            }
+
+            button {
+                padding: 0.5rem;
+                background-color: #fff;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                svg {
+                    margin-right: 0.5rem;
+                }
+
+                &.update {
+                    color: #007bff;
+                    border-color: #007bff;
+                }
+
+                &.delete {
+                    color: #dc3545;
+                    border-color: #dc3545;
+                }
+
+                &:hover {
+                    background-color: #eee;
                 }
             }
         }
