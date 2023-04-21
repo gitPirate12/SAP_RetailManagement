@@ -99,7 +99,7 @@ export default function SupplyOrderForm() {
                                     let formattedDate = `${date.getFullYear()}-${
                                         date.getMonth() + 1
                                     }-${date.getDate()}`;
-                                    store.updateCreateSupplyOrder({
+                                    store.CreateSupplyOrder({
                                         target: {
                                             name: "deliverydate",
                                             value: formattedDate,

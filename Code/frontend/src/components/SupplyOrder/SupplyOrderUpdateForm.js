@@ -109,7 +109,13 @@ export default function SupplyOrderUpdateForm() {
                         />
                     </div>
                     <div className="submit-btn">
-                        <button type="submit">Update SupplyOrder</button>
+                        <button
+                            id="button"
+                            type="button"
+                            onClick={store.updateSupplyOrder}
+                        >
+                            Create
+                        </button>
                     </div>
                 </form>
             </div>

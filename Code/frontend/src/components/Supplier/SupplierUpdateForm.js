@@ -9,7 +9,7 @@ export default function SupplierUpdateForm() {
         <FormStyled>
             <div className="form">
                 <h2>Update supplier</h2>
-                <form onSubmit={store.updateSupplier}>
+                <form onSubmit={() => store.updateSupplier}>
                     <div className="input-control">
                         <h3>Supplier ID</h3>
                         <input
@@ -57,7 +57,13 @@ export default function SupplierUpdateForm() {
                         />
                     </div>
                     <div className="submit-btn">
-                        <button type="submit">Update Supplier</button>
+                        <button
+                            id="button"
+                            type="button"
+                            onClick={store.updateSupplier}
+                        >
+                            update Supplier
+                        </button>
                     </div>
                 </form>
             </div>

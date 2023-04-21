@@ -1,7 +1,7 @@
 import React from "react";
 import SupplierStore from "./SupplierStore";
 import styled from "styled-components";
-
+import { create } from "zustand";
 export default function SupplierForm() {
     const store = SupplierStore();
 
@@ -38,28 +38,33 @@ export default function SupplierForm() {
                             name="phone"
                         />
                     </div>
-                    <div>
-                        <div className="input-control">
-                            <h3>item type</h3>
-                            <input
-                                type="text"
-                                onChange={store.updateCreateSupplier}
-                                value={store.createSupplierForm.itemType}
-                                name="itemType"
-                            />
-                        </div>
-                        <div className="input-control">
-                            <h3>Payment Details</h3>
-                            <input
-                                type="text"
-                                onChange={store.updateCreateSupplier}
-                                value={store.createSupplierForm.paymentDetails}
-                                name="paymentDetails"
-                            />
-                        </div>
-                        <div className="submit-btn">
-                            <button type="submit">Create Supplier</button>
-                        </div>
+
+                    <div className="input-control">
+                        <h3>item type</h3>
+                        <input
+                            type="text"
+                            onChange={store.updateCreateSupplier}
+                            value={store.createSupplierForm.itemType}
+                            name="itemType"
+                        />
+                    </div>
+                    <div className="input-control">
+                        <h3>Payment Details</h3>
+                        <input
+                            type="text"
+                            onChange={store.updateCreateSupplier}
+                            value={store.createSupplierForm.paymentDetails}
+                            name="paymentDetails"
+                        />
+                    </div>
+                    <div className="submit-btn">
+                        <button
+                            id="button"
+                            type="button"
+                            onClick={store.createSupplier}
+                        >
+                            Create Supplier
+                        </button>
                     </div>
                 </form>
             </div>
