@@ -22,80 +22,86 @@ function SupplyOrder() {
             <SupplyOrderStyle>
                 <div className="income-content">
                     <SideBar></SideBar>
-                    <div className="submit-btn">
-                        {!ButtonStatus && !store.updateSupplyOrderForm._id && (
-                            <button
-                                className="layer1"
-                                onClick={setButtonStatus}
-                            >
-                                {plus} Create Supplier
-                            </button>
-                        )}
-                    </div>
+                </div>
+                {ButtonStatus && <SupplyOrderForm />}
+                <div className="submit-btn">
+                    {!ButtonStatus && !store.updateSupplyOrderForm._id && (
+                        <button className="layer1" onClick={setButtonStatus}>
+                            {plus} Create Supplier
+                        </button>
+                    )}
+                </div>
 
-                    <SupplyOrderUpdateForm />
+                <SupplyOrderUpdateForm />
 
-                    {!ButtonStatus && <SupplyOrders />}
+                {!ButtonStatus && <SupplyOrders />}
 
-                    <div className="cancle">
-                        {" "}
-                        {ButtonStatus && (
-                            <button onClick={() => setButtonStatus(false)}>
-                                Cancle
-                            </button>
-                        )}
-                    </div>
+                <div className="cancle">
+                    {" "}
+                    {ButtonStatus && (
+                        <button onClick={() => setButtonStatus(false)}>
+                            Cancle
+                        </button>
+                    )}
                 </div>
             </SupplyOrderStyle>
         </div>
     );
 }
 const SupplyOrderStyle = styled.div`
-    display: flex;
-    flex-direction: row;
+    .supplyOrderList {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        margin: 50px auto;
+        max-width: 1200px;
+        padding: 0 20px;
 
-    .main-content {
-        margin-left: 250px;
-        margin-top: 30px;
-        width: calc(100% - 250px);
-        .submit-btn {
-            display: flex;
+        @media (max-width: 768px) {
+            flex-direction: column;
             align-items: center;
-            justify-content: flex-end;
-            margin-bottom: 20px;
         }
-        .submit-btn {
-            margin-left: 250px;
+    }
+
+    .submit-btn {
+        display: flex;
+        align-items: center;
+
+        justify-content: flex-end;
+        margin-bottom: 20px;
+    }
+
+    .cancle {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-top: 20px;
+        background-color: #008cba;
+    }
+
+    button {
+        background-color: #008cba;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            background-color: #005f79;
         }
 
-        .create-btn {
-            margin-bottom: 20px;
-            margin-bottom: 500px button {
-                background-color: #2ecc71;
-                color: white;
-                font-size: 16px;
-                padding: 10px;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
+        &.layer1 {
+            background-color: #fff;
+            color: #008cba;
+            border: 1px solid #008cba;
 
-                svg {
-                    margin-right: 10px;
-                }
-            }
-        }
-
-        .cancel-btn {
-            margin-top: 20px;
-
-            button {
-                background-color: #e74c3c;
-                color: white;
-                font-size: 16px;
-                padding: 10px;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
+            &:hover {
+                background-color: #008cba;
+                color: #fff;
             }
         }
     }

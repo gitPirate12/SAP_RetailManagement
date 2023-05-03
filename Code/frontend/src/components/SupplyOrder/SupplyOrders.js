@@ -20,138 +20,141 @@ export default function SupplyOrders() {
         <SuppplierOrderlistStyled>
             <div className="content">
                 <div className="inner-content">
-                    <div>
-                        {store.SupplyOrderData &&
-                            store.SupplyOrderData.map((SupplyOrder) => {
-                                return (
-                                    <div className="text" key={SupplyOrder._id}>
-                                        <p>
-                                            {orderID} {SupplyOrder.orderID}
-                                        </p>
-                                        <p>
-                                            {" "}
-                                            {SID}
-                                            {SupplyOrder.SID}
-                                        </p>
-                                        <p>
-                                            {" "}
-                                            {truck}
-                                            {SupplyOrder.supplierName}
-                                        </p>
-                                        <p>
-                                            {item}
-                                            {SupplyOrder.item}
-                                        </p>
-                                        <p>
-                                            {amount}
-                                            {SupplyOrder.amount}
-                                        </p>
-                                        <p>
-                                            {price} {SupplyOrder.price}
-                                        </p>
-                                        <p>
-                                            {percent}
-                                            {SupplyOrder.discount}
-                                        </p>
-                                        <p>
-                                            {date}
-                                            {dateFormat(
-                                                SupplyOrder.deliverydate
-                                            )}
-                                        </p>
-
-                                        <p>
-                                            <button
-                                                className="update"
-                                                onClick={() =>
-                                                    store.toggleUpdate(
-                                                        SupplyOrder
-                                                    )
-                                                }
-                                            >
-                                                {edit}
-                                            </button>
-                                        </p>
-                                        <p>
-                                            <button
-                                                className="delete"
-                                                onClick={() =>
-                                                    store.deleteSupplyOrder(
-                                                        SupplyOrder._id
-                                                    )
-                                                }
-                                            >
-                                                {deletebutton}
-                                            </button>
-                                        </p>
-                                    </div>
-                                );
-                            })}
-                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>{orderID}</th>
+                                <th>{SID}</th>
+                                <th>{truck}</th>
+                                <th>{item}</th>
+                                <th>{amount}</th>
+                                <th>{price}</th>
+                                <th>{percent}</th>
+                                <th>{date}</th>
+                                <th>{edit}</th>
+                                <th>{deletebutton}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {store.SupplyOrderData &&
+                                store.SupplyOrderData.map((SupplyOrder) => {
+                                    return (
+                                        <tr key={SupplyOrder._id}>
+                                            <td>{SupplyOrder.orderID}</td>
+                                            <td>{SupplyOrder.SID}</td>
+                                            <td>{SupplyOrder.supplierName}</td>
+                                            <td>{SupplyOrder.item}</td>
+                                            <td>{SupplyOrder.amount}</td>
+                                            <td>{SupplyOrder.price}</td>
+                                            <td>{SupplyOrder.discount}</td>
+                                            <td>
+                                                {dateFormat(
+                                                    SupplyOrder.deliverydate
+                                                )}
+                                            </td>
+                                            <td>
+                                                <button
+                                                    className="update"
+                                                    onClick={() =>
+                                                        store.toggleUpdate(
+                                                            SupplyOrder
+                                                        )
+                                                    }
+                                                >
+                                                    {edit}
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <button
+                                                    className="delete"
+                                                    onClick={() =>
+                                                        store.deleteSupplyOrder(
+                                                            SupplyOrder._id
+                                                        )
+                                                    }
+                                                >
+                                                    {deletebutton}
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </SuppplierOrderlistStyled>
     );
 }
+
 const SuppplierOrderlistStyled = styled.div`
     .content {
-        display: flex;
+        display: float;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
-        height: 100%;
-        margin-left: 250px;
+        margin: 50px auto;
+
+        max-width: 800px;
+        padding-left: 50px;
+        margin-left: 200px;
+    }
+    .table {
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        border: 1px solid black;
+        padding: 8px;
     }
 
     .inner-content {
-        width: 90%;
-        margin: 0 auto;
-        max-width: 1200px;
+        display: flex;
+        flex-direction: column;
+        width: 1000px;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        margin-left: 20px;
+    }
 
-        .text {
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            grid-gap: 1rem;
-            margin-bottom: 1rem;
-            align-items: center;
-            background-color: #f5f5f5;
-            padding: 1rem;
-            border-radius: 20px;
+    .text {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+    }
 
-            p {
-                display: flex;
-                align-items: center;
-                margin: 0;
+    p {
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-size: 14px;
+        color: #333;
+    }
 
-                svg {
-                    margin-right: 0.5rem;
-                }
-            }
+    button {
+        background-color: #008cba;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.2s ease-in-out;
+    }
 
-            button {
-                padding: 0.5rem;
-                background-color: #fff;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                cursor: pointer;
-                transition: all 0.3s ease;
+    button:hover {
+        background-color: #005f79;
+    }
 
-                svg {
-                    margin-right: 0.5rem;
-                }
-
-                &.update {
-                    color: #007bff;
-                    border-color: #007bff;
-                }
-
-                &.delete {
-                    color: #dc3545;
-                    border-color: #dc3545;
-                }
-
-                &:hover {
-                    background-color: #eee;
-                }
-            }
-        }
+    .update {
+        margin-right: 10px;
     }
 `;

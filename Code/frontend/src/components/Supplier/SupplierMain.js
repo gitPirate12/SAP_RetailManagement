@@ -66,22 +66,10 @@ const SupplierStyle = styled.div`
         }
     }
 
-    .income-content {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: flex-start;
-        margin-right: 30px;
-
-        @media (max-width: 768px) {
-            margin-right: 0;
-            margin-bottom: 30px;
-        }
-    }
-
     .submit-btn {
         display: flex;
         align-items: center;
+
         justify-content: flex-end;
         margin-bottom: 20px;
     }

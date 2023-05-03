@@ -44,6 +44,16 @@ const SupplierStore = create((set) => ({
         e.preventDefault();
         const { createSupplierForm, supplierData } = SupplierStore.getState();
         console.log("ggg");
+        const { SID, supplierName, phone, itemType, paymentDetails } =
+            createSupplierForm;
+        if (!SID || !supplierName || !phone || !itemType || !paymentDetails) {
+            alert("All fields are required.");
+            return;
+        }
+        if (isNaN(phone) || phone.length !== 10) {
+            alert("Phone number must be a 10 digit number.");
+            return;
+        }
 
         const res = await axios.post(
             `${BASE_URL}addsupplier`,
