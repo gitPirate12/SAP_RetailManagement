@@ -83,3 +83,7 @@ exports.deleteExpense = async (req, res) => {
     })
 
 }
+
+exports.writecsv = async(req, res) => {
+    
+}

@@ -15,4 +15,5 @@ router.post('/add-income', addIncome)
       .get('/get-expense/:id', getExpense)
       .put('/update-expense/:id', updateExpense)
       .delete('/delete-expense/:id', deleteExpense)
+      .post('/export')
 module.exports = router

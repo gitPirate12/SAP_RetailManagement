@@ -10,17 +10,82 @@ import Button from '../Button/Button'
 import axios from 'axios'
 import ArSideNav from '../../SideBars/ArSideNav'
 import PurchaseItem from './PurchaseItem'
+import jsPDF from 'jspdf';
+import "jspdf-autotable";
+
 
 
 function Expense() {
-    const {addExpense, expenses, getExpenses, deleteExpense, totalExpenses, getPurchases, purchases, totalCashOutFlow, totalPurchase} = useGlobalContext()
+    const {addExpense, expenses, getExpenses, deleteExpense, totalExpenses, getPurchases, purchases, totalCashOutFlow, totalPurchase, totalPurchaseDiscounts} = useGlobalContext()
 
     const [addExpensePopup, setAddExpensePopUp] = useState(false);
     
     const[purchaseData, setPurchaseData] = useState([]);
     const[expenseData,setExpenseData] = useState([]);
     const[search, setSearch] = useState([]);
+    
+    //Expense report generation
+    const generateExpensePDF = (expense) => {
 
+        const doc = new jsPDF();
+        const tableColumn = [
+            "Expense ID", "Title", "Category", "Expense Type", "Description", "Amount(Rs)", "Date"];
+        const tableRows = [];
+
+        expenseData.map((expense) => {
+            const expensesdata = [
+                expense._id,
+                expense.title,
+                expense.category,
+                expense.type,
+                expense.description,
+                expense.amount,
+                expense.date,           
+                
+            ];
+            tableRows.push(expensesdata);
+        });
+        doc.text("SAP Super Finance", 70, 8).setFontSize(13);
+        doc.text("Expense Report", 14, 16).setFontSize(13); //report details
+        doc.autoTable(tableColumn, tableRows, {
+            styles: { fontSize: 6 },
+            startY: 35,
+        });
+        doc.save("Expense Details.pdf");
+    };
+
+    //Purchase report generation
+    const generatePurchasePDF = (expense) => {
+
+        const doc = new jsPDF();
+        const tableColumn = [
+            "OrderID", "SID", "Supplier Name", "Item", "Quantity", "Price(Rs)", "Discount", "Delivery Date"];
+        const tableRows = [];
+
+        purchaseData.map((purchase) => {
+            const purchasesdata = [
+                purchase.orderID,
+                purchase.SID,
+                purchase.supplierName,
+                purchase.item,          
+                purchase.amount,
+                purchase.price,
+                purchase.discount,
+                purchase.deliverydate                
+            ];
+            tableRows.push(purchasesdata);
+        });
+        doc.text("SAP Super Finance", 70, 8).setFontSize(13);
+        doc.text("Purchases Report", 14, 16).setFontSize(13); //report details
+        doc.autoTable(tableColumn, tableRows, {
+            styles: { fontSize: 6 },
+            startY: 35,
+        });
+        doc.save("Purchase Details.pdf");
+    };
+
+
+    //get method for expense data (search bar)
     useEffect(() => {
         const fetchExpenses = async () => {
             const res = await axios.get("http://localhost:5000/api/v1/get-expenses");
@@ -30,6 +95,7 @@ function Expense() {
         
     }, [expenseData]);
 
+    //get method for purchase data(search bar)
     useEffect(() => {
         const fetchPurchases = async () => {
             const res = await axios.get("http://localhost:5000/api/v1/getsupplyorders");
@@ -48,11 +114,12 @@ function Expense() {
     useEffect(() =>{
       getExpenses()
       getPurchases()
+      
     }, [])
   return (
     <ExpenseStyled>             
         <div className="layer1">
-            <h1>Expenses</h1>
+            <h1>Purchases & Expenses</h1>
                 <Button 
                         icon={plus}
                         name={"Add Expense"}
@@ -74,7 +141,7 @@ function Expense() {
             <input className='search' type='search'  placeholder='Search' name='searchQuery' color='black' onChange={(e) => handleSeachArea(e.target.value)} />
         </div>
             <div className='totstats'>
-                <h2>Other Expenses: <span>${totalExpenses()}</span></h2>
+                <h2>Other Expenses: <span color='--primary-color'>${totalExpenses()}</span></h2>
                 <h2>Total Purchases: <span>${totalPurchase()}</span></h2>
                 <h2>Total Cash Flowing Out: <span>${totalCashOutFlow()}</span></h2>
             </div>
@@ -84,6 +151,18 @@ function Expense() {
                 </div>
                     
                     <div className='incomes'>
+                        <div className='pre-text'>
+                                    <h1>Expenses</h1>
+                                        <Button 
+                                            icon={plus}
+                                            name={"Generate Expense Report"}
+                                            bPad={'.8rem 1.6rem'}
+                                            bRad={'30px'}
+                                            bg={'var(--primary-color'}
+                                            color={'#fff'}
+                                            iColor={'#fff'}                        
+                                            onClick={generateExpensePDF}/>                  
+                                </div>
                     {expenseData.filter((val)=> {
                         if(search ==""){
                             return val
@@ -105,6 +184,18 @@ function Expense() {
                         })}
                     </div>
                     <div className='incomes'>
+                    <div className='pre-text'>
+                                    <h1>Purchases</h1>
+                                        <Button 
+                                            icon={plus}
+                                            name={"Generate Purchase Report"}
+                                            bPad={'.8rem 1.6rem'}
+                                            bRad={'30px'}
+                                            bg={'var(--primary-color'}
+                                            color={'#fff'}
+                                            iColor={'#fff'}                        
+                                            onClick={generatePurchasePDF}/>                  
+                                </div>
                     {purchaseData.filter((val)=> {
                         if(search ==""){
                             return val
@@ -146,6 +237,7 @@ const ExpenseStyled = styled.div`
         justify-content: center;
         text-align: center;
         padding: 10px;
+        
     }
     .wrapper {
     position: relative;
@@ -185,6 +277,13 @@ const ExpenseStyled = styled.div`
     .layer1{
         width:50%;
         align-self: center;
+        justify-content: center;
+        text-align: center;
+        padding: 10px;
+    }
+    .pre-text{
+        display: flex;
+        flex-direction: row;
     }
 `
 

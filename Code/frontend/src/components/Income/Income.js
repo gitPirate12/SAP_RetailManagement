@@ -9,13 +9,17 @@ import { plus, cross} from '../../utils/Icons'
 import Button from '../Button/Button'
 import axios from 'axios'
 import ArSideNav from '../../SideBars/ArSideNav'
+import jsPDF from 'jspdf';
+import "jspdf-autotable";
+
+
 
 function Income() {
     const {addIncome, incomes, getIncomes, deleteIncome, totalIncome, totalCashInFlow} = useGlobalContext()
 
     const [addIncomePopup, setAddIncomePopUp] = useState(false);
 
-    const[incomeData,setIncomeData] = useState([]);
+    const [incomeData,setIncomeData] = useState([]);
     const [search, setSearch] = useState([]);
 
     useEffect(() => {
@@ -26,6 +30,36 @@ function Income() {
         fetchIncomes()
         
     }, [incomeData]);
+
+    const generatePDF = (income) => {
+
+        const doc = new jsPDF();
+        const tableColumn = [
+            "Income ID", "Title", "Category", "Income Type", "Description", "Amount(Rs)", "Date"];
+        const tableRows = [];
+
+        incomeData.map((income) => {
+            const incomesdata = [
+                income._id,
+                income.title,
+                income.category,
+                income.type,
+                income.description,
+                income.amount,
+                income.date,           
+                
+            ];
+            tableRows.push(incomesdata);
+        });
+        doc.text("SAP Super Finance", 70, 8).setFontSize(13);
+        doc.text("Income Report", 14, 16).setFontSize(13); //report details
+        doc.autoTable(tableColumn, tableRows, {
+            styles: { fontSize: 6 },
+            startY: 35,
+        });
+        doc.save("Income Details.pdf");
+    };
+
 
     const handleSeachArea = (e) => {
        setSearch(e)
@@ -39,7 +73,7 @@ function Income() {
   return (
     <IncomeStyled>        
         <div className="layer1">
-            <h1>Incomes</h1>
+            <h1>Sales & Incomes</h1>
                 <Button 
                         icon={plus}
                         name={"Add Income"}
@@ -70,46 +104,59 @@ function Income() {
                         <ArSideNav></ArSideNav>
                     </div>            
                         <div className='incomes'>
-                        {incomeData.filter((val)=> {
-                        if(search ==""){
-                            return val
-                        }else if(val.title.toLowerCase().includes(search.toLowerCase())){
-                            return val
-                        }
-                        }).map((income) => {
-                            const {_id, title, amount, date, category, type, description} = income;
-                            return <IncomeItem
-                            key={_id}
-                            id={_id} 
-                            title={title} 
-                            description={description} 
-                            amount={amount} 
-                            date={date} 
-                            type={type}
-                            category={category} 
-                            deleteItem={deleteIncome} />                        
-                        })}
-                    </div>
-                    <div className='incomes'>
-                    {incomeData.filter((val)=> {
-                        if(search ==""){
-                            return val
-                        }else if(val.title.toLowerCase().includes(search.toLowerCase())){
-                            return val
-                        }
-                    }).map((income) => {
-                            const {_id, title, amount, date, category, type, description} = income;
-                            return <IncomeItem
-                            key={_id}
-                            id={_id} 
-                            title={title} 
-                            description={description} 
-                            amount={amount} 
-                            date={date} 
-                            type={type}
-                            category={category} 
-                            deleteItem={deleteIncome} />                        
-                        })}
+                            <div className='pre-text'>
+                                <h1>Incomes</h1>
+                                    <Button 
+                                        icon={plus}
+                                        name={"Generate Income Report"}
+                                        bPad={'.8rem 1.6rem'}
+                                        bRad={'30px'}
+                                        bg={'var(--primary-color'}
+                                        color={'#fff'}
+                                        iColor={'#fff'}                        
+                                        onClick={generatePDF}/>                  
+                            </div>
+                                {incomeData.filter((val)=> {
+                                        if(search ==""){
+                                            return val
+                                        }else if(val.title.toLowerCase().includes(search.toLowerCase())){
+                                            return val
+                                        }
+                                        }).map((income) => {
+                                            const {_id, title, amount, date, category, type, description} = income;
+                                            return <IncomeItem
+                                            key={_id}
+                                            id={_id} 
+                                            title={title} 
+                                            description={description} 
+                                            amount={amount} 
+                                            date={date} 
+                                            type={type}
+                                            category={category} 
+                                            deleteItem={deleteIncome} />                        
+                                        })}
+                        </div>
+                            <div className='incomes'>
+                                <h1>Sales</h1>
+                                {incomeData.filter((val)=> {
+                                    if(search ==""){
+                                        return val
+                                    }else if(val.title.toLowerCase().includes(search.toLowerCase())){
+                                        return val
+                                    }
+                                }).map((income) => {
+                                        const {_id, title, amount, date, category, type, description} = income;
+                                        return <IncomeItem
+                                        key={_id}
+                                        id={_id} 
+                                        title={title} 
+                                        description={description} 
+                                        amount={amount} 
+                                        date={date} 
+                                        type={type}
+                                        category={category} 
+                                        deleteItem={deleteIncome} />                        
+                                    })}
                     </div>                
             </div>          
         </Ar_InnerLayout>
@@ -165,6 +212,13 @@ const IncomeStyled = styled.div`
     .layer1{
         width:50%;
         align-self: center;
+        justify-content: center;
+        text-align: center;
+        padding: 10px;
+    }
+    .pre-text{
+        display: flex;
+        flex-direction: row;
     }
 `
 

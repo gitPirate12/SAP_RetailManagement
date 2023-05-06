@@ -117,6 +117,9 @@ const FormStyled = styled.form`
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    background-color: #0B2447;
+    padding: 5%;
+    border-radius: 5%;
     input, textarea, select{
         font-family: inherit;
         font-size: inherit;
@@ -125,7 +128,7 @@ const FormStyled = styled.form`
         padding: .5rem 1rem;
         border-radius: 5px;
         border: 2px solid #fff;
-        background: transparent;
+        background: white;
         resize: horizontal;
         box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
         color: rgba(34, 34, 96, 0.9);

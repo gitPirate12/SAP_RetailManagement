@@ -17,6 +17,7 @@ useEffect(()=> {
   getItems()
 
 }, []) 
+  console.log(totalPurchaseDiscounts())
 
   return (
     <DashboardStyled>

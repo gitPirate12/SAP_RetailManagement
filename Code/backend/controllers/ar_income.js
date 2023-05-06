@@ -1,5 +1,6 @@
 const IncomeSchema = require("../models/ar_incomeModel")
 
+
 //add a single income
 exports.addIncome = async (req, res) => {
     //destructuring request body into its components
@@ -87,3 +88,4 @@ exports.deleteIncome = async (req, res) => {
     })
 
 }
+

@@ -103,7 +103,7 @@ export const GlobalProvider = ({children}) => {
         let totalPurchase = 0;
         purchases.forEach((purchase) =>{
             totalPurchase = totalPurchase + (purchase.amount*purchase.price)
-        })
+        })      
         totalPurchase = totalPurchase - totalPurchaseDiscounts()
         return totalPurchase;
     }
@@ -111,8 +111,8 @@ export const GlobalProvider = ({children}) => {
     const totalPurchaseDiscounts = () => {
         let totalPurchaseDiscounts = 0;
         purchases.forEach((purchase) =>{
-          totalPurchaseDiscounts = totalPurchaseDiscounts + (purchase.discount*purchase.amount)
-      })
+          totalPurchaseDiscounts = totalPurchaseDiscounts + (parseInt(purchase.discount)*purchase.amount)
+      })      
       return totalPurchaseDiscounts;
     }
 
