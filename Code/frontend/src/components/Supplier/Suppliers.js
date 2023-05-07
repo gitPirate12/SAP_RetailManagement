@@ -10,8 +10,27 @@ import {
     edit,
     deletebutton,
 } from "../../utils/Icons";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 export default function Suppliers() {
     const store = SupplierStore();
+    const generatePDF = () => {
+        const doc = new jsPDF();
+        doc.setProperties({
+            title: "Supplier List",
+        });
+        doc.autoTable({
+            head: [["SID", "Name", "Phone", "Item", "Payment"]],
+            body: store.supplierData.map((supplier) => [
+                supplier.SID,
+                supplier.supplierName,
+                supplier.phone,
+                supplier.itemType,
+                supplier.paymentDetails,
+            ]),
+        });
+        doc.save("supplier-list.pdf");
+    };
     return (
         <SuppplierlistStyled>
             <div className="content">
@@ -67,6 +86,7 @@ export default function Suppliers() {
                                 })}
                         </tbody>
                     </table>
+                    <button onClick={generatePDF}>Download PDF</button>
                 </div>
             </div>
         </SuppplierlistStyled>

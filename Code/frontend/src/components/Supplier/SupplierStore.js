@@ -43,33 +43,33 @@ const SupplierStore = create((set) => ({
     createSupplier: async (e) => {
         e.preventDefault();
         const { createSupplierForm, supplierData } = SupplierStore.getState();
-        console.log("ggg");
+
+        //validations for inputs
         const { SID, supplierName, phone, itemType, paymentDetails } =
             createSupplierForm;
         if (!SID || !supplierName || !phone || !itemType || !paymentDetails) {
             alert("All fields are required.");
             return;
-        }
-        if (isNaN(phone) || phone.length !== 10) {
+        } else if (isNaN(phone) || phone.length !== 10) {
             alert("Phone number must be a 10 digit number.");
             return;
+        } else {
+            const res = await axios.post(
+                `${BASE_URL}addsupplier`,
+                createSupplierForm
+            );
+            alert("Supplier Added");
+            set({
+                Supplier: [...supplierData, res.data],
+                createSupplier: {
+                    SID: "",
+                    supplierName: "",
+                    phone: "",
+                    itemType: "",
+                    paymentDetails: "",
+                },
+            });
         }
-
-        const res = await axios.post(
-            `${BASE_URL}addsupplier`,
-            createSupplierForm
-        );
-        set({
-            Supplier: [...supplierData, res.data],
-            createSupplier: {
-                SID: "",
-                supplierName: "",
-                phone: "",
-                itemType: "",
-                paymentDetails: "",
-            },
-        });
-
         //create supplier
     },
     deleteSupplier: async (_id) => {

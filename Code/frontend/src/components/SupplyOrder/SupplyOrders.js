@@ -1,21 +1,40 @@
-import SupplyOrderMain from "./SupplyOrderMain";
 import SupplyOrderStore from "./SupplyOrderStore";
 import styled from "styled-components";
 import { dateFormat } from "../Sidebar/dateformat";
-import {
-    percent,
-    truck,
-    item,
-    amount,
-    orderID,
-    SID,
-    price,
-    date,
-    edit,
-    deletebutton,
-} from "../../utils/Icons";
+import jsPDF from "jspdf";
+import { edit, deletebutton } from "../../utils/Icons";
+
 export default function SupplyOrders() {
     const store = SupplyOrderStore();
+    const generatePDF = () => {
+        const doc = new jsPDF();
+        doc.setProperties({
+            title: "Supplier List",
+        });
+        doc.autoTable({
+            head: [
+                [
+                    "Order ID",
+                    "SID",
+                    "Supplier Name",
+                    "Item",
+                    "Amount",
+                    "Price",
+                    "Discount",
+                ],
+            ],
+            body: store.SupplyOrderData.map((SupplyOrder) => [
+                SupplyOrder.orderID,
+                SupplyOrder.SID,
+                SupplyOrder.supplierName,
+                SupplyOrder.item,
+                SupplyOrder.amount,
+                SupplyOrder.price,
+                SupplyOrder.discount,
+            ]),
+        });
+        doc.save("supplier-order-list.pdf");
+    };
     return (
         <SuppplierOrderlistStyled>
             <div className="content">
@@ -23,16 +42,16 @@ export default function SupplyOrders() {
                     <table>
                         <thead>
                             <tr>
-                                <th>{orderID}</th>
-                                <th>{SID}</th>
-                                <th>{truck}</th>
-                                <th>{item}</th>
-                                <th>{amount}</th>
-                                <th>{price}</th>
-                                <th>{percent}</th>
-                                <th>{date}</th>
-                                <th>{edit}</th>
-                                <th>{deletebutton}</th>
+                                <th>Order ID</th>
+                                <th>Supplier ID</th>
+                                <th>Supplier Name</th>
+                                <th>Item</th>
+                                <th> Quantity</th>
+                                <th> Price</th>
+                                <th>Discount</th>
+                                <th>Delivery Date</th>
+                                <th>{edit} Edit</th>
+                                <th>{deletebutton} Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -81,6 +100,9 @@ export default function SupplyOrders() {
                                 })}
                         </tbody>
                     </table>
+                    <button id="pdf button" onClick={generatePDF}>
+                        Download PDF
+                    </button>
                 </div>
             </div>
         </SuppplierOrderlistStyled>
@@ -138,8 +160,13 @@ const SuppplierOrderlistStyled = styled.div`
         font-size: 14px;
         color: #333;
     }
+    .pdf button {
+        background-color: #fff;
+        color: #fff;
+        width: 50px;
+    }
 
-    button {
+    .button {
         background-color: #008cba;
         color: #fff;
         border: none;

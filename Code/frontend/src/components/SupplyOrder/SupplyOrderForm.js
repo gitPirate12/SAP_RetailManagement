@@ -41,7 +41,7 @@ export default function SupplyOrderForm() {
                         />
                     </div>
                     <div className="input-control">
-                        <h3>item</h3>
+                        <h3>Item</h3>
                         <input
                             type="text"
                             onChange={store.updateCreateSupplyOrder}
@@ -109,7 +109,12 @@ export default function SupplyOrderForm() {
                             />
                         </div>
                         <div className="submit-btn">
-                            <button type="submit">Create Supply Order</button>
+                            <button
+                                type="button"
+                                onClick={store.createSupplyOrder}
+                            >
+                                Create Supply Order
+                            </button>
                         </div>
                     </div>
                 </form>

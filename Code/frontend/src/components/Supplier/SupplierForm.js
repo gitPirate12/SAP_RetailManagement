@@ -40,7 +40,7 @@ export default function SupplierForm() {
                     </div>
 
                     <div className="input-control">
-                        <h3>item type</h3>
+                        <h3>Item Type</h3>
                         <input
                             type="text"
                             onChange={store.updateCreateSupplier}

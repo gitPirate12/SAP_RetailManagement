@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import SupplierStore from "./SupplierStore";
 import Suppliers from "./Suppliers";
 import SupplierUpdateForm from "./SupplierUpdateForm";
@@ -8,6 +7,7 @@ import SupplierForm from "./SupplierForm";
 import styled from "styled-components";
 import SideBar from "../Sidebar/Sidebar";
 import { plus } from "../../utils/Icons";
+
 function Supplier() {
     const store = SupplierStore();
     const [ButtonStatus, setButtonStatus] = useState(false);

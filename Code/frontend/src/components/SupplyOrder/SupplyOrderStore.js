@@ -51,25 +51,56 @@ const SupplyOrderStore = create((set) => ({
         e.preventDefault();
         const { createSupplyOrderForm, SupplyOrderData } =
             SupplyOrderStore.getState();
+        const {
+            orderID,
+            SID,
+            supplierName,
+            item,
+            amount,
+            price,
+            discount,
+            delivery,
+        } = createSupplyOrderForm;
 
-        const res = await axios.post(
-            `${BASE_URL}addsupplyorder`,
-            createSupplyOrderForm
-        );
-        set({
-            SupplyOrder: [...SupplyOrderData, res.data],
-            createSupplyOrder: {
-                orderID: "",
-                SID: "",
-                supplierName: "",
-                item: "",
-                amount: "",
-                price: "",
-                discount: "",
-                deliverydate: "",
-            },
-        });
-
+        //validations for inputs
+        if (
+            !orderID ||
+            !SID ||
+            !supplierName ||
+            !item ||
+            !amount ||
+            !price ||
+            !discount ||
+            !delivery
+        ) {
+            alert("All fields are required.");
+            return;
+        } else if (isNaN(price) || price <= 0) {
+            alert("Invalid Price");
+            return;
+        } else if (isNaN(amount) || amount <= 0) {
+            alert("Invalid Amount");
+            return;
+        } else {
+            const res = await axios.post(
+                `${BASE_URL}addsupplyorder`,
+                createSupplyOrderForm
+            );
+            alert("Supply Order Created");
+            set({
+                SupplyOrder: [...SupplyOrderData, res.data],
+                createSupplyOrder: {
+                    orderID: "",
+                    SID: "",
+                    supplierName: "",
+                    item: "",
+                    amount: "",
+                    price: "",
+                    discount: "",
+                    deliverydate: "",
+                },
+            });
+        }
         //create SupplyOrder
     },
     deleteSupplyOrder: async (_id) => {
