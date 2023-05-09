@@ -11,8 +11,9 @@ function CustomerInquiryReport() {
 
   const getCustomerInquiries = async () => {
     const response = await Axios.get(
-      "http://localhost:2000/generate-customer-inquiry-report"
+      "http://localhost:5000/generate-customer-inquiry-report"
     );
+
     setCustomerInquiries(response.data);
   };
 
@@ -58,20 +59,20 @@ function CustomerInquiryReport() {
                 return (
                   <tr key={index}>
                     <td>{index + 1}</td>
-                    <td>{item.customer_name}</td>
-                    <td>{item.customer_email}</td>
-                    <td>{item.customer_contact}</td>
-                    <td>{item.inquiry_type}</td>
-                    <td>{item.inquiry_submitted_date}</td>
+                    <td>{item.customerName}</td>
+                    <td>{item.customerEmail}</td>
+                    <td>{item.customerContact}</td>
+                    <td>{item.inquiryType}</td>
+                    <td>{item.submittedDate}</td>
                     <td>
-                      <Link to={`/single_customer_inquiry/${item.inquiryId}`}>
+                      <Link to={`/single_customer_inquiry/${item.inquiryID}`}>
                         <button className="btn btn-view">View</button>
                       </Link>
                     </td>
                     <td>
                       <button
                         className="btn btn-delete"
-                        onClick={() => deleteCustomerInquiry(item.inquiryId)}
+                        onClick={() => deleteCustomerInquiry(item.inquiryID)}
                       >
                         Delete
                       </button>

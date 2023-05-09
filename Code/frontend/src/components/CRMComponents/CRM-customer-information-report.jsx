@@ -56,15 +56,15 @@ function CustomerInformationReport() {
                 return (
                   <tr key={index}>
                     <td>{index + 1}</td>
-                    <td>{item.name}</td>
-                    <td>{item.email}</td>
-                    <td>{item.home_address}</td>
-                    <td>{item.contact_number}</td>
-                    <td>{item.membership_started_date}</td>
+                    <td>{item.customerName}</td>
+                    <td>{item.customerEmail}</td>
+                    <td>{item.customerAddress}</td>
+                    <td>{item.customerContact}</td>
+                    <td>{item.membershipStartedDate}</td>
                     <td>
                       <button
                         className="btn btn-delete"
-                        onClick={() => deleteCustomer(item.email)}
+                        onClick={() => deleteCustomer(item.customerEmail)}
                       >
                         Delete
                       </button>

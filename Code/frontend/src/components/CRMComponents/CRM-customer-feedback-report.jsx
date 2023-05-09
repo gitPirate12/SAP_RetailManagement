@@ -57,13 +57,13 @@ function CustomerFeedbackReport() {
                 return (
                   <tr key={index}>
                     <td>{index + 1}</td>
-                    <td>{item.customer_name}</td>
-                    <td>{item.customer_email}</td>
-                    <td>{item.customer_contact}</td>
-                    <td>{item.suggestion_submitted_date}</td>
+                    <td>{item.customerName}</td>
+                    <td>{item.customerEmail}</td>
+                    <td>{item.customerContact}</td>
+                    <td>{item.submittedDate}</td>
                     <td>
                       <Link
-                        to={`/single-customer-suggestion/${item.suggestionId}`}
+                        to={`/single-customer-suggestion/${item.suggestionID}`}
                       >
                         <button className="btn btn-view">View</button>
                       </Link>
@@ -72,7 +72,7 @@ function CustomerFeedbackReport() {
                       <button
                         className="btn btn-delete"
                         onClick={() =>
-                          deleteCustomerFeedback(item.suggestionId)
+                          deleteCustomerFeedback(item.suggestionID)
                         }
                       >
                         Delete
