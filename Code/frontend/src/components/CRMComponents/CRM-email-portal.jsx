@@ -92,7 +92,9 @@ function CRMEmailPortal() {
       <ToastContainer />
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className="form-group">
-          <label htmlFor="to">To:</label>
+          <label htmlFor="to" style={{ color: "black" }}>
+            To:
+          </label>
           <input
             id="recipientEmail"
             type="text"
@@ -103,7 +105,9 @@ function CRMEmailPortal() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="subject">Subject:</label>
+          <label htmlFor="subject" style={{ color: "black" }}>
+            Subject:
+          </label>
           <input
             type="text"
             placeholder="Enter Subject"
@@ -115,7 +119,9 @@ function CRMEmailPortal() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="message">Message:</label>
+          <label htmlFor="message" style={{ color: "black" }}>
+            Message:
+          </label>
           <textarea
             className="form-control"
             placeholder="Enter Feedback"

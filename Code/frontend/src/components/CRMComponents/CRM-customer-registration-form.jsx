@@ -203,7 +203,9 @@ function CustomerRegistrationForm() {
       <ToastContainer />
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className="form-group">
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name" style={{ color: "black" }}>
+            Name:
+          </label>
           <input
             type="text"
             className="form-control"
@@ -214,7 +216,9 @@ function CustomerRegistrationForm() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email" style={{ color: "black" }}>
+            Email:
+          </label>
           <input
             type="text"
             className="form-control"
@@ -225,7 +229,9 @@ function CustomerRegistrationForm() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Create Password:</label>
+          <label htmlFor="password" style={{ color: "black" }}>
+            Create Password:
+          </label>
           <input
             type="text"
             className="form-control"
@@ -236,7 +242,9 @@ function CustomerRegistrationForm() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="confirm-password">Confirm Password:</label>
+          <label htmlFor="confirm-password" style={{ color: "black" }}>
+            Confirm Password:
+          </label>
           <input
             type="password"
             className="form-control"
@@ -246,7 +254,9 @@ function CustomerRegistrationForm() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="address">Residence Address:</label>
+          <label htmlFor="address" style={{ color: "black" }}>
+            Residence Address:
+          </label>
           <textarea
             className="form-control"
             id="customerAddress"
@@ -256,7 +266,9 @@ function CustomerRegistrationForm() {
           ></textarea>
         </div>
         <div className="form-group">
-          <label htmlFor="phone">Phone Number:</label>
+          <label htmlFor="phone" style={{ color: "black" }}>
+            Phone Number:
+          </label>
           <input
             type="tel"
             className="form-control"

@@ -159,7 +159,9 @@ function CustomerInquiryForm() {
       <ToastContainer />
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className="form-group">
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name" style={{ color: "black" }}>
+            Name:
+          </label>
           <input
             type="text"
             className="form-control"
@@ -170,7 +172,9 @@ function CustomerInquiryForm() {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email" style={{ color: "black" }}>
+            Email:
+          </label>
           <input
             type="text"
             className="form-control"
@@ -182,7 +186,9 @@ function CustomerInquiryForm() {
         </div>
 
         <div className="form-group">
-          <label htmlFor="phone">Phone:</label>
+          <label htmlFor="phone" style={{ color: "black" }}>
+            Phone:
+          </label>
           <input
             type="tel"
             className="form-control"
@@ -193,7 +199,9 @@ function CustomerInquiryForm() {
           />
         </div>
 
-        <label htmlFor="inquiry-type">Inquiry Type:</label>
+        <label htmlFor="inquiry-type" style={{ color: "black" }}>
+          Inquiry Type:
+        </label>
         <select
           name="inquiry-type"
           onChange={(e) => handleChange(e)}
@@ -209,7 +217,9 @@ function CustomerInquiryForm() {
         </select>
 
         <div className="form-group">
-          <label htmlFor="inquiry">Inquiry:</label>
+          <label htmlFor="inquiry" style={{ color: "black" }}>
+            Inquiry:
+          </label>
           <textarea
             className="form-control"
             placeholder="Enter Inquiry"
