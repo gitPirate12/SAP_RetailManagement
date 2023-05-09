@@ -23,55 +23,65 @@ function CRMsingleInquiry() {
   return (
     <div>
       <div class="container mt-4">
-        <h2>Customer Inquiry</h2>
+        <h2 style={{ color: "black" }}>Customer Inquiry</h2>
         <form action="" method="post">
           <div class="form-group">
-            <label for="name">Name:</label>
+            <label for="name" style={{ color: "black" }}>
+              Name:
+            </label>
             <input
               type="text"
               class="form-control"
-              value={singleCustomerInquiry.customer_name}
+              value={singleCustomerInquiry.customerName}
               disabled
             />
           </div>
           <div class="form-group">
-            <label for="email">Email:</label>
+            <label for="email" style={{ color: "black" }}>
+              Email:
+            </label>
             <input
               type="email"
               class="form-control"
-              value={singleCustomerInquiry.customer_email}
+              value={singleCustomerInquiry.customerEmail}
               disabled
             />
           </div>
           <div class="form-group">
-            <label for="contact">Contact:</label>
+            <label for="contact" style={{ color: "black" }}>
+              Contact:
+            </label>
             <input
               type="tel"
               class="form-control"
-              value={singleCustomerInquiry.customer_contact}
+              value={singleCustomerInquiry.customerContact}
               disabled
             />
           </div>
           <div class="form-group">
-            <label for="contact">Inquiry Type:</label>
+            <label for="contact" style={{ color: "black" }}>
+              Inquiry Type:
+            </label>
             <input
               type="tel"
               class="form-control"
-              value={singleCustomerInquiry.inquiry_type}
+              value={singleCustomerInquiry.inquiryType}
               disabled
             />
           </div>
           <div class="form-group">
-            <label for="inquiry">Inquiry:</label>
+            <label for="inquiry" style={{ color: "black" }}>
+              Inquiry:
+            </label>
             <textarea
               class="form-control"
               id="inquiry"
               rows="5"
-              value={singleCustomerInquiry.inquiry_description}
+              value={singleCustomerInquiry.inquiryDescription}
               disabled
             />
           </div>
-          <Link to={`/send-emails/${singleCustomerInquiry.customer_email}`}>
+          <Link to={`/send-emails/${singleCustomerInquiry.customerEmail}`}>
             <button type="submit" class="btn btn-primary">
               Reply
             </button>

@@ -23,47 +23,55 @@ function CRMsingleFeedback() {
   return (
     <div>
       <div class="container mt-4">
-        <h2>Customer Feedback</h2>
+        <h2 style={{ color: "black" }}>Customer Feedback</h2>
         <form action="" method="post">
           <div class="form-group">
-            <label for="name">Name:</label>
+            <label style={{ color: "black" }} for="name">
+              Name:
+            </label>
             <input
               type="text"
               class="form-control"
-              value={singleCustomerFeedback.customer_name}
+              value={singleCustomerFeedback.customerName}
               disabled
             />
           </div>
           <div class="form-group">
-            <label for="email">Email:</label>
+            <label style={{ color: "black" }} for="email">
+              Email:
+            </label>
             <input
               type="email"
               class="form-control"
-              value={singleCustomerFeedback.customer_email}
+              value={singleCustomerFeedback.customerEmail}
               disabled
             />
           </div>
           <div class="form-group">
-            <label for="contact">Contact:</label>
+            <label style={{ color: "black" }} for="contact">
+              Contact:
+            </label>
             <input
               type="tel"
               class="form-control"
-              value={singleCustomerFeedback.customer_contact}
+              value={singleCustomerFeedback.customerContact}
               disabled
             />
           </div>
 
           <div class="form-group">
-            <label for="inquiry">Feedback:</label>
+            <label style={{ color: "black" }} for="inquiry">
+              Feedback:
+            </label>
             <textarea
               class="form-control"
               id="inquiry"
               rows="5"
-              value={singleCustomerFeedback.suggestion_description}
+              value={singleCustomerFeedback.suggestionDescription}
               disabled
             />
           </div>
-          <Link to={`/send-emails/${singleCustomerFeedback.customer_email}`}>
+          <Link to={`/send-emails/${singleCustomerFeedback.customerEmail}`}>
             <button type="submit" class="btn btn-primary">
               Reply
             </button>
