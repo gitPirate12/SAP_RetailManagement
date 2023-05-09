@@ -10,23 +10,23 @@ class CRMCustomerDashboard extends Component {
       <div style={{ border: "2px black solid" }} className="container">
         <h1>SAP Customers</h1>
         <div className="main-navigation-button-group">
-          <Link to="/customer-registration-form" target="_blank">
+          <Link to="/customer-registration-form">
             <button className="report-generating-button">
               Customer Registration Page
             </button>
           </Link>
-          <Link to="/customer-inquiry-form" target="_blank">
+          <Link to="/customer-inquiry-form">
             <button className="report-generating-button">
               Customer Inquiry Submission Page
             </button>
           </Link>
-          <Link to="/customer-feedback-form" target="_blank">
+          <Link to="/customer-feedback-form">
             <button className="report-generating-button">
               Customer Feedback Submission Page
             </button>
           </Link>
 
-          <Link to="#" target="_blank">
+          <Link to="/customer-sign-in-portal">
             <button className="report-generating-button">
               Cusomer Sign In
             </button>

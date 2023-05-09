@@ -23,6 +23,7 @@ import CustomerInquiryForm from "./components/CRMComponents/CRM-customer-inquiry
 import CustomerFeedbackForm from "./components/CRMComponents/CRM-customer-feedback-form";
 import CustomerRegistrationForm from "./components/CRMComponents/CRM-customer-registration-form";
 import CRMEmailPortal from "./components/CRMComponents/CRM-email-portal";
+import CRMCustomerSignInForm from "./components/CRMComponents/CRM-customer-sign-in-form";
 //reports
 import CustomerInformationReport from "./components/CRMComponents/CRM-customer-information-report";
 import CustomerInquiryReport from "./components/CRMComponents/CRM-customer-inquiry-report";
@@ -64,10 +65,7 @@ function App() {
             path="/single-customer-suggestion/:feedbackId"
             element={<CRMsingleFeedback />}
           />
-          <Route
-            path="/customer-account/:customer?"
-            element={<CustomerAccount />}
-          />
+          <Route path="/customer-account" element={<CustomerAccount />} />
           <Route
             path="/customer-account-edit-form/:customer?"
             element={<CustomerAccountEditForm />}
@@ -98,6 +96,10 @@ function App() {
             element={<CustomerRegistrationForm />}
           />
           <Route path="/send-emails/:email?" element={<CRMEmailPortal />} />
+          <Route
+            path="/customer-sign-in-portal"
+            element={<CRMCustomerSignInForm />}
+          />
         </Routes>
       </BrowserRouter>
     </div>

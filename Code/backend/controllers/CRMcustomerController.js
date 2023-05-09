@@ -64,3 +64,33 @@ exports.customerDeletionController = (request, response, next) => {
       console.log(error);
     });
 };
+
+exports.validateCustomerController = (request, response, next) => {
+  console.log("Login Email recieved: " + request.params.customerEmail);
+  console.log("Login Password received: " + request.params.customerPassword);
+
+  email = request.params.customerEmail;
+  pwd = request.params.customerPassword;
+
+  const customer = Customer.findOne({
+    customerEmail: email,
+    customerPassword: pwd,
+  })
+    .then((customer) => {
+      console.log("Successfully compared user status by controller!!!");
+      console.log("User Status: " + customer.userStatus);
+      console.log(customer);
+
+      if (customer.userStatus === "CUSTOMER") {
+        response.send({ valid: "CUSTOMER" });
+      } //end if
+      else {
+        response.send({ valid: false });
+      } //end else
+    })
+    .catch((error) => {
+      console.log("Comparing user status by controller is unsuccessful!!!");
+      console.log(error);
+      response.send({ valid: false });
+    });
+};

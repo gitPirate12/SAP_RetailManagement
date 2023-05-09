@@ -17,6 +17,13 @@ router.post(
   customerControllers.CustomerRegistrationController
 );
 
+//####################################
+//middleware for check customer user status
+router.get(
+  "/validate-login-user-status/:customerEmail/:customerPassword",
+  customerControllers.validateCustomerController
+);
+
 //middleware for recieve data coming from-> CRMcustomer-account-edit-page.ejs
 router.post(
   "/store-updated-customer-data",
