@@ -8,7 +8,7 @@ function App() {
             <BrowserRouter>
                 <header className="App-header"></header>
                 <Routes>
-                    <Route path="/" element={<SupplierMain />} />
+                    <Route path="/supplier-dash" element={<SupplierMain />} />
                     <Route path="/supplier" element={<SupplierMain />} />
                     <Route path="/supplyorder" element={<SupplyOrderMain />} />
                 </Routes>

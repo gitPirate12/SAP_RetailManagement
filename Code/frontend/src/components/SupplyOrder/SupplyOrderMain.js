@@ -20,7 +20,7 @@ function SupplyOrder() {
     return (
         <div className="SupplyOrderList">
             <SupplyOrderStyle>
-                <div className="income-content">
+                <div className="SupplyOrder-content">
                     <SideBar></SideBar>
                 </div>
                 {ButtonStatus && <SupplyOrderForm />}

@@ -19,7 +19,7 @@ function Supplier() {
     return (
         <SupplierStyle>
             <div className="supplierList">
-                <div className="income-content">
+                <div className="Supplier-content">
                     <SideBar></SideBar>
 
                     <div>

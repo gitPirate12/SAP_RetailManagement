@@ -101,7 +101,7 @@ export default function SupplyOrders() {
                         </tbody>
                     </table>
                     <button id="pdf button" onClick={generatePDF}>
-                        Download PDF
+                        Generate PDF
                     </button>
                 </div>
             </div>

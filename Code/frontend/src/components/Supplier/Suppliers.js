@@ -86,7 +86,7 @@ export default function Suppliers() {
                                 })}
                         </tbody>
                     </table>
-                    <button onClick={generatePDF}>Download PDF</button>
+                    <button onClick={generatePDF}>Generate PDF</button>
                 </div>
             </div>
         </SuppplierlistStyled>
