@@ -13,6 +13,7 @@
     "axios": "^1.2.1",
     "bootstrap": "^5.2.3",
     "chart.js": "^4.2.1",
+    "html2canvas": "^1.4.1",
     "js-cookie": "^3.0.1",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.5.28",
@@ -33,7 +34,8 @@
     "styled-components": "^5.3.9",
     "sweetalert2": "^11.7.3",
     "web-vitals": "^2.1.4",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "zustand": "^4.3.8"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -58,5 +60,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.1"
   }
 }

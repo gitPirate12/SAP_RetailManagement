@@ -10,10 +10,10 @@ function MainNavBar() {
         </a>
         <a href="/">Accounting and Finance</a>
         <a href="/crm-dashboard-area">Customer Relationship</a>
-        <a>Supply </a>
+        <a href="/supplier">Supply </a>
         <a>Sales </a>
         <a>Human Resources </a>
-        <a>Marketing</a>
+        <a href="/DashMarketing">Marketing</a>
         <a>Inventory</a>
         <a>Assets & Expenses</a>
         <a href="/crm-customers-area">Customers</a>
