@@ -50,6 +50,7 @@ function SupplyOrder() {
 }
 const SupplyOrderStyle = styled.div`
     .supplyOrderList {
+        color: black;
         display: flex;
         flex-direction: row;
         align-items: flex-start;

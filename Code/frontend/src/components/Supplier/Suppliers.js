@@ -6,7 +6,7 @@ import {
     user,
     phone,
     item,
-    card,
+    cards,
     edit,
     deletebutton,
 } from "../../utils/Icons";
@@ -42,7 +42,7 @@ export default function Suppliers() {
                                 <th>{user} Name</th>
                                 <th>{phone} Phone</th>
                                 <th>{item} Item</th>
-                                <th>{card} Payment</th>
+                                <th>{cards} Payment</th>
                                 <th>{edit} Edit</th>
                                 <th>{deletebutton} Delete</th>
                             </tr>
@@ -94,6 +94,7 @@ export default function Suppliers() {
 }
 const SuppplierlistStyled = styled.div`
     .content {
+        color: black;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -162,7 +163,7 @@ const SuppplierlistStyled = styled.div`
         margin-right: 10px;
     }
 
-    ${SID}, ${user}, ${phone}, ${item}, ${card}, ${edit}, ${deletebutton} {
+    ${SID}, ${user}, ${phone}, ${item}, ${cards}, ${edit}, ${deletebutton} {
         margin-right: 5px;
         font-size: 16px;
         color: #008cba;

@@ -111,6 +111,7 @@ export default function SupplyOrders() {
 
 const SuppplierOrderlistStyled = styled.div`
     .content {
+        color: black;
         display: float;
         flex-direction: column;
         align-items: center;
