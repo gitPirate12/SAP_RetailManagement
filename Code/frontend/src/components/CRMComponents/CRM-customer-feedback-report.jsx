@@ -11,7 +11,7 @@ function CustomerFeedbackReport() {
 
   const getCustomerFeedbakcs = async () => {
     const response = await Axios.get(
-      "http://localhost:5000/generate-customer-suggestions-report"
+      "http://localhost:5000/api/v1/generate-customer-suggestions-report"
     );
     setCustomerFeedabcks(response.data);
   };
@@ -23,7 +23,7 @@ function CustomerFeedbackReport() {
   const deleteCustomerFeedback = async (feedback_id) => {
     if (window.confirm("Are You Sure about Customer Inquiry Deletion?")) {
       const response = await Axios.post(
-        `http://localhost:5000/delete-single-suggestion/${feedback_id}`
+        `http://localhost:5000/api/v1/delete-single-suggestion/${feedback_id}`
       );
       if (response.status === 200) {
         getCustomerFeedbakcs();

@@ -10,7 +10,7 @@ function CustomerInformationReport() {
 
   const getCustomerInformation = async () => {
     const response = await Axios.get(
-      "http://localhost:5000/generate-customer-information-report"
+      "http://localhost:5000/api/v1/generate-customer-information-report"
     );
     setCustomerInformation(response.data);
   };
@@ -22,7 +22,7 @@ function CustomerInformationReport() {
   const deleteCustomer = async (email) => {
     if (window.confirm("Are You Sure about Customer Information Deletion?")) {
       const response = await Axios.post(
-        `http://localhost:5000/delete-customer/${email}`
+        `http://localhost:5000/api/v1/delete-customer/${email}`
       );
       if (response.status === 200) {
         getCustomerInformation();

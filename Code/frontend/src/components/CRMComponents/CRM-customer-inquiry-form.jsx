@@ -20,7 +20,7 @@ function CustomerInquiryForm() {
   };
 
   const sendDataToDB = () => {
-    Axios.post("http://localhost:5000/store-customer-inquiry", {
+    Axios.post("http://localhost:5000/api/v1/store-customer-inquiry", {
       inquiryType: values.inquiryType,
       inquiryDescription: values.inquiryDescription,
       customerContactNumber: values.customerContactNumber,

@@ -67,7 +67,7 @@ function App() {
           />
           <Route path="/customer-account" element={<CustomerAccount />} />
           <Route
-            path="/customer-account-edit-form/:customer?"
+            path="/customer-account-edit-form"
             element={<CustomerAccountEditForm />}
           />
           <Route

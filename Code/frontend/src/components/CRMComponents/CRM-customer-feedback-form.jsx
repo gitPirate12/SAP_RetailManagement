@@ -19,7 +19,7 @@ function CustomerFeedbackForm() {
   };
 
   const sendDataToDB = () => {
-    Axios.post("http://localhost:5000/store-customer-suggestion", {
+    Axios.post("http://localhost:5000/api/v1/store-customer-suggestion", {
       customerName: values.customerName,
       customerEmail: values.customerEmail,
       customerFeedback: values.customerFeedback,

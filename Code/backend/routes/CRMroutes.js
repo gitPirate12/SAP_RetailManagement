@@ -24,10 +24,18 @@ router.get(
   customerControllers.validateCustomerController
 );
 
+//####################################
+//middleware for load customer-account
+router.get(
+  "/load-customer-account/:customerEmail/:customerPassword",
+  customerControllers.loadCustomerAccountController
+);
+
+//################################################
 //middleware for recieve data coming from-> CRMcustomer-account-edit-page.ejs
 router.post(
-  "/store-updated-customer-data",
-  controllers.customerAccountEditController
+  "/edit-customer-account",
+  customerControllers.customerAccountEditController
 );
 
 //##############################################

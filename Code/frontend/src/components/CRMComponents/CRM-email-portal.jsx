@@ -19,7 +19,7 @@ function CRMEmailPortal() {
   };
 
   const sendDataToDB = () => {
-    Axios.post("http://localhost:5000/crm-email", {
+    Axios.post("http://localhost:5000/api/v1/crm-email", {
       recipientEmail: values.recipientEmail,
       subject: values.subject,
       message: values.message,

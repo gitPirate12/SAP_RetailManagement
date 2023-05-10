@@ -21,7 +21,7 @@ function CustomerRegistrationForm() {
   };
 
   const sendDataToDB = () => {
-    Axios.post("http://localhost:5000/customer-registration-data", {
+    Axios.post("http://localhost:5000/api/v1/customer-registration-data", {
       customerAddress: values.customerAddress,
       customerConfirmedPassword: values.customerConfirmedPassword,
       customerContactNumber: values.customerContactNumber,

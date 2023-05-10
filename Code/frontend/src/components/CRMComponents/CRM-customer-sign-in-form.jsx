@@ -33,7 +33,7 @@ function CRMCustomerSignInForm() {
 
   const compareLoginCredentialsWithDatabase = () => {
     Axios.get(
-      `http://localhost:5000/validate-login-user-status/${values.loginEmail}/${values.loginPassword}`
+      `http://localhost:5000/api/v1/validate-login-user-status/${values.loginEmail}/${values.loginPassword}`
     )
       .then((result) => {
         console.log("successful login credential comparing!!!");

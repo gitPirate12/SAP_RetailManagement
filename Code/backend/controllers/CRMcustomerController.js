@@ -94,3 +94,85 @@ exports.validateCustomerController = (request, response, next) => {
       response.send({ valid: false });
     });
 };
+
+exports.loadCustomerAccountController = (request, response, next) => {
+  console.log("Customer Email recieved: " + request.params.customerEmail);
+  console.log("Customer Password received: " + request.params.customerPassword);
+
+  email = request.params.customerEmail;
+  pwd = request.params.customerPassword;
+
+  const customer = Customer.findOne({
+    customerEmail: email,
+    customerPassword: pwd,
+  })
+    .then((customer) => {
+      console.log("Successfully  get customer information by controller!!!");
+      console.log(customer);
+
+      response.send(customer);
+    })
+    .catch((error) => {
+      console.log(
+        "Getting customer information by controller is unsuccessful!!!"
+      );
+      console.log(error);
+      response.send("Unsuccessful Loading Data");
+    });
+};
+
+exports.customerProfilePictureUploadingController = (
+  request,
+  response,
+  next
+) => {
+  const customer_profile_picture = request.file;
+  const email = request.body.email;
+  let imageURL = null;
+  if (customer_profile_picture) {
+    console.log("customer_profile_picture is available!!!");
+    let tempImageURL = new String(customer_profile_picture.path);
+    imageURL = "/" + tempImageURL.replace("\\", "/");
+  } //end if
+  else {
+    imageURL = "/Customer_Profile_Pictures/default_profile_picture.png";
+  } //end else
+
+  console.log("Image URL: " + imageURL);
+  Customer.uploadCustomerProfilePicture(email, imageURL);
+
+  //redirect to  CRMcustomer-account-page.ejs
+  const singleCustomerData = Customer.fetchSingleCustomerData(email).then(
+    (singleCustomerData) => {
+      response.render("CRMcustomer-account-page.ejs", {
+        customerData: singleCustomerData,
+        documentTitle: singleCustomerData.name,
+      });
+    }
+  );
+};
+
+exports.customerAccountEditController = (request, response, next) => {
+  const rcustomerEmail = request.body.customerEmail;
+  const rcustomerName = request.body.customerName;
+  const rcustomerContact = request.body.customerContact;
+  const rcustomerAddress = request.body.customerAddress;
+  const rcustomerPassword = request.body.customerPassword;
+
+  //pass data to Customer Model
+  Customer.findOneAndUpdate(
+    { customerEmail: rcustomerEmail, customerPassword: rcustomerPassword },
+    {
+      customerName: rcustomerName,
+      customerAddress: rcustomerAddress,
+      customerContact: rcustomerContact,
+    }
+  )
+    .then((result) => {
+      console.log("Customer Information Updated Successfully!!!");
+      console.log(result);
+    })
+    .catch((error) => {
+      console.log("Updating customer Information is unsuccessfull!!!");
+    });
+};

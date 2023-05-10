@@ -10,7 +10,7 @@ function CRMsingleInquiry() {
 
   const getSingleCustomerInquiry = async (inquiryId) => {
     const response = await Axios.get(
-      `http://localhost:5000/single-customer-inquiry/${inquiryId}`
+      `http://localhost:5000/api/v1/single-customer-inquiry/${inquiryId}`
     );
     setSingleCustomerInquiry(response.data);
   };

@@ -10,7 +10,7 @@ function CRMsingleFeedback() {
 
   const getSingleCustomerFeedback = async (feedbackId) => {
     const response = await Axios.get(
-      `http://localhost:5000/single-customer-suggestion/${feedbackId}`
+      `http://localhost:5000/api/v1/single-customer-suggestion/${feedbackId}`
     );
     setSingleCustomerFeedaback(response.data);
   };
