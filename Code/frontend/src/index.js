@@ -8,11 +8,12 @@ import { GlobalStyle } from "./styles/GlobalStyles";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <React.StrictMode>
-        <GlobalProvider>
-            <App />
-        </GlobalProvider>
-    </React.StrictMode>
+  <React.StrictMode>
+    <GlobalStyle />
+    <GlobalProvider>
+      <App />
+    </GlobalProvider>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
