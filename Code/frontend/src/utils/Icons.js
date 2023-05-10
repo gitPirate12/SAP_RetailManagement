@@ -1,3 +1,20 @@
+
+
+export const supplier = <i class="fa-sharp fa-solid fa-user"></i>;
+export const supplyorder = <i class="fa-solid fa-cart-shopping"></i>;
+export const deletebutton = <i class="fa-sharp fa-solid fa-trash"></i>;
+export const percent = <i class="fa-solid fa-percent"></i>;
+export const truck = <i class="fa-solid fa-truck-field"></i>;
+export const item = <i class="fa-solid fa-sitemap"></i>;
+export const amount = <i class="fa-solid fa-calculator"></i>;
+export const orderID = <i class="fa-solid fa-cart-shopping"></i>;
+export const SID = <i class="fa-sharp fa-solid fa-user-secret"></i>;
+export const price = <i class="fa-solid fa-dollar-sign"></i>;
+export const date = <i class="fa-solid fa-calendar-days"></i>;
+export const phone = <i class="fa-solid fa-phone"></i>;
+export const card = <i class="fa-solid fa-address-card"></i>;
+export const user = <i class="fa-sharp fa-solid fa-user"></i>;
+
 export const dashboard = <i className="fa-solid fa-chart-line"></i>
 export const transactions = <i className="fa-solid fa-credit-card"></i>
 export const categories = <i className="fa-solid fa-tags"></i>
@@ -29,3 +46,4 @@ export const tv = <i className="fa-solid fa-tv"></i>
 export const circle = <i className="fa-solid fa-circle-dot"></i>
 export const cross = <i className="fa-sharp fa-solid fa-xmark"></i>
 export const edit = <i className="fa-solid fa-pen-to-square"></i>
+

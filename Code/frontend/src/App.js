@@ -1,8 +1,12 @@
+import "./App.css";
+//router
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
 import './App.css';
 
-import Income from './components/Income/Income';
+//context files
 import { useGlobalContext } from './context/globalContext';
+
+//component importing
 import Expense from './components/Expense/Expense';
 import HomePage from './components/Dashboard/ArDashPage';
 import ArSideNav from './SideBars/ArSideNav';
@@ -12,7 +16,9 @@ import Admin from './components/marketing/admin';
 import MarketingAdd from './components/marketing/Marketing.Add';
 import MarketingDashboard from './components/marketing/MarketingDashboard';
 import MarketingEdit from './components/marketing/Marketing.Edit';
-
+import SupplyOrderMain from "./components/SupplyOrder/SupplyOrderMain";
+import SupplierMain from "./components/Supplier/SupplierMain";
+import Income from './components/Income/Income';
 function App() {
 
   const global = useGlobalContext()
@@ -33,11 +39,15 @@ function App() {
             <Route path='/addMarketing' exact element={<MarketingAdd />} />
             <Route path='/editMarketing' exact element={<MarketingEdit/>} />
             <Route path='/DashMarketing' exact element={<MarketingDashboard />} />
+            <Route path="/supplier-dash" element={<SupplierMain />} />
+            <Route path="/supplier" element={<SupplierMain />} />
+            <Route path="/supplyorder" element={<SupplyOrderMain />} />
           </Routes>  
               
       </BrowserRouter>
     </div>
   );
+
 }
 
 export default App;
