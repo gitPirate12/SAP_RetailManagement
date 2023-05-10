@@ -1,9 +1,11 @@
-.App {
-    width: 100%;
-    height: 120vh;
-    background-color: #576cbc;
+
+.App{
+  width: 100vw;
+  height: 100vh;
+  
 }
-body {
-    padding: 0;
-    margin: 0;
+.body{
+  margin: 0;
+  padding: 0;
+
 }
