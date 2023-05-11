@@ -56,8 +56,8 @@ import ItemDisplay from "./components/Inventory/Items";
 import bg from './img/bg.png'
 import {MainLayout} from './styles/Layouts'
 import Orb from './components/Orb/Orb'
-import Navigation from './components/Navigation/Navigation'
-import MainHome from "./components/Home/Home";
+import AEsideBar from "./SideBars/AEsideBar";
+import MainHome from './components/Home/Home';
 import Assets from './components/Assets/Assets'
 import Liabilities from './components/Liabilities/Liabilities';
 import ALDashboard from './components/Dashboard/Dashboard'

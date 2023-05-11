@@ -17,6 +17,6 @@ export const ArSideBarData = [
         icon: expenses,
         link: "/expense"
     },
-    
+
 ];
 

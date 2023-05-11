@@ -5,7 +5,8 @@ import { useGlobalContext } from '../../context/globalContext';
 import { InnerLayout } from '../../styles/Layouts';
 import ItemViwe from '../ItemViwe/ItemViwe';
 import LiabilityForm from './LiabilityForm';
-import Navigation from '../Navigation/Navigation';
+import AEsideBar from '../../SideBars/AEsideBar';
+
 function Liabilities() {
     const {liabilities, getLiabilities, deleteLiability, totalLiabilities, totalInterest} = useGlobalContext()
 
@@ -17,10 +18,10 @@ function Liabilities() {
     return (
         <LiabilityStyled>
             <InnerLayout>
-                <h1>Liabilities</h1><br></br>
-                {/* <Navigation active={active} setActive={setActive} /> */}
                 <div className="liability-content">
+                <div><AEsideBar/></div>
                     <div className="form-container">
+                        <h1>Liabilities</h1><br></br>
                         <LiabilityForm />
                 
                         <div className="liability">
@@ -68,7 +69,7 @@ const LiabilityStyled = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        background: #FCF6F9;
+        background: #19376D;
         border: 2px solid #FFFFFF;
         box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
         border-radius: 20px;
