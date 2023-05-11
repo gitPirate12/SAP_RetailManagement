@@ -80,7 +80,7 @@ const Dashboard = () => {
   return (
     <div>
     <Sidebar/>
-    <div className="dashboard-container"   >
+    <div className="dashboard-container"  style={{ marginLeft: '200px' }} >
        
       <h1 className="dashboard-title">Dashboard</h1>
       <div className="dashboard-stats">

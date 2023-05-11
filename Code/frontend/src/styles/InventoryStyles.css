@@ -7,7 +7,7 @@
   --error: #e7195a;
 }
 body {
-  background: #A5D7E8;
+  background: #576CBC;
   margin: 0;
   font-family: "Poppins";
 }
@@ -105,6 +105,7 @@ input.error {
 
 
 .dashboard-charts-container {
+  margin-left: 200px ;
   display: flex;
   flex-direction: column;
   justify-content: center;

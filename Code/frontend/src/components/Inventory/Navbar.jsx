@@ -8,7 +8,7 @@ const NavbarStyled = styled.div`
   left: 0;
   height: 100%;
   width: 200px;
-  background-color: #A5D7E8;
+  background-color: 0B2447 ;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   z-index: 100;
   display: flex;
@@ -32,7 +32,7 @@ const NavbarStyled = styled.div`
 }
 
 .sidebar a {
-  color: #333;
+  color: white !important;
   text-decoration: none;
 }
 
@@ -53,7 +53,7 @@ const NavbarStyled = styled.div`
 .sidebar-subtitle {
   font-size: 0.7rem;
   line-height: 1rem;
-  color: #666;
+  color: white;
   margin-bottom: 1.5rem;
 }
 

@@ -19,7 +19,7 @@ const ItemDisplay = () => {
     };
 
     fetchItems();
-  }, [dispatch]);
+  }, [items]);
 
   const handleSearch = (searchTerm) => {
     if (!searchTerm) {
@@ -40,21 +40,25 @@ const ItemDisplay = () => {
   }, [items]);
 
   return (
-    <div className="container">
-      <Sidebar />
-      <div className="content" style={{ marginLeft: "200px" }} >
-        <div><SearchFilter onSearch={handleSearch} /></div>
-        <div className="home">
-          <div className="Items">
-            {filteredItems &&
-              filteredItems.map((item) => (
-                <InventoryDetails item={item} key={item._id} />
-              ))}
-          </div>
+  <div className="container" style={{ marginLeft: "400px" }}>
+    <Sidebar />
+    <div className="content" style={{  width: '100%', display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start', alignContent: 'flex-start' }}>
+      <div style={{ width: '800px' , marginLeft: '20px' }}>
+        <SearchFilter onSearch={handleSearch} />
+      </div>
+      <div className="home" style={{ flexGrow: 1, display: 'flex' }}>
+        <div className="Items" style={{ width: '100%' }}>
+          {filteredItems &&
+            filteredItems.map((item) => (
+              <InventoryDetails item={item} key={item._id} />
+            ))}
         </div>
       </div>
     </div>
-  );
+  </div>
+);
+
+  
               }
 
 export default ItemDisplay;

@@ -19,13 +19,46 @@ exports.addItem = async (req, res) => {
         date
     })
 
+    let emptyFields = []
+
+    if(!name){
+        emptyFields.push('name')
+    }
+
+    if(!category){
+        emptyFields.push('category')
+    }
+
+    if(!price){
+        emptyFields.push('price')
+    }
+
+    if(!quantity){
+        emptyFields.push('quantity')
+    }
+
+    if(!description){
+        emptyFields.push('description')
+    }
+
+    if(!date){
+        emptyFields.push('date')
+    }
+
+    if(emptyFields.length > 0){
+        return res.status(400).json({error: 'Please fill in all the fields', emptyFields})
+    }
+
+    
+
+
     //validations 
     try {
         if(!name || !category || !price || !quantity|| !description || !date){
             return res.status(400).json({message: 'All fields are required!'})
         }
         
-        if(price <= 0 || typeof price !== 'number'){
+        if(price <= 0 ){
             return res.status(400).json({message: 'Valid price required'})
         }
         //saving data into the database

@@ -62,7 +62,7 @@ const InventoryDetails = ({ item }) => {
   return (
     
     
-    <div className="Inventory-details">
+    <div className="Inventory-details" >
       <h4>{item.name}</h4>
       <p>
         <strong>Name: </strong>
