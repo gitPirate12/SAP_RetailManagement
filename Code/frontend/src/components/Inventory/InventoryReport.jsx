@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { saveAs } from "file-saver";
 import * as XLSX from "xlsx";
 import axios from "axios";
+import Sidebar from './Navbar';
 
 const InventoryReport = () => {
   const [items, setItems] = useState([]);
@@ -58,7 +59,8 @@ const InventoryReport = () => {
   };
 
   return (
-    <div className="Inventory-report">
+    <div><Sidebar/>
+    <div className="Inventory-report" style={{ marginLeft: '300px' }} >
       <h3>Inventory Report</h3>
       <table>
         <thead>
@@ -93,6 +95,7 @@ const InventoryReport = () => {
   borderRadius: '4px', 
   cursor: 'pointer' 
 }}>Export to Excel</button>
+    </div>
     </div>
   );
 };

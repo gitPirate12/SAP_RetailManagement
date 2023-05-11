@@ -1,5 +1,6 @@
 import emailjs from 'emailjs-com';
 import { useState } from 'react';
+import Sidebar from './Navbar';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
@@ -23,6 +24,8 @@ const ContactForm = () => {
   };
 
   return (
+    <div>
+    <Sidebar/>
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <form onSubmit={handleSubmit}>
         <h2>Send inventory request</h2>
@@ -38,6 +41,7 @@ const ContactForm = () => {
 
         <button style={{ display: 'block', margin: 'auto', marginTop: '1rem' }} type="submit">Send</button>
       </form>
+    </div>
     </div>
   );
 };
