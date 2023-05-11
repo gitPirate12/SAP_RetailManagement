@@ -197,7 +197,8 @@ export const GlobalProvider = ({children}) => {
     const totalDepreciation = () => {
         let totalDep= 0;
         assets.forEach((asset) =>{
-            totalDep = ((asset.amount-asset.rValue)/asset.years).toFixed(2);
+            const dep = (asset.amount - asset.rValue) / asset.years;
+            totalDep += parseFloat(dep.toFixed(2));
         })
 
         return totalDep;
@@ -241,7 +242,8 @@ export const GlobalProvider = ({children}) => {
     const totalInterest =()=>{
         let interest = 0;
         liabilities.forEach((liability)=>{
-            interest = ((liability.amount * liability.ratio * liability.years)/100).toFixed(2);
+            const rate = (liability.amount * liability.ratio * liability.years) / 100;
+            interest += parseFloat(rate.toFixed(2));
         })
         return interest;
     }

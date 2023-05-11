@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { signout } from '../../utils/Icons'
-import { menuItems } from '../../utils/menuItems'
+import { signout } from '../utils/Icons'
+import { AEsideBarData } from './AEsideBarDate'
 
 
-function Navigation({active, setActive}) {
-    
+function AEsideBar(){   
     return (
         <NavStyled>
              <div className="user-con">
@@ -13,15 +12,13 @@ function Navigation({active, setActive}) {
                  <p>Retail Management System</p>
             </div>
             <ul className="menu-items">
-                {menuItems.map((item) => {
-                    return <li
-                        key={item.id}
-                        onClick={() => setActive(item.id)}
-                        className={active === item.id ? 'active': ''}>
-                        
-                        <span>{item.title}</span>
-                    </li>
-                })}
+                {AEsideBarData.map((val, key) => {
+                    return(                  
+                        <li key={key} className='row'  onClick={()=>(window.location.pathname = val.link)}>
+                            {""}
+                            <div className='title'>{val.title}</div>
+                        </li>
+                )})}
             </ul>
             <div className="bottom-nav">
                 <li>
@@ -101,4 +98,4 @@ const NavStyled = styled.nav`
     }
 `;
 
-export default Navigation;
+export default AEsideBar;

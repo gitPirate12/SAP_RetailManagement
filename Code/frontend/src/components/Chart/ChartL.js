@@ -26,25 +26,24 @@ ChartJs.register(
     ArcElement,
 )
 
-function Chart() {
-    const {liabilities} = useGlobalContext()
+function ChartL() {
+    const {assets} = useGlobalContext()
 
     const data = {
-        labels: liabilities.map((inc) =>{
+        labels: assets.map((inc) =>{
             const {date} = inc
             return dateFormat(date)
         }),
         datasets: [
-            
             {
-                label: 'Liabilities',
+                label: 'Assets',
                 data: [
-                    ...liabilities.map((liability) => {
-                        const {amount} = liability
+                    ...assets.map((asset) => {
+                        const {amount} = asset
                         return amount
                     })
                 ],
-                backgroundColor: 'red',
+                backgroundColor: 'green',
                 tension: .2
             }
         ]
@@ -67,4 +66,4 @@ const ChartStyled = styled.div`
     height: 100%;
 `;
 
-export default Chart;
+export default ChartL;

@@ -21,10 +21,6 @@ export const ArSideBarData = [
         title: "Purchase Requests",
         icon: dashboard,
         link: "/home"
-    },{
-        title: "Signout",
-        icon: dashboard,
-        link: "/"
     },
 ];
 
