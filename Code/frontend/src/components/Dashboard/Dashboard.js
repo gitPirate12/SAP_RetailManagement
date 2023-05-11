@@ -4,7 +4,7 @@ import { useGlobalContext } from '../../context/globalContext';
 import { InnerLayout } from '../../styles/Layouts';
 import Chart from '../Chart/Chart';
 
-function Dashboard() {
+function ALDashboard() {
     const {totalAssets, getAssets, getLiabilities ,totalLiabilities, totalDepreciation,totalInterest } = useGlobalContext()
 
     useEffect(() => {
@@ -100,4 +100,4 @@ const DashboardStyled = styled.div`
     }
 `;
 
-export default Dashboard;
+export default ALDashboard;

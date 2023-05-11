@@ -5,7 +5,7 @@ function MainNavBar() {
     return (
         <MainNavStyled>
             <div className="leftside">
-                <a href="/home">
+                <a href="/">
                     <h1>SAP Retail</h1>
                 </a>
                 <a href="/">Accounting and Finance</a>
@@ -18,7 +18,7 @@ function MainNavBar() {
                 <a href="/crm-customers-area">Customers</a>
 
                 <a href="/inventorydashboard">Inventory</a>
-                <a>Assets & Expenses</a>
+                <a href="/ae_dashboard">Assets & Expenses</a>
             </div>
         </MainNavStyled>
     );
