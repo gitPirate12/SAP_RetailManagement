@@ -39,6 +39,19 @@ import CRMsingleInquiry from "./components/CRMComponents/CRM-single-inquiry";
 import CRMsingleFeedback from "./components/CRMComponents/CRM-single-feedback";
 import CustomerAccount from "./components/CRMComponents/CRM-customer-account";
 
+//inventory
+import Home from './components/Inventory/Items'
+import AddItem from './components/Inventory/AddItem'
+import Navbar from './components/Inventory/Navbar';
+import InventoryReport from './components/Inventory/InventoryReport';
+import Orders from './components/Inventory/Orders';
+import Dashboard from './components/Inventory/Dashboard';
+import InventoryDetails from "./components/Inventory/InventoryDetails";
+//styles
+import './styles/InventoryStyles.css';
+import ItemDisplay from "./components/Inventory/Items";
+
+
 function App() {
   const global = useGlobalContext();
   console.log(global);
@@ -60,6 +73,9 @@ function App() {
             <Route path="/supplier-dash" element={<SupplierMain />} />
             <Route path="/supplier" element={<SupplierMain />} />
             <Route path="/supplyorder" element={<SupplyOrderMain />} />
+
+            
+
             <Route path="/crm-dashboard-area" exact element={<CRMDashboard />} />
             <Route path="/crm-customers-area" exact
             element={<CRMCustomerDashboard />}
@@ -103,7 +119,19 @@ function App() {
           />
           <Route path="/send-emails/:email?" element={<CRMEmailPortal />} />
           <Route path="/customer-sign-in-portal" element={<CRMCustomerSignInForm />} />
+
+          <Route path="/inventory-home" element={<Home/>} />
+          <Route path="/add-item" element={<AddItem />} />
+          <Route path="/reports" element={<InventoryReport />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/inventorydashboard" element={<Dashboard />} />
+          <Route path="/inventory-details" element={<ItemDisplay/>}/>
+         
+              
         </Routes>     
+
+      
+
       </BrowserRouter>
     </div>
   );
