@@ -24,19 +24,12 @@ function IncomeItem({
     <IncomeItemStyled>
        
         <div className='content'>
-            <h5>{title}</h5>
-            <p>{dollar}{amount}</p>
-                <div className='inner-content'>
-                    <div className='text'>                        
-                        <p>{calender}{dateFormat(date)}</p>
-                        <p>
-                            {comment}
-                            {description}
-                        </p>
-                        <p>{book}{category}</p>
-                        <p>{bitcoin}{type}</p>
-                    </div>
-                    <div>
+            <div className='outer-left'>
+                <h5>{title}</h5>
+                <p>{dollar}{amount}</p>
+            </div>
+            <div className='outer-right'>
+                    
                         <Button 
                         icon={edit}
                         bPad={'1rem'}
@@ -47,7 +40,7 @@ function IncomeItem({
                         hColor={'var(--color-green)'}
                         onClick={() => setEditIncomePopUp(true)}
                         />
-                    </div>
+                    
                     <div className='"btn-con'>
                         <Button 
                         icon={trash}
@@ -58,7 +51,19 @@ function IncomeItem({
                         iColor={'#fff'}
                         hColor={'var(--color-green)'}
                         onClick={() => deleteItem(id)}/>
-                    </div>                                    
+                    </div> 
+            </div>            
+                <div className='inner-content'>
+                    <div className='text'>                        
+                        <p>{calender}{dateFormat(date)}</p>
+                        <p>
+                            {comment}
+                            {description}
+                        </p>
+                        <p>{book}{category}</p>
+                        <p>{bitcoin}{type}</p>
+                    </div>
+                                                       
                 </div> 
                 <Popup trigger={editIncomePopup} setTrigger={setEditIncomePopUp}>
                         <EditIncome key={id}
@@ -88,6 +93,16 @@ const IncomeItemStyled = styled.div`
     gap: 1rem;
     width: 100%;
     color: #222260;
+    .outer-left{
+        display: flex;
+        flex-direction: row;
+        align-items: start !important;
+    }
+    .outer-right{
+        display: flex;
+        flex-direction: row;
+        align-items: end !important;
+    }
     .icon{
         width: 80px;
         height: 80px;
