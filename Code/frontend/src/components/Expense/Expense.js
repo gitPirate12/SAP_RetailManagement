@@ -12,7 +12,7 @@ import ArSideNav from '../../SideBars/ArSideNav'
 import PurchaseItem from './PurchaseItem'
 import jsPDF from 'jspdf';
 import "jspdf-autotable";
-
+import { dateFormat } from '../../utils/dateFormat'
 
 
 function Expense() {
@@ -40,7 +40,7 @@ function Expense() {
                 expense.type,
                 expense.description,
                 expense.amount,
-                expense.date,           
+                dateFormat(expense.date),           
                 
             ];
             tableRows.push(expensesdata);
@@ -71,7 +71,7 @@ function Expense() {
                 purchase.amount,
                 purchase.price,
                 purchase.discount,
-                purchase.deliverydate                
+                dateFormat(purchase.deliverydate)                
             ];
             tableRows.push(purchasesdata);
         });

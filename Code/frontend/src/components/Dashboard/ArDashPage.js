@@ -25,7 +25,7 @@ useEffect(()=> {
     <div className="wrapper">
       <ArSideNav></ArSideNav>
       <div className="stats">
-        <div className="stats-data-container">
+        <div className="stats-data-container1">
           <div className="stats-item">
             <h2 className="stats-text">
               Total Sales: <span className="stats-data">${}</span>
@@ -51,6 +51,8 @@ useEffect(()=> {
               Closing Stock Value: <span className="stats-data">${totalStockValue()}</span>
             </h2>
           </div>
+          </div>
+          <div className='stats-data-container2'>
           <div className="stats-item">
             <h2 className="stats-text">
               Discounts Received: <span className="stats-data">${totalPurchaseDiscounts()}</span>
@@ -71,7 +73,7 @@ useEffect(()=> {
               Gross Profit: <span className="stats-data">${grossProfit()}</span>
             </h2>
           </div>
-        </div>
+         </div>
       </div>
       <div className='chart-container'>
       <div className="chart1">
@@ -93,24 +95,27 @@ const DashboardStyled = styled.div`
     flex-direction: column;    
     position: relative;
     background-color: #576CBC ;
-    min-height: 88%;
+    
+    .stats-item{
+      height: 100px;
+    }
     .chart1{
       height: 300px;
-      width: 400px;
+      width: 500px;
     }
     .chart2{
       height: 300px;
-      width: 400px;
+      width: 500px;
     }
     .chart-container{
       display: flex;
       flex-direction: column;
     }
     .stats-data-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  gap: 2rem;
+    display: relative;
+    
+    
+    gap: 1rem;
 }
     .stats-text{
       display: flex; 
