@@ -5,13 +5,17 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { GlobalProvider } from "./context/globalContext";
 import { GlobalStyle } from "./styles/GlobalStyles";
+import { ItemsContextProvider } from './context/ItemContext';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
         <GlobalProvider>
+        <ItemsContextProvider>
             <App />
+        </ItemsContextProvider>
         </GlobalProvider>
+        
     </React.StrictMode>
 );
 

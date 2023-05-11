@@ -14,7 +14,7 @@ function MainNavBar() {
                 <a>Sales </a>
                 <a>Human Resources </a>
                 <a href="/DashMarketing">Marketing</a>
-                <a>Inventory</a>
+                <a href="/inventorydashboard">Inventory</a>
                 <a>Assets & Expenses</a>
             </div>
         </MainNavStyled>
