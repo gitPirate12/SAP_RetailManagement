@@ -1,12 +1,7 @@
-
-
-
-
-
 import "./App.css";
 //router
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
-import './App.css';
+
 
 //context files
 import { useGlobalContext } from './context/globalContext';
@@ -52,7 +47,6 @@ function App() {
       <BrowserRouter>
         <header className="App-header">
           <MainNavBar></MainNavBar>
-
         </header>          
           <Routes>
             <Route path="/" element= {<HomePage/>}/>
