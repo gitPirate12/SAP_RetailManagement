@@ -135,7 +135,7 @@ const SuppplierOrderlistStyled = styled.div`
     .inner-content {
         display: flex;
         flex-direction: column;
-        width: 1000px;
+        width: 1100px;
         background-color: #fff;
         border-radius: 10px;
         padding: 20px;
@@ -184,5 +184,10 @@ const SuppplierOrderlistStyled = styled.div`
 
     .update {
         margin-right: 10px;
+        background-color: green;
+    }
+    .delete {
+        margin-right: 10px;
+        background-color: red;
     }
 `;

@@ -150,7 +150,8 @@ const SupplyOrderStore = create((set) => ({
         });
         //get current SupplyOrder values
     },
-    updateSupplyOrder: async () => {
+    updateSupplyOrder: async (e) => {
+        e.preventDefault();
         const {
             updateSupplyOrderForm: {
                 _id,
@@ -165,19 +166,40 @@ const SupplyOrderStore = create((set) => ({
             },
             SupplyOrderData,
         } = SupplyOrderStore.getState();
-
-        //send update request
-        const res = await axios.patch(`${BASE_URL}updateSupplyOrder/${_id}`, {
-            orderID,
-            SID,
-            supplierName,
-            item,
-            amount,
-            price,
-            discount,
-            deliverydate,
-        });
-
+        if (
+            !orderID ||
+            !SID ||
+            !supplierName ||
+            !item ||
+            !amount ||
+            !price ||
+            !discount ||
+            !delivery
+        ) {
+            alert("All fields are required.");
+            return;
+        } else if (isNaN(price) || price <= 0) {
+            alert("Invalid Price");
+            return;
+        } else if (isNaN(amount) || amount <= 0) {
+            alert("Invalid Amount");
+            return;
+        } else {
+            //send update request
+            const res = await axios.patch(
+                `${BASE_URL}updateSupplyOrder/${_id}`,
+                {
+                    orderID,
+                    SID,
+                    supplierName,
+                    item,
+                    amount,
+                    price,
+                    discount,
+                    deliverydate,
+                }
+            );
+        }
         //update state
         const newSupplyOrders = [...SupplyOrderData];
         const SupplyOrderIndex = SupplyOrderData.findIndex((SupplyOrder) => {

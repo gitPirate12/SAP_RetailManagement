@@ -72,16 +72,22 @@ export default function SupplierForm() {
     );
 }
 const FormStyled = styled.form`
-    background-color: #f2f2f2;
+    background-color: #576cbc;
     padding: 40px;
     border-radius: 10px;
     margin: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    color: black;
 
     .form {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: center
+        width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;;
 
         h2 {
             font-size: 28px;
@@ -90,7 +96,7 @@ const FormStyled = styled.form`
 
         form {
             width: 100%;
-            max-width: 800px; /* updated max-width */
+            max-width: 800px;
             display: flex;
             flex-direction: column;
             align-items: center;
