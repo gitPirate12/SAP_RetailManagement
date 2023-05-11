@@ -123,7 +123,7 @@ export default function SupplyOrderUpdateForm() {
     );
 }
 const FormStyled = styled.form`
-    background-color: #f2f2f2;
+    background-color: #576cbc;
     padding: 20px;
     border-radius: 10px;
     margin: 20px;

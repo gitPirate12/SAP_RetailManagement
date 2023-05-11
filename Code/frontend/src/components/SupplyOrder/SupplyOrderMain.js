@@ -41,9 +41,11 @@ function SupplyOrder() {
                     {!ButtonStatus && <SupplyOrders />}
 
                     <div className="cancle">
-                        {" "}
                         {ButtonStatus && (
-                            <button onClick={() => setButtonStatus(false)}>
+                            <button
+                                className="cancle"
+                                onClick={() => setButtonStatus(false)}
+                            >
                                 Cancle
                             </button>
                         )}
@@ -86,7 +88,6 @@ const SupplyOrderStyle = styled.div`
         align-items: center;
         justify-content: flex-end;
         margin-top: 20px;
-        background-color: #008cba;
     }
 
     button {
