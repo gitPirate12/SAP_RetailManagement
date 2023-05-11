@@ -141,24 +141,25 @@ const SupplierStore = create((set) => ({
                 itemType,
                 paymentDetails,
             });
+
+            //update state
+            const newSuppliers = [...supplierData];
+            const supplierIndex = supplierData.findIndex((supplier) => {
+                return supplier._id === _id;
+            });
+            newSuppliers[supplierIndex] = res.data;
+            set({
+                supplierData: newSuppliers,
+                updateSupplier: {
+                    _id: null,
+                    SID: "",
+                    supplierName: "",
+                    phone: "",
+                    itemType: "",
+                    paymentDetails: "",
+                },
+            });
         }
-        //update state
-        const newSuppliers = [...supplierData];
-        const supplierIndex = supplierData.findIndex((supplier) => {
-            return supplier._id === _id;
-        });
-        newSuppliers[supplierIndex] = res.data;
-        set({
-            supplierData: newSuppliers,
-            updateSupplier: {
-                _id: null,
-                SID: "",
-                supplierName: "",
-                phone: "",
-                itemType: "",
-                paymentDetails: "",
-            },
-        });
     },
 }));
 export default SupplierStore;

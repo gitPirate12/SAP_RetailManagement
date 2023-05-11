@@ -40,7 +40,7 @@ export default function SupplyOrderUpdateForm() {
                         />
                     </div>
                     <div className="input-control">
-                        <h3>item</h3>
+                        <h3>Item</h3>
                         <input
                             type="text"
                             onChange={store.handleUpdateFieldChange}
