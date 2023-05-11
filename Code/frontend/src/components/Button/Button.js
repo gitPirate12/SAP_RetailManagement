@@ -1,18 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function Button({name, icon, onClick, bg, bPad, color, bRad}) {
-    return (
-        <ButtonStyled style={{
-            background: bg,
-            padding: bPad,
-            borderRadius: bRad,
-            color: color,
-        }} onClick={onClick}>
+
+function Button({name, icon, onClick,bg,bPad, color, bRad}) {
+  return (
+    <ButtonStyled style={{
+        background: bg,
+        padding: bPad,
+        borderRadius: bRad,
+        color: color
+        }} onClick = {onClick}>
             {icon}
-            {name}
-        </ButtonStyled>
-    )
+            {name}            
+    </ButtonStyled>
+  )
+
 }
 
 const ButtonStyled = styled.button`
@@ -25,7 +27,8 @@ const ButtonStyled = styled.button`
     gap: .5rem;
     cursor: pointer;
     transition: all .4s ease-in-out;
-`;
 
+`
 
 export default Button
+
