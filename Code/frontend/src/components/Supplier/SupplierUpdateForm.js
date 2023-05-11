@@ -76,6 +76,7 @@ const FormStyled = styled.form`
     border-radius: 10px;
     margin: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    color: black;
 
     .form {
         display: flex;

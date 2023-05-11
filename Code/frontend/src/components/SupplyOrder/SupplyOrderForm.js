@@ -127,6 +127,8 @@ const FormStyled = styled.form`
     padding: 20px;
     border-radius: 10px;
     margin: 20px;
+    width: 100%;
+    color: black;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
 
     .form {

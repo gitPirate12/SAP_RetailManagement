@@ -30,7 +30,7 @@ function Supplier() {
                                     className="layer1"
                                     onClick={setButtonStatus}
                                 >
-                                    {plus} Create Supplier
+                                    {plus} CREATE SUPPLIER
                                 </button>
                             )}
                         </div>
@@ -39,7 +39,10 @@ function Supplier() {
                         <div className="cancle">
                             {" "}
                             {ButtonStatus && (
-                                <button onClick={() => setButtonStatus(false)}>
+                                <button
+                                    className="cancle"
+                                    onClick={() => setButtonStatus(false)}
+                                >
                                     Cancle
                                 </button>
                             )}
@@ -51,19 +54,28 @@ function Supplier() {
     );
 }
 const SupplierStyle = styled.div`
-    .supplierList {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    color: black;
+
+    .Supplier-content {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         justify-content: center;
-        margin: 50px auto;
+        margin: auto;
         max-width: 1200px;
-        padding: 0 20px;
 
         @media (max-width: 768px) {
             flex-direction: column;
             align-items: center;
         }
+    }
+
+    .sidebar-container {
+        min-width: 250px;
+        margin-right: 20px;
     }
 
     .submit-btn {
@@ -79,7 +91,6 @@ const SupplierStyle = styled.div`
         align-items: center;
         justify-content: flex-end;
         margin-top: 20px;
-        background-color: #008cba;
     }
 
     button {

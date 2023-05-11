@@ -23,46 +23,54 @@ function SupplyOrder() {
                 <div className="SupplyOrder-content">
                     <SideBar></SideBar>
                 </div>
-                {ButtonStatus && <SupplyOrderForm />}
-                <div className="submit-btn">
-                    {!ButtonStatus && !store.updateSupplyOrderForm._id && (
-                        <button className="layer1" onClick={setButtonStatus}>
-                            {plus} Create Supplier
-                        </button>
-                    )}
-                </div>
+                <div className="content">
+                    {ButtonStatus && <SupplyOrderForm />}
+                    <div className="submit-btn">
+                        {!ButtonStatus && !store.updateSupplyOrderForm._id && (
+                            <button
+                                className="layer1"
+                                onClick={setButtonStatus}
+                            >
+                                {plus} CREATE SUPPLY ORDER
+                            </button>
+                        )}
+                    </div>
 
-                <SupplyOrderUpdateForm />
+                    <SupplyOrderUpdateForm />
 
-                {!ButtonStatus && <SupplyOrders />}
+                    {!ButtonStatus && <SupplyOrders />}
 
-                <div className="cancle">
-                    {" "}
-                    {ButtonStatus && (
-                        <button onClick={() => setButtonStatus(false)}>
-                            Cancle
-                        </button>
-                    )}
+                    <div className="cancle">
+                        {" "}
+                        {ButtonStatus && (
+                            <button onClick={() => setButtonStatus(false)}>
+                                Cancle
+                            </button>
+                        )}
+                    </div>
                 </div>
             </SupplyOrderStyle>
         </div>
     );
 }
 const SupplyOrderStyle = styled.div`
-    .supplyOrderList {
-        color: black;
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: center;
-        margin: 50px auto;
-        max-width: 1200px;
-        padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 
+    .SupplyOrder-content {
         @media (max-width: 768px) {
             flex-direction: column;
             align-items: center;
         }
+    }
+    .content {
+        margin: 0;
+    }
+
+    .sidebar-container {
+        min-width: 250px;
+        margin-right: 20px;
     }
 
     .submit-btn {
