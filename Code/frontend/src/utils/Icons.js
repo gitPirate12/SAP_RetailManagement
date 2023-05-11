@@ -44,3 +44,4 @@ export const tv = <i className="fa-solid fa-tv"></i>;
 export const circle = <i className="fa-solid fa-circle-dot"></i>;
 export const cross = <i className="fa-sharp fa-solid fa-xmark"></i>;
 export const edit = <i className="fa-solid fa-pen-to-square"></i>;
+

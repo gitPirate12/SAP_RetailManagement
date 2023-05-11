@@ -2,6 +2,7 @@ import "./App.css";
 //router
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
 
+import React, {useState, useMemo} from 'react'
 
 //context files
 import { useGlobalContext } from './context/globalContext';
@@ -51,6 +52,15 @@ import InventoryDetails from "./components/Inventory/InventoryDetails";
 import './styles/InventoryStyles.css';
 import ItemDisplay from "./components/Inventory/Items";
 
+//Assets and Liabilities
+import bg from './img/bg.png'
+import {MainLayout} from './styles/Layouts'
+import Orb from './components/Orb/Orb'
+import Navigation from './components/Navigation/Navigation'
+import Home from './components/Home/Home';
+import Dashboard from './components/Dashboard/Dashboard';
+import Assets from './components/Assets/Assets'
+import Liabilities from './components/Liabilities/Liabilities';
 
 function App() {
   const global = useGlobalContext();
@@ -127,15 +137,38 @@ function App() {
           <Route path="/inventorydashboard" element={<Dashboard />} />
           <Route path="/inventory-details" element={<ItemDisplay/>}/>
          
+          <Route path='/' element={<Home/>}/>
+          <Route path='/assets' element={<Assets/>}/>
+          <Route path='/liabilities' element={<Liabilities/>}/>
+          <Route path='/ae_dashboard' element={<Dashboard/>}/>
               
         </Routes>     
 
       
 
       </BrowserRouter>
+
     </div>
   );
 
 }
 
+const AppStyled = styled.div`
+  height: 100vh;
+  background-image: url(${props => props.bg});
+  position: relative;
+  main{
+    flex: 1;
+    background: rgba(252, 246, 249, 0.78);
+    border: 3px solid #FFFFFF;
+    backdrop-filter: blur(4.5px);
+    border-radius: 32px;
+    overflow-x: hidden;
+    &::-webkit-scrollbar{
+      width: 0;
+    }
+  }
+`;
+
 export default App;
+
