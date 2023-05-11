@@ -26,9 +26,9 @@ function ExpenseItem({
        
         <div className='content'>
             <h5>{title}</h5>
+            <p padding-left="2rem">{dollar}{amount}</p>
                 <div className='inner-content'>
-                    <div className='text'>
-                        <p>{dollar}{amount}</p>
+                    <div className='text'>                        
                         <p>{calender}{dateFormat(date)}</p>
                         <p>
                             {comment}

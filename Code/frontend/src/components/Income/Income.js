@@ -11,7 +11,7 @@ import axios from 'axios'
 import ArSideNav from '../../SideBars/ArSideNav'
 import jsPDF from 'jspdf';
 import "jspdf-autotable";
-
+import { dateFormat } from '../../utils/dateFormat'
 
 
 function Income() {
@@ -46,7 +46,7 @@ function Income() {
                 income.type,
                 income.description,
                 income.amount,
-                income.date,           
+                dateFormat(income.date),           
                 
             ];
             tableRows.push(incomesdata);
@@ -171,6 +171,7 @@ const IncomeStyled = styled.div`
     position: relative;
     background-color: #576CBC;
     min-height: 100%;
+    color: white;
     .totstats{
         justify-content: center;
         text-align: center;
@@ -204,10 +205,8 @@ const IncomeStyled = styled.div`
     .income-content{
         display: flex;
         gap: 2rem;
-        .incomes{
-           flex:1;         
-            
-        }
+        width: fit-content;
+        
     }
     .layer1{
         width:50%;
@@ -220,6 +219,14 @@ const IncomeStyled = styled.div`
         display: flex;
         flex-direction: row;
     }
+    .h1{
+        color: white !important;
+    }
+    .incomes{
+           flex:1;
+           
+            
+        }
 `
 
 export default Income

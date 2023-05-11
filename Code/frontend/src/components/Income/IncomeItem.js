@@ -25,9 +25,9 @@ function IncomeItem({
        
         <div className='content'>
             <h5>{title}</h5>
+            <p>{dollar}{amount}</p>
                 <div className='inner-content'>
-                    <div className='text'>
-                        <p>{dollar}{amount}</p>
+                    <div className='text'>                        
                         <p>{calender}{dateFormat(date)}</p>
                         <p>
                             {comment}
@@ -107,6 +107,7 @@ const IncomeItemStyled = styled.div`
         display: flex;
         flex-direction: column;
         gap: .2rem;
+        flex-wrap
         h5{
             font-size: 1.0rem;
             padding-left: 2rem;

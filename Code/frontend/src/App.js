@@ -75,77 +75,45 @@ function App() {
             <Route path="/" element= {<HomePage/>}/>
             <Route path="/expense" element={<Expense/>}/>
             <Route path="/income" element={<Income/>}/>
-            <Route path='/home' element={<HomePage/>} />
+            <Route path='/arhome' element={<HomePage/>} />
+            
             <Route path='/' exact element={<Admin/>} />
             <Route path='/addMarketing' exact element={<MarketingAdd />} />
             <Route path='/editMarketing' exact element={<MarketingEdit/>} />
             <Route path='/DashMarketing' exact element={<MarketingDashboard />} />
+            
             <Route path="/supplier-dash" element={<SupplierMain />} />
             <Route path="/supplier" element={<SupplierMain />} />
-            <Route path="/supplyorder" element={<SupplyOrderMain />} />
+            <Route path="/supplyorder" element={<SupplyOrderMain />} />    
 
+            <Route path="/crm-dashboard-area" exact element={<CRMDashboard />}/>
+            <Route path="/crm-customers-area" exact element={<CRMCustomerDashboard />}/>
+            <Route path="/single_customer_inquiry/:inquiryId" element={<CRMsingleInquiry />}/>
+            <Route path="/single-customer-suggestion/:feedbackId" element={<CRMsingleFeedback />}/>
+            <Route path="/customer-account" element={<CustomerAccount />} />
+            <Route path="/customer-account-edit-form" element={<CustomerAccountEditForm />}/>
+            <Route path="/customer-inquiry-form" element={<CustomerInquiryForm />}/>
+            <Route path="/customer-feedback-form" element={<CustomerFeedbackForm />}/>
+            <Route path="/customer-information-report" element={<CustomerInformationReport />}/>
+            <Route path="/customer-inquiry-report" element={<CustomerInquiryReport />}/>
+            <Route path="/customer-feedback-report" element={<CustomerFeedbackReport />}/>
+            <Route path="/customer-registration-form" element={<CustomerRegistrationForm />}/>
+            <Route path="/send-emails/:email?" element={<CRMEmailPortal />} />
+            <Route path="/customer-sign-in-portal" element={<CRMCustomerSignInForm />} />
             
-
-            <Route path="/crm-dashboard-area" exact element={<CRMDashboard />} />
-            <Route path="/crm-customers-area" exact
-            element={<CRMCustomerDashboard />}
-          />
-          <Route
-            path="/single_customer_inquiry/:inquiryId"
-            element={<CRMsingleInquiry />}
-          />
-          <Route
-            path="/single-customer-suggestion/:feedbackId"
-            element={<CRMsingleFeedback />}
-          />
-          <Route path="/customer-account" element={<CustomerAccount />} />
-          <Route
-            path="/customer-account-edit-form"
-            element={<CustomerAccountEditForm />}
-          />
-          <Route
-            path="/customer-inquiry-form"
-            element={<CustomerInquiryForm />}
-          />
-          <Route
-            path="/customer-feedback-form"
-            element={<CustomerFeedbackForm />}
-          />
-          <Route
-            path="/customer-information-report"
-            element={<CustomerInformationReport />}
-          />
-          <Route
-            path="/customer-inquiry-report"
-            element={<CustomerInquiryReport />}
-          />
-          <Route
-            path="/customer-feedback-report"
-            element={<CustomerFeedbackReport />}
-          />
-
-          <Route path="/customer-registration-form"
-            element={<CustomerRegistrationForm />}
-          />
-          <Route path="/send-emails/:email?" element={<CRMEmailPortal />} />
-          <Route path="/customer-sign-in-portal" element={<CRMCustomerSignInForm />} />
-
-          <Route path="/inventory-home" element={<Home/>} />
-          <Route path="/add-item" element={<AddItem />} />
-          <Route path="/reports" element={<InventoryReport />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/inventorydashboard" element={<Dashboard />} />
-          <Route path="/inventory-details" element={<ItemDisplay/>}/>
-         
-          <Route path='/' element={<MainHome/>}/>
-          <Route path='/assets' element={<Assets/>}/>
-          <Route path='/liabilities' element={<Liabilities/>}/>
-          <Route path='/ae_dashboard' element={<ALDashboard/>}/>
+            <Route path="/inventory-home" element={<Home/>} />
+            <Route path="/add-item" element={<AddItem />} />
+            <Route path="/reports" element={<InventoryReport />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/inventorydashboard" element={<Dashboard />} />
+            <Route path="/inventory-details" element={<ItemDisplay/>}/>
+          
+            <Route path='/' element={<MainHome/>}/>
+            <Route path='/assets' element={<Assets/>}/>
+            <Route path='/liabilities' element={<Liabilities/>}/>
+            <Route path='/ae_dashboard' element={<ALDashboard/>}/>
               
-        </Routes>     
-
-      
-
+        </Routes>   
       </BrowserRouter>
 
     </div>
