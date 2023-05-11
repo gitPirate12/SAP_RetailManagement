@@ -57,10 +57,10 @@ import bg from './img/bg.png'
 import {MainLayout} from './styles/Layouts'
 import Orb from './components/Orb/Orb'
 import Navigation from './components/Navigation/Navigation'
-import Home from './components/Home/Home';
-import Dashboard from './components/Dashboard/Dashboard';
+import MainHome from "./components/Home/Home";
 import Assets from './components/Assets/Assets'
 import Liabilities from './components/Liabilities/Liabilities';
+import ALDashboard from './components/Dashboard/Dashboard'
 
 function App() {
   const global = useGlobalContext();
@@ -137,10 +137,10 @@ function App() {
           <Route path="/inventorydashboard" element={<Dashboard />} />
           <Route path="/inventory-details" element={<ItemDisplay/>}/>
          
-          <Route path='/' element={<Home/>}/>
+          <Route path='/' element={<MainHome/>}/>
           <Route path='/assets' element={<Assets/>}/>
           <Route path='/liabilities' element={<Liabilities/>}/>
-          <Route path='/ae_dashboard' element={<Dashboard/>}/>
+          <Route path='/ae_dashboard' element={<ALDashboard/>}/>
               
         </Routes>     
 
