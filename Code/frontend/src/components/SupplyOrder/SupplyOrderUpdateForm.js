@@ -40,7 +40,7 @@ export default function SupplyOrderUpdateForm() {
                         />
                     </div>
                     <div className="input-control">
-                        <h3>item</h3>
+                        <h3>Item</h3>
                         <input
                             type="text"
                             onChange={store.handleUpdateFieldChange}
@@ -123,12 +123,13 @@ export default function SupplyOrderUpdateForm() {
     );
 }
 const FormStyled = styled.form`
-    background-color: #f2f2f2;
+    background-color: #576cbc;
     padding: 20px;
     border-radius: 10px;
     margin: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
     margin-left: 350px;
+    color: black;
 
     .form {
         display: flex;

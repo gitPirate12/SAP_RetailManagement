@@ -59,7 +59,7 @@ const SupplyOrderStore = create((set) => ({
             amount,
             price,
             discount,
-            delivery,
+            deliverydate,
         } = createSupplyOrderForm;
 
         //validations for inputs
@@ -71,7 +71,7 @@ const SupplyOrderStore = create((set) => ({
             !amount ||
             !price ||
             !discount ||
-            !delivery
+            !deliverydate
         ) {
             alert("All fields are required.");
             return;
@@ -150,7 +150,8 @@ const SupplyOrderStore = create((set) => ({
         });
         //get current SupplyOrder values
     },
-    updateSupplyOrder: async () => {
+    updateSupplyOrder: async (e) => {
+        e.preventDefault();
         const {
             updateSupplyOrderForm: {
                 _id,
@@ -165,39 +166,63 @@ const SupplyOrderStore = create((set) => ({
             },
             SupplyOrderData,
         } = SupplyOrderStore.getState();
+        if (
+            !orderID ||
+            !SID ||
+            !supplierName ||
+            !item ||
+            !amount ||
+            !price ||
+            !discount ||
+            !deliverydate
+        ) {
+            alert("All fields are required.");
+            return;
+        } else if (isNaN(price) || price <= 0) {
+            alert("Invalid Price");
+            return;
+        } else if (isNaN(amount) || amount <= 0) {
+            alert("Invalid Amount");
+            return;
+        } else {
+            //send update request
+            const res = await axios.patch(
+                `${BASE_URL}updateSupplyOrder/${_id}`,
+                {
+                    orderID,
+                    SID,
+                    supplierName,
+                    item,
+                    amount,
+                    price,
+                    discount,
+                    deliverydate,
+                }
+            );
 
-        //send update request
-        const res = await axios.patch(`${BASE_URL}updateSupplyOrder/${_id}`, {
-            orderID,
-            SID,
-            supplierName,
-            item,
-            amount,
-            price,
-            discount,
-            deliverydate,
-        });
-
-        //update state
-        const newSupplyOrders = [...SupplyOrderData];
-        const SupplyOrderIndex = SupplyOrderData.findIndex((SupplyOrder) => {
-            return SupplyOrder._id === _id;
-        });
-        newSupplyOrders[SupplyOrderIndex] = res.data;
-        set({
-            SupplyOrderData: newSupplyOrders,
-            updateSupplyOrder: {
-                _id: null,
-                orderID: "",
-                SID: "",
-                supplierName: "",
-                item: "",
-                amount: "",
-                price: "",
-                discount: "",
-                deliverydate: "",
-            },
-        });
+            //update state
+            const newSupplyOrders = [...SupplyOrderData];
+            const SupplyOrderIndex = SupplyOrderData.findIndex(
+                (SupplyOrder) => {
+                    return SupplyOrder._id === _id;
+                }
+            );
+            newSupplyOrders[SupplyOrderIndex] = res.data;
+            set({
+                SupplyOrderData: newSupplyOrders,
+                updateSupplyOrder: {
+                    _id: null,
+                    orderID: "",
+                    SID: "",
+                    supplierName: "",
+                    item: "",
+                    amount: "",
+                    price: "",
+                    discount: "",
+                    deliverydate: "",
+                },
+            });
+        }
     },
 }));
 export default SupplyOrderStore;

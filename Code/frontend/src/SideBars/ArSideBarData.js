@@ -5,7 +5,7 @@ export const ArSideBarData = [
     {
         title: "Dashboard",
         icon: dashboard,
-        link: "/"
+        link: "/arhome"
     },
     {
        title: "Incomes",
@@ -17,10 +17,6 @@ export const ArSideBarData = [
         icon: expenses,
         link: "/expense"
     },
-    {
-        title: "Purchase Requests",
-        icon: dashboard,
-        link: "/home"
-    },
+
 ];
 

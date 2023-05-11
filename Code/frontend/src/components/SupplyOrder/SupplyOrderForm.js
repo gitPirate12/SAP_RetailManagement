@@ -123,10 +123,12 @@ export default function SupplyOrderForm() {
     );
 }
 const FormStyled = styled.form`
-    background-color: #f2f2f2;
+    background-color: #576cbc;
     padding: 20px;
     border-radius: 10px;
     margin: 20px;
+    width: 100%;
+    color: black;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
 
     .form {

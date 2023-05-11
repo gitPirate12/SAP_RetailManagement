@@ -161,6 +161,11 @@ const SuppplierlistStyled = styled.div`
 
     .update {
         margin-right: 10px;
+        background-color: green;
+    }
+    .delete {
+        margin-right: 10px;
+        background-color: red;
     }
 
     ${SID}, ${user}, ${phone}, ${item}, ${cards}, ${edit}, ${deletebutton} {

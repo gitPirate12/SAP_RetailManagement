@@ -1,36 +1,43 @@
 .Sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
+    background: #0b2447;
+    color: #ffffff;
+    font-size: 16px;
     width: 250px;
-    background-color: #0b2447;
+    height: 100vh;
+    min-height: 100vh;
+    border: 3px solid #ffffff;
 }
 
 .SidebarList {
-    font-size: 20px;
+    list-style: none;
+    align-items: center;
+    margin-left: 20px;
+
+    margin-top: 50px;
+    padding: 0;
 }
 
 .SidebarList li {
     display: flex;
     align-items: center;
-    padding: 10px;
     margin-top: 50px;
+    padding: 10px;
     cursor: pointer;
+    width: inherit;
+    margin-right: 10px;
+    border-radius: 20px;
+
+    transition: all 0.2s ease-in-out;
 }
 
 .SidebarList li:hover {
     background-color: #19376d;
 }
 
-.SidebarList .icon {
-    font-size: 24px;
+.icon {
     margin-right: 10px;
-    color: #ffffff;
 }
 
-.SidebarList .title {
-    font-size: 18px;
-    font-weight: 600;
-    color: #ffffff;
+.title {
+    font-weight: bold;
 }

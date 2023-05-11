@@ -126,32 +126,40 @@ const SupplierStore = create((set) => ({
             supplierData,
         } = SupplierStore.getState();
 
-        //send update request
-        const res = await axios.patch(`${BASE_URL}updatesupplier/${_id}`, {
-            SID,
-            supplierName,
-            phone,
-            itemType,
-            paymentDetails,
-        });
+        if (!SID || !supplierName || !phone || !itemType || !paymentDetails) {
+            alert("All fields are required.");
+            return;
+        } else if (isNaN(phone) || phone.length !== 10) {
+            alert("Phone number must be a 10 digit number.");
+            return;
+        } else {
+            //send update request
+            const res = await axios.patch(`${BASE_URL}updatesupplier/${_id}`, {
+                SID,
+                supplierName,
+                phone,
+                itemType,
+                paymentDetails,
+            });
 
-        //update state
-        const newSuppliers = [...supplierData];
-        const supplierIndex = supplierData.findIndex((supplier) => {
-            return supplier._id === _id;
-        });
-        newSuppliers[supplierIndex] = res.data;
-        set({
-            supplierData: newSuppliers,
-            updateSupplier: {
-                _id: null,
-                SID: "",
-                supplierName: "",
-                phone: "",
-                itemType: "",
-                paymentDetails: "",
-            },
-        });
+            //update state
+            const newSuppliers = [...supplierData];
+            const supplierIndex = supplierData.findIndex((supplier) => {
+                return supplier._id === _id;
+            });
+            newSuppliers[supplierIndex] = res.data;
+            set({
+                supplierData: newSuppliers,
+                updateSupplier: {
+                    _id: null,
+                    SID: "",
+                    supplierName: "",
+                    phone: "",
+                    itemType: "",
+                    paymentDetails: "",
+                },
+            });
+        }
     },
 }));
 export default SupplierStore;
