@@ -59,7 +59,7 @@ const SupplyOrderStore = create((set) => ({
             amount,
             price,
             discount,
-            delivery,
+            deliverydate,
         } = createSupplyOrderForm;
 
         //validations for inputs
@@ -71,7 +71,7 @@ const SupplyOrderStore = create((set) => ({
             !amount ||
             !price ||
             !discount ||
-            !delivery
+            !deliverydate
         ) {
             alert("All fields are required.");
             return;
@@ -174,7 +174,7 @@ const SupplyOrderStore = create((set) => ({
             !amount ||
             !price ||
             !discount ||
-            !delivery
+            !deliverydate
         ) {
             alert("All fields are required.");
             return;
@@ -199,27 +199,30 @@ const SupplyOrderStore = create((set) => ({
                     deliverydate,
                 }
             );
+
+            //update state
+            const newSupplyOrders = [...SupplyOrderData];
+            const SupplyOrderIndex = SupplyOrderData.findIndex(
+                (SupplyOrder) => {
+                    return SupplyOrder._id === _id;
+                }
+            );
+            newSupplyOrders[SupplyOrderIndex] = res.data;
+            set({
+                SupplyOrderData: newSupplyOrders,
+                updateSupplyOrder: {
+                    _id: null,
+                    orderID: "",
+                    SID: "",
+                    supplierName: "",
+                    item: "",
+                    amount: "",
+                    price: "",
+                    discount: "",
+                    deliverydate: "",
+                },
+            });
         }
-        //update state
-        const newSupplyOrders = [...SupplyOrderData];
-        const SupplyOrderIndex = SupplyOrderData.findIndex((SupplyOrder) => {
-            return SupplyOrder._id === _id;
-        });
-        newSupplyOrders[SupplyOrderIndex] = res.data;
-        set({
-            SupplyOrderData: newSupplyOrders,
-            updateSupplyOrder: {
-                _id: null,
-                orderID: "",
-                SID: "",
-                supplierName: "",
-                item: "",
-                amount: "",
-                price: "",
-                discount: "",
-                deliverydate: "",
-            },
-        });
     },
 }));
 export default SupplyOrderStore;
