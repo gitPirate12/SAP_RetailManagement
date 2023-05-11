@@ -28,11 +28,17 @@ export const GlobalProvider = ({children}) => {
         console.log(response.data)
     }
 
+    const updateAsset = async(id, update) => {
+        console.log({update})
+        const response = await axios.put(`${BASE_URL}update-asset/${id}`, update)
+        getAssets()   
+    }
+
     const deleteAssets = async (id) => {
         const res  = await axios.delete(`${BASE_URL}delete-assets/${id}`)
         getAssets()
     }
-
+//Get total valu
     const totalAssets = () => {
         let totalAsset = 0;
         assets.forEach((asset) =>{
@@ -41,7 +47,16 @@ export const GlobalProvider = ({children}) => {
 
         return totalAsset;
     }
+  
+//Depreciation
+    const totalDepreciation = () => {
+        let totalDep= 0;
+        assets.forEach((asset) =>{
+            totalDep = ((asset.amount-asset.rValue)/asset.years).toFixed(2);
+        })
 
+        return totalDep;
+    }
 
     //calculate liabilities
     const addLiability = async (liability) => {
@@ -58,11 +73,17 @@ export const GlobalProvider = ({children}) => {
         console.log(response.data)
     }
 
-    const deleteLiability  = async (id) => {
-        const res  = await axios.delete(`${BASE_URL}delete-liability /${id}`)
-        getLiabilities()
+    const updateLiability = async(id, update) => {
+        console.log({update})
+        const response = await axios.put(`${BASE_URL}update-liability/${id}`, update)
+        getLiabilities()   
     }
 
+    const deleteLiability  = async (id) => {
+        const res = await axios.delete(`${BASE_URL}delete-liability/${id}`)
+        getLiabilities()
+    }
+//Get total
     const totalLiabilities = () => {
         let totalLiability  = 0;
         liabilities.forEach((liability) =>{
@@ -71,24 +92,35 @@ export const GlobalProvider = ({children}) => {
 
         return totalLiability ;
     }
-
-
+//calculate Interest
+    const totalInterest =()=>{
+        let interest = 0;
+        liabilities.forEach((liability)=>{
+            interest = ((liability.amount * liability.ratio * liability.years)/100).toFixed(2);
+        })
+        return interest;
+    }
 
 
     return (
         <GlobalContext.Provider value={{
+            assets,
             addAssets,
             getAssets,
-            assets,
+            updateAsset,
             deleteAssets,
-            liabilities,
             totalAssets,
+            totalDepreciation,
+            liabilities,
             addLiability ,
             getLiabilities,
+            updateLiability,
             deleteLiability ,
             totalLiabilities,
+            totalInterest,
             error,
-            setError
+            setError,
+            
         }}>
             {children}
         </GlobalContext.Provider>

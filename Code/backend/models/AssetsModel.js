@@ -26,13 +26,13 @@ const AssetSchema = new mongoose.Schema({
     amount: {
         type: Number,
         required: true,
-        maxLength: 20,
+        maxLength: 10,
         trim: true
     },
-    ratio: {
+    rValue: {
         type: Number,
         required: true,
-        maxLength: 2,
+        maxLength: 10,
         trim: true
     },
     years: {

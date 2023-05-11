@@ -9,7 +9,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Assets from './components/Assets/Assets'
 import Liabilities from './components/Liabilities/Liabilities';
 import { useGlobalContext } from './context/globalContext';
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import {Routes, Route, BrowserRouter} from "react-router-dom"
 
 function App() {
   const [active, setActive] = useState(1)
@@ -18,45 +18,45 @@ function App() {
   console.log(global);
 
 
-  const displayData = () => {
-    switch(active){
-      case 1:
-        return <Home />
-      case 2:
-        return <Dashboard />
-      case 3:
-        return <Assets/>
-      case 4: 
-        return <Liabilities />
-      default: 
-        return <Home />
-    }
-  }
+  // const displayData = () => {
+  //   switch(active){
+  //     case 1:
+  //       return <Home />
+  //     case 2:
+  //       return <Dashboard />
+  //     case 3:
+  //       return <Assets/>
+  //     case 4: 
+  //       return <Liabilities />
+  //     default: 
+  //       return <Home />
+  //   }
+  // }
 
-  const orbMemo = useMemo(() => {
-    return <Orb />
-  },[])
+  // const orbMemo = useMemo(() => {
+  //   return <Orb />
+  // },[])
 
   return (
-    <AppStyled bg={bg} className="App">
-      {orbMemo}
-      <MainLayout>
-        <Navigation active={active} setActive={setActive} />
-        {/* <Router> 
-            <Routes>
-              
-              <Route path='/home' element={<Home/>}/>
+    <div>
+     <AppStyled bg={bg} className="App">
+       {/* {orbMemo} */}
+      {/* <MainLayout> */}
+        
+      <BrowserRouter>        
+            <Routes>              
+              <Route path='/' element={<Home/>}/>
               <Route path='/assets' element={<Assets/>}/>
               <Route path='/liabilities' element={<Liabilities/>}/>
               <Route path='/ae_dashboard' element={<Dashboard/>}/>
-            </Routes>
-        </Router> */}
-        
-        <main>
+            </Routes>        
+      </BrowserRouter>  
+        {/* <main>
           {displayData()}
-        </main>
-      </MainLayout>
-    </AppStyled>
+        </main> */}
+      {/* </MainLayout> */}
+    // </AppStyled>
+    </div>
   );
 }
 

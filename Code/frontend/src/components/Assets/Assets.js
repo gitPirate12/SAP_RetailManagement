@@ -2,11 +2,11 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useGlobalContext } from '../../context/globalContext';
 import { InnerLayout } from '../../styles/Layouts';
-import ItemViwe from '../ItemViwe/ItemViwe';
+import AssetViwe from '../ItemViwe/AssetViwe';
 import AssetForm from './AssetForm';
 
 function Assets() {
-    const {assets, getAssets, deleteAssets, totalAssets,editItem} = useGlobalContext()
+    const {assets, getAssets, deleteAssets, totalAssets, totalDepreciation} = useGlobalContext()
 
     useEffect(() =>{
         getAssets()
@@ -19,7 +19,7 @@ function Assets() {
                     <div className="form-container">
                         <AssetForm />
                             <h2 className="total-asset">Total Asset: <span>Rs.{totalAssets()}</span></h2>
-                        
+                            <h2 className="total-asset">Annual Depreciation: <span>Rs.{totalDepreciation()}</span></h2>
                         <br></br><br></br><br></br>
                         <hr className='hr'/>
 {/* /*Asset list*/ }
@@ -27,9 +27,9 @@ function Assets() {
                         <div className="asset-content">
                             <div className="assets">
                                 {assets.map((assets) => {
-                                    const {_id, itemCode, name, date, amount, type, ratio,years} = assets;
+                                    const {_id, itemCode, name, date, amount, type, rValue,years} = assets;
                                     console.log(assets)
-                                    return <ItemViwe
+                                    return <AssetViwe
                                         key={_id}
                                         id={_id} 
                                         itemCode={itemCode} 
@@ -37,10 +37,9 @@ function Assets() {
                                         date={date}
                                         amount={amount}  
                                         type={type}
-                                        ratio={ratio} 
+                                        rValue={rValue} 
                                         years={years} 
                                         indicatorColor="var(--color-green)"
-                                        editItem={editItem}
                                         deleteItem={deleteAssets}
                                     />
                                 })}                    

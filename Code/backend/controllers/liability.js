@@ -1,6 +1,6 @@
 const LiabilitySchema = require("../models/LiabilitiesModel")
 
-
+//Add Liability
 exports.addLiability = async (req, res) => {
     const {itemCode, name, date, amount, ratio, years}  = req.body
 
@@ -30,6 +30,7 @@ exports.addLiability = async (req, res) => {
     console.log(assets)
 }
 
+//Get Liability
 exports.getLiabilities = async (req, res) =>{
     try {
         const liabilities = await LiabilitySchema.find().sort({createdAt: -1})
@@ -39,6 +40,23 @@ exports.getLiabilities = async (req, res) =>{
     }
 }
 
+//update Liability
+exports.updateLiability = async (req, res) => {
+    try {
+        const {id} = req.params;
+        const liability = await LiabilitySchema.findByIdAndUpdate(id, req.body);
+        //if Liability cannot be found
+        if(!liability){
+            return res.status(404).json({message: `Liability with ID ${id} cannot be found`})
+        }
+        const updatedLiability = await LiabilitySchema.findById(id);
+        res.status(200).json(updatedLiability);
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+}
+
+//Delete Liability
 exports.deleteLiability = async (req, res) =>{
     const {id} = req.params;
     LiabilitySchema.findByIdAndDelete(id) 

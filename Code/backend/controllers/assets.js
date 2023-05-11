@@ -2,20 +2,20 @@ const AssetSchema= require("../models/AssetsModel")
 
 
 exports.addAssets = async (req, res) => {
-    const {itemCode, name, date, amount, ratio, years}  = req.body
+    const {itemCode, name, date, amount, rValue, years}  = req.body
 
     const assets = AssetSchema({
         itemCode,
         name,
         date,
         amount,
-        ratio,
+        rValue,
         years
     })
 
     try {
         //validations
-        if(!itemCode || !name || !date || !ratio || !years ){
+        if(!itemCode || !name || !date || !rValue || !years ){
             return res.status(400).json({message: 'All fields are required!'})
         }
         if(amount <= 0 || !amount === 'number'){
@@ -38,6 +38,23 @@ exports.getAssets = async (req, res) =>{
         res.status(500).json({message: 'Server Error'})
     }
 }
+
+//update Asset
+exports.updateAsset = async (req, res) => {
+    try {
+        const {id} = req.params;
+        const asset = await AssetSchema.findByIdAndUpdate(id, req.body);
+        //if Asset cannot be found
+        if(!asset){
+            return res.status(404).json({message: `Asset cannot be found`})
+        }
+        const updatedAsset = await AssetSchema.findById(id);
+        res.status(200).json(updatedAsset);
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+}
+
 
 exports.deleteAssets = async (req, res) =>{
     const {id} = req.params;

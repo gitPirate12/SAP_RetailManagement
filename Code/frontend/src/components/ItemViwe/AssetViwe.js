@@ -3,18 +3,18 @@ import styled from 'styled-components'
 import { dateFormat } from '../../utils/dateFormat';
 import { calender, circle} from '../../utils/Icons';
 import Button from '../Button/Button';
-import Popup from '../Liabilities/Popup';
-import EditLiability from '../Liabilities/EditeLiability';
+import Popup from '../Assets/Popup';
+import EditAsset from '../Assets/EditAsset';
 
 
 
-function ItemViwe({
+function AssetViwe({
     id,
     itemCode,
     name,
     amount,
     date,
-    ratio,
+    rValue,
     years,    
     deleteItem,
     indicatorColor,
@@ -23,7 +23,7 @@ function ItemViwe({
 
     console.log('type', type)
 
-    const [editLiabilityPopup, setEditLiabilityPopup] = useState(false);
+    const [editAssetPopup, setEditAssetPopup] = useState(false);
 
     return (
         <ItemStyled indicator={indicatorColor}>
@@ -35,7 +35,7 @@ function ItemViwe({
                 <div className="inner-content">
                     <div className="text">
                         <p>{calender} {dateFormat(date)}</p>
-                        <p>{circle}Ratio :{ratio}</p> 
+                        <p>{circle}Residual value :{rValue}</p> 
                         <p>{circle}Keep Years :{years}</p>
                         <p></p>
                     </div>
@@ -48,7 +48,7 @@ function ItemViwe({
                             color={'#fff'}
                             iColor={'#fff'}
                             hColor={'var(--color-green)'}
-                            onClick={() => setEditLiabilityPopup(true)}
+                            onClick={() => setEditAssetPopup(true)}
                         />
                     </div>
                     <div className="btn-con">
@@ -64,8 +64,8 @@ function ItemViwe({
                         />
                     </div>
                 </div>
-                <Popup trigger={editLiabilityPopup} setTrigger={setEditLiabilityPopup}>
-                    <EditLiability key={id} id={id} itemCode={itemCode} name={name} amount={amount} ratio={ratio} years={years}/>
+                <Popup trigger={editAssetPopup} setTrigger={setEditAssetPopup}>
+                    <EditAsset key={id} id={id} itemCode={itemCode} name={name} amount={amount} rValue={rValue} years={years}/>
                 </Popup>
             </div>
         </ItemStyled>
@@ -141,4 +141,4 @@ const ItemStyled = styled.div`
     }
 `;
 
-export default ItemViwe;
+export default AssetViwe;

@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react'
+import { useState } from 'react';
 import styled from 'styled-components'
 import { useGlobalContext } from '../../context/globalContext';
 import { InnerLayout } from '../../styles/Layouts';
 import ItemViwe from '../ItemViwe/ItemViwe';
 import LiabilityForm from './LiabilityForm';
-
+import Navigation from '../Navigation/Navigation';
 function Liabilities() {
-    const {liabilities, getLiabilities, deleteLiabilty, totalLiabilities, editItem} = useGlobalContext()
+    const {liabilities, getLiabilities, deleteLiability, totalLiabilities, totalInterest} = useGlobalContext()
+
+    const [active, setActive] = useState(1)
 
     useEffect(() =>{
         getLiabilities()
@@ -15,13 +18,14 @@ function Liabilities() {
         <LiabilityStyled>
             <InnerLayout>
                 <h1>Liabilities</h1><br></br>
-               
+                {/* <Navigation active={active} setActive={setActive} /> */}
                 <div className="liability-content">
                     <div className="form-container">
                         <LiabilityForm />
                 
                         <div className="liability">
                             <h2 className="total-liability">Total Liabilities: <span>Rs.{totalLiabilities()}</span></h2>
+                            <h2 className="total-liability">Annual Interest: <span>Rs.{totalInterest()}</span></h2>
                         
                         <br></br><br></br><br></br>
                         <hr className='hr'/>
@@ -44,8 +48,7 @@ function Liabilities() {
                                         ratio={ratio} 
                                         years={years} 
                                         indicatorColor="var(--color-green)"
-                                        editItem={editItem}
-                                        deleteItem={deleteLiabilty}
+                                        deleteItem={deleteLiability}
                                     />
                                 })}
                             </div>

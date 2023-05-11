@@ -5,7 +5,7 @@ import { InnerLayout } from '../../styles/Layouts';
 import Chart from '../Chart/Chart';
 
 function Dashboard() {
-    const {totalAssets, getAssets, getLiabilities ,totalLiabilities } = useGlobalContext()
+    const {totalAssets, getAssets, getLiabilities ,totalLiabilities, totalDepreciation,totalInterest } = useGlobalContext()
 
     useEffect(() => {
         getAssets()
@@ -26,10 +26,25 @@ function Dashboard() {
                                     Rs. {totalAssets()}
                                 </p>
                             </div>
+
                             <div className="liabilities">
                                 <h2>Total Liabilities</h2>
                                 <p>
                                     Rs. {totalLiabilities()}
+                                </p>
+                            </div>
+
+                            <div className="assets">
+                                <h2>Annual Depreciation</h2>
+                                <p>
+                                    Rs. {totalDepreciation()}
+                                </p>
+                            </div>
+
+                            <div className="liabilities">
+                                <h2>Annual Interest</h2>
+                                <p>
+                                    Rs. {totalInterest()}
                                 </p>
                             </div>
                         </div>
@@ -56,7 +71,7 @@ const DashboardStyled = styled.div`
                 .assets, .liabilities{
                     grid-column: span 2;
                 }
-                .assets, .liabilities, .balance{
+                .assets{
                     background: #FCF6F9;
                     border: 2px solid #FFFFFF;
                     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
@@ -65,6 +80,19 @@ const DashboardStyled = styled.div`
                     p{
                         font-size: 3.5rem;
                         font-weight: 700;
+                        color: var(--color-green);
+                    }
+                }
+                .liabilities{
+                    background: #FCF6F9;
+                    border: 2px solid #FFFFFF;
+                    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+                    border-radius: 20px;
+                    padding: 1rem;
+                    p{
+                        font-size: 3.5rem;
+                        font-weight: 700;
+                        color: red;
                     }
                 }
             }

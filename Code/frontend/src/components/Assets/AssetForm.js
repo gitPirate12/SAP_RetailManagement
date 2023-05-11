@@ -14,12 +14,12 @@ function AssetForm() {
         name:'',
         date:'',
         amount:'',
-        ratio:'',
+        rValue:'',
         years:'',
         
     })
 
-    const { itemCode, name, date, amount, ratio, years} = inputState;
+    const { itemCode, name, date, amount, rValue, years} = inputState;
 
     const handleInput = name => e => {
         setInputState({...inputState, [name]: e.target.value})
@@ -34,7 +34,7 @@ function AssetForm() {
             name:'',
             date:'',
             amount:'',
-            ratio:'',
+            rValue:'',
             years:'',
         })
     }
@@ -67,11 +67,11 @@ function AssetForm() {
             </div>
             
             <div className="input-control">
-                <input type="text" value={ratio} name={'ratio'} placeholder="Item Ratio"  onChange={handleInput('ratio')}/>
+                <input type="text" value={rValue} name={'rValue'} placeholder="Residual value"  onChange={handleInput('rValue')}/>
             </div>
 
             <div className="input-control">
-                <input type="text" value={years} name={'years'} placeholder="Item keep years"  onChange={handleInput('years')}/>
+                <input type="text" value={years} name={'years'} placeholder="Useful Life (years)"  onChange={handleInput('years')}/>
             </div>
             
             <div className="submit-btn">
