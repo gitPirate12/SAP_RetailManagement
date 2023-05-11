@@ -1,7 +1,7 @@
 import "./App.css";
 //router
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
-import './App.css';
+
 
 //context files
 import { useGlobalContext } from './context/globalContext';
@@ -19,6 +19,25 @@ import MarketingEdit from './components/marketing/Marketing.Edit';
 import SupplyOrderMain from "./components/SupplyOrder/SupplyOrderMain";
 import SupplierMain from "./components/Supplier/SupplierMain";
 import Income from './components/Income/Income';
+//import CRM components
+//dashboards
+import CRMDashboard from "./components/CRMComponents/CRM-dashboard";
+import CRMCustomerDashboard from "./components/CRMComponents/CRM-customer-dashboard";
+//forms
+import CustomerAccountEditForm from "./components/CRMComponents/CRM-customer-account-edit-form";
+import CustomerInquiryForm from "./components/CRMComponents/CRM-customer-inquiry-form";
+import CustomerFeedbackForm from "./components/CRMComponents/CRM-customer-feedback-form";
+import CustomerRegistrationForm from "./components/CRMComponents/CRM-customer-registration-form";
+import CRMEmailPortal from "./components/CRMComponents/CRM-email-portal";
+import CRMCustomerSignInForm from "./components/CRMComponents/CRM-customer-sign-in-form";
+//reports
+import CustomerInformationReport from "./components/CRMComponents/CRM-customer-information-report";
+import CustomerInquiryReport from "./components/CRMComponents/CRM-customer-inquiry-report";
+import CustomerFeedbackReport from "./components/CRMComponents/CRM-customer-feedback-report";
+//other
+import CRMsingleInquiry from "./components/CRMComponents/CRM-single-inquiry";
+import CRMsingleFeedback from "./components/CRMComponents/CRM-single-feedback";
+import CustomerAccount from "./components/CRMComponents/CRM-customer-account";
 
 //inventory
 import Home from './components/Inventory/Items'
@@ -28,20 +47,17 @@ import InventoryReport from './components/Inventory/InventoryReport';
 import Orders from './components/Inventory/Orders';
 import Dashboard from './components/Inventory/Dashboard';
 import InventoryDetails from "./components/Inventory/InventoryDetails";
-
 //styles
 import './styles/InventoryStyles.css';
 import ItemDisplay from "./components/Inventory/Items";
 
 
 function App() {
-
-  const global = useGlobalContext()
+  const global = useGlobalContext();
   console.log(global);
   return (
     <div className="App">
-      
-     <BrowserRouter>
+      <BrowserRouter>
         <header className="App-header">
           <MainNavBar></MainNavBar>
         </header>          
@@ -57,14 +73,65 @@ function App() {
             <Route path="/supplier-dash" element={<SupplierMain />} />
             <Route path="/supplier" element={<SupplierMain />} />
             <Route path="/supplyorder" element={<SupplyOrderMain />} />
-            <Route path="/inventory-home" element={<Home/>} />
-            <Route path="/add-item" element={<AddItem />} />
-            <Route path="/reports" element={<InventoryReport />} />
-            <Route path="/orders" element={<Orders />} />
-            <Route path="/inventorydashboard" element={<Dashboard />} />
-            <Route path="/inventory-details" element={<ItemDisplay/>}/>
-          </Routes> 
+
+            
+
+            <Route path="/crm-dashboard-area" exact element={<CRMDashboard />} />
+            <Route path="/crm-customers-area" exact
+            element={<CRMCustomerDashboard />}
+          />
+          <Route
+            path="/single_customer_inquiry/:inquiryId"
+            element={<CRMsingleInquiry />}
+          />
+          <Route
+            path="/single-customer-suggestion/:feedbackId"
+            element={<CRMsingleFeedback />}
+          />
+          <Route path="/customer-account" element={<CustomerAccount />} />
+          <Route
+            path="/customer-account-edit-form"
+            element={<CustomerAccountEditForm />}
+          />
+          <Route
+            path="/customer-inquiry-form"
+            element={<CustomerInquiryForm />}
+          />
+          <Route
+            path="/customer-feedback-form"
+            element={<CustomerFeedbackForm />}
+          />
+          <Route
+            path="/customer-information-report"
+            element={<CustomerInformationReport />}
+          />
+          <Route
+            path="/customer-inquiry-report"
+            element={<CustomerInquiryReport />}
+          />
+          <Route
+            path="/customer-feedback-report"
+            element={<CustomerFeedbackReport />}
+          />
+
+          <Route path="/customer-registration-form"
+            element={<CustomerRegistrationForm />}
+          />
+          <Route path="/send-emails/:email?" element={<CRMEmailPortal />} />
+          <Route path="/customer-sign-in-portal" element={<CRMCustomerSignInForm />} />
+
+          <Route path="/inventory-home" element={<Home/>} />
+          <Route path="/add-item" element={<AddItem />} />
+          <Route path="/reports" element={<InventoryReport />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/inventorydashboard" element={<Dashboard />} />
+          <Route path="/inventory-details" element={<ItemDisplay/>}/>
+         
               
+        </Routes>     
+
+      
+
       </BrowserRouter>
     </div>
   );

@@ -9,14 +9,16 @@ import { ItemsContextProvider } from './context/ItemContext';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <React.StrictMode>
-        <GlobalProvider>
-        <ItemsContextProvider>
-            <App />
-        </ItemsContextProvider>
-        </GlobalProvider>
-        
-    </React.StrictMode>
+              
+  <React.StrictMode>
+    <GlobalStyle />
+    <GlobalProvider>
+    <ItemsContextProvider>
+      <App />
+      </ItemsContextProvider>
+    </GlobalProvider>
+  </React.StrictMode>
+
 );
 
 // If you want to start measuring performance in your app, pass a function

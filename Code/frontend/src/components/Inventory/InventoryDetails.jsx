@@ -4,8 +4,6 @@
 
 import { useState } from "react";
 import { useItemsContext } from "../../hooks/useItemsContext";
-import Sidebar from './Navbar';
-
 
 
 const InventoryDetails = ({ item }) => {
@@ -62,8 +60,9 @@ const InventoryDetails = ({ item }) => {
   };
 
   return (
+    
+    
     <div className="Inventory-details">
-      <Sidebar />
       <h4>{item.name}</h4>
       <p>
         <strong>Name: </strong>
@@ -106,66 +105,69 @@ const InventoryDetails = ({ item }) => {
         </span>
       </div>
       {showEditForm && (
-        <form onSubmit={handleEditClick}>
-          <label>
-            Name:
-            <input type="text" name="name" defaultValue={item.name} />
-          </label>
-          <label>
-            Category:
-            <input type="text" name="category" defaultValue={item.category} />
-          </label>
-          <label>
-            Price:
-            <input type="text" name="price" defaultValue={item.price} />
-          </label>
-          <label>
-            Quantity:
-            <input type="text" name="quantity" defaultValue={item.quantity} />
-          </label>
-          <label>
-            Description:
-            <input type="text" name="description" defaultValue={item.description} />
-          </label>
-          <label>
-            Date:
-            <input type="text" name="date" defaultValue={item.date} />
-          </label>
-          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <button
-              style={{
-                background: 'var(--primary)',
-                border: '0',
-                color: '#fff',
-                padding: '10px',
-                fontFamily: 'Poppins',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                marginRight: '10px',
-              }}
-              type="submit"
-            >
-              Save
-            </button>
-            <button
-              style={{
-                background: '#e7195a',
-                border: '0',
-                color: '#fff',
-                padding: '10px',
-                fontFamily: 'Poppins',
-                borderRadius: '4px',
-                cursor: 'pointer',
-              }}
-              onClick={() => setShowEditForm(false)}
-            >
-              Close
-            </button>
-          </div>
-        </form>
-      )}
+  <form onSubmit={handleEditClick}>
+    <label>
+      Name:
+      <input type="text" name="name" defaultValue={item.name} />
+    </label>
+    <label>
+      Category:
+      <input type="text" name="category" defaultValue={item.category} />
+    </label>
+    <label>
+      Price:
+      <input type="text" name="price" defaultValue={item.price} />
+    </label>
+    <label>
+      Quantity:
+      <input type="text" name="quantity" defaultValue={item.quantity} />
+    </label>
+    <label>
+      Description:
+      <input type="text" name="description" defaultValue={item.description} />
+    </label>
+    <label>
+      Date:
+      <input type="text" name="date" defaultValue={item.date} />
+    </label>
+    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+      <button
+        style={{
+          background: 'var(--primary)',
+          border: '0',
+          color: '#fff',
+          padding: '10px',
+          fontFamily: 'Poppins',
+          borderRadius: '4px',
+          cursor: 'pointer',
+          marginRight: '10px',
+        }}
+        type="submit"
+      >
+        Save
+      </button>
+      <button
+        style={{
+          background: '#e7195a',
+          border: '0',
+          color: '#fff',
+          padding: '10px',
+          fontFamily: 'Poppins',
+          borderRadius: '4px',
+          cursor: 'pointer',
+        }}
+        onClick={() => setShowEditForm(false)}
+      >
+        Close
+      </button>
     </div>
+  </form>
+)}
+
+            </div>
+            
+              
   );
-            }  
+};
 
 export default InventoryDetails;

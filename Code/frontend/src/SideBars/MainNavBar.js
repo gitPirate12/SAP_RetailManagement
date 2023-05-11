@@ -9,11 +9,14 @@ function MainNavBar() {
                     <h1>SAP Retail</h1>
                 </a>
                 <a href="/">Accounting and Finance</a>
-                <a>Customer Relationship</a>
+                <a href="/crm-dashboard-area">Customer Relationship</a>
+                
                 <a href="/supplier">Supply </a>
                 <a>Sales </a>
                 <a>Human Resources </a>
                 <a href="/DashMarketing">Marketing</a>
+                <a href="/crm-customers-area">Customers</a>
+
                 <a href="/inventorydashboard">Inventory</a>
                 <a>Assets & Expenses</a>
             </div>

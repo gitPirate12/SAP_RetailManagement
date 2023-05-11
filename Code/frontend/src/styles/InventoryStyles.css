@@ -124,6 +124,7 @@ input.error {
 }
 
 .dashboard-stat {
+  color: grey;
   background-color: #f8f8f8;
   border-radius: 5px;
   box-shadow: 0px 0px 5px #dcdcdc;
@@ -148,13 +149,13 @@ input.error {
   margin-top: 0.5rem;
 }
 
-
 .dashboard-chart {
   width: 100%;
   max-width: 600px; /* change this value to adjust the maximum width of the chart */
   margin-top: 5rem; /* add some margin between the charts */
   margin-right: 30rem; /* add some margin to the left */
 }
+
 .add-items {
   display: flex;
   justify-content: center;

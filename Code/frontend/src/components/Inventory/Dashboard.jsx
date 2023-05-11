@@ -6,6 +6,7 @@ import Sidebar from './Navbar';
 import "../../styles/InventoryNavbar.css"
 
 
+
 import { FaDollarSign, FaBoxOpen, FaListUl, FaShoppingCart } from 'react-icons/fa';
 
 const Dashboard = () => {
@@ -77,10 +78,10 @@ const Dashboard = () => {
   }, []);
 
   return (
-    
-   
-    <div className="dashboard-container">
-       <Sidebar/>
+    <div>
+    <Sidebar/>
+    <div className="dashboard-container"   >
+       
       <h1 className="dashboard-title">Dashboard</h1>
       <div className="dashboard-stats">
         <div className="dashboard-stat">
@@ -148,7 +149,7 @@ const Dashboard = () => {
         </div>
       )}
     </div>
-    
+    </div>
     
   );
                 } 

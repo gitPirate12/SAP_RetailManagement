@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useItemsContext } from "../../hooks/useItemsContext";
 import InventoryDetails from "./InventoryDetails";
 import SearchFilter from "./SearchFilter";
+import Sidebar from './Navbar';
 
 const ItemDisplay = () => {
   const { items, dispatch } = useItemsContext();
@@ -39,18 +40,21 @@ const ItemDisplay = () => {
   }, [items]);
 
   return (
-    <div><SearchFilter onSearch={handleSearch} />
-    <div className="home">
-      
-      <div className="Items">
-        {filteredItems &&
-          filteredItems.map((item) => (
-            <InventoryDetails item={item} key={item._id} />
-          ))}
+    <div className="container">
+      <Sidebar />
+      <div className="content" style={{ marginLeft: "200px" }} >
+        <div><SearchFilter onSearch={handleSearch} /></div>
+        <div className="home">
+          <div className="Items">
+            {filteredItems &&
+              filteredItems.map((item) => (
+                <InventoryDetails item={item} key={item._id} />
+              ))}
+          </div>
+        </div>
       </div>
     </div>
-    </div>
   );
-};
+              }
 
 export default ItemDisplay;
