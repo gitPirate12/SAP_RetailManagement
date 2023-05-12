@@ -91,7 +91,7 @@ const IncomeItemStyled = styled.div`
     display: flex;
     align-items: center;
     gap: 1rem;
-    width: 100%;
+    width: auto;
     color: #222260;
     .outer-left{
         display: flex;

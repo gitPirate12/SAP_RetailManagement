@@ -25,7 +25,7 @@ const InventoryDetails = ({ item }) => {
   };
 
   const handleEditClick = async (e) => {
-    e.preventDefault();
+    
     const form = e.target;
     const updatedItem = {
       name: form.name.value,
