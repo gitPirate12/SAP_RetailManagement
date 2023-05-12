@@ -1,21 +1,25 @@
-
 import React, { useState, useEffect } from 'react';
-// import { MDBTable, MDBTableHead, MDBTableBody, MDBBtn, MDBInput } from 'mdb-react-ui-kit';
 import { MDBCard, MDBCardHeader, MDBCardBody, MDBIcon, MDBCardTitle, MDBInput, MDBCardText, MDBBtn, MDBCol, MDBRow } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import Cookies from 'js-cookie';
 import { reactLocalStorage } from 'reactjs-localstorage';
 import jsPDF from 'jspdf';
 import "jspdf-autotable";
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import { plus } from '../../utils/Icons';
+
+
+
 
 
 function MarketingDashboard() {
     const [Advertisements, setallAdvertisements] = useState([])
     const [DuplicateAdvertisements, setDuplicateallAdvertisements] = useState([])
-    // const [searchName, setsearchName] = useState("")
-    // const [AllPublished, setAllPublished] = useState([]);
-    // const [setAllReject, setAllRejects] = useState([]);
+    const [ActiveCount, setActiveCount] = useState("")
+    const [ProcessingCount, setProcesingCount] = useState([]);
+    const [CompletedCount, setCompltedCount] = useState([]);
+
+
 
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -25,6 +29,9 @@ function MarketingDashboard() {
             .then(res => {
                 setallAdvertisements(res.data);
                 setDuplicateallAdvertisements(res.data);
+                countActiveElements(res.data);
+                countProcessingElements(res.data);
+                countCompeletedElements(res.data);
             }
             )
             .catch(error => console.log(error));
@@ -32,6 +39,29 @@ function MarketingDashboard() {
 
     }, [])
 
+    function countActiveElements(array) {
+
+        const status = "Active"
+        const count = array.reduce((acc, cur) => cur.Status === status ? ++acc : acc, 0);
+        setActiveCount(count);
+        console.log(count);
+    }
+
+    function countProcessingElements(array) {
+
+        const status = "Processing"
+        const count = array.reduce((acc, cur) => cur.Status === status ? ++acc : acc, 0);
+        setProcesingCount(count);
+        console.log(count);
+    }
+
+    function countCompeletedElements(array) {
+
+        const status = "Completed"
+        const count = array.reduce((acc, cur) => cur.Status === status ? ++acc : acc, 0);
+        setCompltedCount(count);
+        console.log(count);
+    }
 
     function handleSearch(searchItem) {
         const results = DuplicateAdvertisements?.filter((advertisement) => {
@@ -83,7 +113,7 @@ function MarketingDashboard() {
         axios.delete("http://localhost:5000/api/v1/deleteCampaign/" + _id).then(() => {
             Swal.fire({
                 title: "Success!",
-                text: "Advertisement Delete",
+                text: "Campaign Delete",
                 icon: 'success',
                 confirmButtonText: "OK",
                 type: "success"
@@ -92,7 +122,7 @@ function MarketingDashboard() {
         }).catch((err) => {
             Swal.fire({
                 title: "Error!",
-                text: "Advertisement Not Delete",
+                text: "Campaign Not Delete",
                 icon: 'error',
                 confirmButtonText: "OK",
                 type: "success"
@@ -121,7 +151,7 @@ function MarketingDashboard() {
         window.location.href = "/editMarketing";
     }
 
- 
+
 
     const clear = () => {
         const CampaignID = ""
@@ -143,13 +173,17 @@ function MarketingDashboard() {
     useEffect(() => {
         clear();
     }, [])
-console.log(Advertisements);
+    console.log(Advertisements);
     return (
+      
         <div class="dashboard-main-wrapper" >
+       
 
-            <div class="dashboard-wrapper">
+            <div class="dashboard-wrapper ">
+            
                 <div style={{ paddingTop: '3%', paddingLeft: '2%', width: '98%' }}>
-                    <h4 className="text-uppercase  d-letter-spacing fw-bold" style={{ color: 'black' }}><i class="fas fa-home"></i>Marketing Dashboard</h4>
+                    <a href="/">    <h4 className="text-uppercase  d-letter-spacing fw-bold" style={{ color: 'black' }}><i class="fas fa-home"></i>Marketing and Sales Department</h4>
+                    </a>
                     <hr />
                     <div className="container-fluid bg-white" style={{ paddingLeft: '5%', paddingTop: '2%', paddingBottom: '2%', paddingRight: '5%' }} >
                         <center>
@@ -159,48 +193,79 @@ console.log(Advertisements);
 
                         <MDBRow style={{ marginTop: '1%' }}>
                             <MDBCol sm='4'>
-                                <a href="PaymentDashboard">
+                                <a href=" ">
                                     <MDBCard className=" bg-success square border-bottom border-5 border-dark bgdigram " style={{ boxShadow: '2px 3px 5px #BBBBBB' }}>
-                                        <MDBCardHeader className=" fw-bold mt-2 h1 pl-2 pt-5 pb-4 text-center text-uppercase" style={{ color: 'white' }}>
-                                            <MDBIcon className="text-muted" /> 01<br />Active
+                                        <MDBCardHeader className=" fw-bold mt-2 h3 pl-2 pt-5 pb-4 text-center text-uppercase" style={{ color: 'white' }}>
+                                            <MDBIcon className="text-muted" /> {ActiveCount}<br />Active
                                         </MDBCardHeader>
                                     </MDBCard>
                                 </a>
                             </MDBCol>
                             <MDBCol sm='4'>
-                                <a href="EmployeeDashboard">
+                                <a href=" ">
                                     <MDBCard className=" bg-primary square border-bottom border-5 border-dark bgdigram " style={{ boxShadow: '2px 3px 5px #BBBBBB' }}>
-                                        <MDBCardHeader className=" fw-bold mt-2 h1 pl-2 pt-5 pb-4 text-center text-uppercase" style={{ color: 'white' }}>
-                                            <MDBIcon className="text-muted" /> 00<br />Processing
+                                        <MDBCardHeader className=" fw-bold mt-2 h3 pl-2 pt-5 pb-4 text-center text-uppercase" style={{ color: 'white' }}>
+                                            <MDBIcon className="text-muted" /> {ProcessingCount}<br />Processing
                                         </MDBCardHeader>
                                     </MDBCard>
                                 </a>
                             </MDBCol>
                             <MDBCol sm='4'>
-                                <a href="addMarketing">
+                                <a href=" ">
                                     <MDBCard className=" bg-warning square border-bottom border-5 border-dark bgdigram " style={{ boxShadow: '2px 3px 5px #BBBBBB' }}>
-                                        <MDBCardHeader className=" fw-bold mt-2 h1 pl-2 pt-5 pb-4 text-center text-uppercase" style={{ color: 'white' }}>
-                                            <MDBIcon className="text-muted" />  00<br />Completed
+                                        <MDBCardHeader className=" fw-bold mt-2 h3 pl-2 pt-5 pb-4 text-center text-uppercase" style={{ color: 'white' }}>
+                                            <MDBIcon className="text-muted" />  {CompletedCount}<br />Completed
                                         </MDBCardHeader>
                                     </MDBCard>
                                 </a>
                             </MDBCol>
+                            
+                            {/* <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <a href="addMarketing"> <button class="btn btn-primary me-md-2" type="button">Addnew</button></a>
+                                <a href="CustomerAdDashboard">    <button class="btn btn-primary" type="button">Products</button></a>
+
+
+                                <button class="btn btn-primary" type="button" onClick={generatePDF}>PDF</button>
+
+                                <ReactHTMLTableToExcel
+                                    id="test-table-xls-button"
+                                    className="btn btn-success"
+                                    table="reportTB"
+                                    filename="tablexls"
+                                    outline color='dark'
+                                    sheet="tablexls"
+
+                                    buttonText=" Excelfile"
+                                />
+                            </div> */}
+                            
+                            
 
                         </MDBRow>
                         <div className="text-end mt-5">
                             <a href="addMarketing">
-                                <MDBBtn className='btn-med' style={{ fontSize: '13px', fontWeight: 'light' }} outline color='dark'>
-                                    New Campaign
+                                <MDBBtn className='btn btn-light' style={{ fontSize: '13px', fontWeight: 'light' }} outline color='dark'>
+                                   {plus}Campaign
                                 </MDBBtn>{' '}&nbsp;&nbsp;
                             </a>
-                            <a href="CustomerAdDashboard">
-                                <MDBBtn className='btn-med' style={{ fontSize: '13px', fontWeight: 'light' }} outline color='primary'>
+                            <a href="/inventory-details">
+                                <MDBBtn className='btn btn-light' style={{ fontSize: '13px', fontWeight: 'light' }} outline color='dark'>
                                     Products
                                 </MDBBtn>{' '}&nbsp;&nbsp;
                             </a>
-                            <MDBBtn className='btn-med' style={{ fontSize: '13px', fontWeight: 'light' }} outline color='danger' onClick={generatePDF}>
-                                Download
+                            <MDBBtn className='btn btn-danger' style={{ color: 'white', fontSize: '13px', fontWeight: 'light' }} outline color=' red' onClick={generatePDF}>
+                                PDF
                             </MDBBtn>{' '}&nbsp;&nbsp;
+                            <ReactHTMLTableToExcel
+                                id="test-table-xls-button"
+                                className="btn btn-success"
+                                table="reportTB"
+                                filename="tablexls"
+                                outline color='dark'
+                                sheet="tablexls"
+
+                                buttonText="Excel"
+                            />
                         </div>
                         <div className=" pt-1 mt-5">
                             <h6>Search Using Name</h6>
@@ -225,12 +290,12 @@ console.log(Advertisements);
 
                 </div>
             </div>
-            <br /> <br />
+
 
 
             <div className="p-3 mb-2 bg-primary text-dark rounded-3">
-
-                <table className="table table-hover  table table-bordered border-info table table-info table-striped" style={{ marginTop: '5px' }}>
+            
+                <table id="reportTB" className="table table-hover  table table-bordered border-info table table-info table-striped" style={{ marginTop: '5px' }}>
                     <thead>
 
                         <tr>
@@ -274,7 +339,7 @@ console.log(Advertisements);
 
 
                                     <td>
-                                        <a className="btn btn-secondary" onClick={() => edit(
+                                        <a className="btn btn-warning" onClick={() => edit(
                                             Advertisement.CampaignID,
                                             Advertisement.ItemCode,
                                             Advertisement.ItemName,
@@ -289,11 +354,11 @@ console.log(Advertisements);
                                             Advertisement.Status
 
                                         )} >
-                                            <i className="fas fa-edit"></i>&nbsp;Edit
+                                            <i className=" fas fa-edit"></i>&nbsp;Edit
                                         </a>
 
                                         &nbsp;
-                                        <a className="btn btn-danger" href="#" onClick={() => remove(Advertisement._id)}>
+                                        <a className="  btn btn-danger" href="#" onClick={() => remove(Advertisement._id)}>
                                             <i className="far fa-trash-alt"></i>&nbsp;Delete
                                         </a>
                                     </td>
@@ -315,6 +380,7 @@ console.log(Advertisements);
             </div>
 
         </div >
+
     )
 };
 

@@ -111,6 +111,7 @@ const SupplyOrderStore = create((set) => ({
         const newSupplyOrders = SupplyOrderData.filter((SupplyOrder) => {
             return SupplyOrder._id !== _id;
         });
+        alert("Supply Order Deleted");
         set({ SupplyOrderData: newSupplyOrders });
     },
     handleUpdateFieldChange: (e) => {
@@ -199,6 +200,7 @@ const SupplyOrderStore = create((set) => ({
                     deliverydate,
                 }
             );
+            alert("Supply Order Updated");
 
             //update state
             const newSupplyOrders = [...SupplyOrderData];

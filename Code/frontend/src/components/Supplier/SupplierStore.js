@@ -80,6 +80,7 @@ const SupplierStore = create((set) => ({
         const newSuppliers = supplierData.filter((Supplier) => {
             return Supplier._id !== _id;
         });
+        alert("Supplier Deleted");
         set({ supplierData: newSuppliers });
     },
     handleUpdateFieldChange: (e) => {
@@ -141,6 +142,7 @@ const SupplierStore = create((set) => ({
                 itemType,
                 paymentDetails,
             });
+            alert("Supplier Updated");
 
             //update state
             const newSuppliers = [...supplierData];
@@ -159,6 +161,7 @@ const SupplierStore = create((set) => ({
                     paymentDetails: "",
                 },
             });
+           
         }
     },
 }));
